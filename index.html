@@ -3,41 +3,200 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title></title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<!-- <link rel="apple-touch-icon" href="iphon_tetris_icon.png"/>
+	<link rel="apple-touch-startup-image" href="startup.png" /> -->
+		
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/main.css">
+	<script src="js/vendor/modernizr-2.6.2.min.js"></script>
+	<style>
+	html{
+		overflow:hidden;
+	}
+	body{
+		overflow:auto;
+	}
+	*,html,body,div,p,span,label,input,textarea,select,a,td,th,i,strong,em{
+		font-family:'Hiragino Sans GB W3';
+		-webkit-font-smoothing:antialiased;
+		text-rendering: optimizeLegibility;
+	}
+	::-webkit-scrollbar-track-piece {
+		background-color:#f5f5f5;
+		border-left:1px solid #d2d2d2;
+	}
+	::-webkit-scrollbar {
+		width:13px;
+		height:13px;
+	}
+	::-webkit-scrollbar-thumb {
+		background-color:#c2c2c2;
+		background-clip:padding-box;
+		border:1px solid #979797;
+		min-height:28px;
+	}
+	::-webkit-scrollbar-thumb:hover {
+		border:1px solid #636363;
+		background-color:#929292;
+	}
+	@media only screen and (min-width:826px) and (max-width:1099px){
+		.page-width{width:820px!important}
+	}
+	@media only screen and (min-width:1100px) and (max-width:1374px){
+		.page-width{width:1095px!important}
+	}
+	@media only screen and (min-width:1375px) and (max-width:1649px){
+		.page-width{width:1370px!important}
+	}
+	@media only screen and (min-width:1650px) and (max-width:1924px){
+		.page-width{width:1645px!important}
+	}
+	@media only screen and (min-width:1925px){
+		.page-width{width:1645px!important}
+	}
+	@font-face {
+		font-family: 'Din-LightAlternate';
+		src: url('deibi-webfont.eot');
+		src: url('deibi-webfont.eot?#iefix') format('embedded-opentype'),
+		url('deibi-webfont.woff') format('woff'),
+		url('deibi-webfont.ttf') format('truetype'),
+		url('deibi-webfont.svg#DeibiRegular') format('svg'),
+		url('css/DIN-LightAlternate.otf') format('otf');
+		font-weight: normal;
+		font-style: normal;
+	}
+		
+	@font-face {
+		font-family: 'Din-Light';
+		src: url('deibi-webfont.eot');
+		src: url('deibi-webfont.eot?#iefix') format('embedded-opentype'),
+		url('deibi-webfont.woff') format('woff'),
+		url('deibi-webfont.ttf') format('truetype'),
+		url('deibi-webfont.svg#DeibiRegular') format('svg'),
+		url('css/DIN-Light.otf') format('otf');
+		font-weight: normal;
+		font-style: normal;
+	}
+	
+	@font-face {
+		font-family: 'STXIHEI';
+		src: url('deibi-webfont.eot');
+		src: url('deibi-webfont.eot?#iefix') format('embedded-opentype'),
+		url('deibi-webfont.woff') format('woff'),
+		url('css/STXIHEI.ttf') format('truetype'),
+		url('deibi-webfont.svg#DeibiRegular') format('svg');
+		font-weight: normal;
+		font-style: normal;
+	}
+	</style>
+	<style>
+	@-webkit-keyframes loading
+	{
+		from {opacity: 1;}
+		to {opacity: 0;}
+	}
+	@-moz-keyframes loading  {
+		0% {opacity:1;}
+		50% {opacity:0.4;}
+		100% {opacity:0;}
+	}
+	@keyframes loading
+	{
+		from {opacity: 1;}
+		to {opacity: 0;}
+	}
+	</style>
+	<style>
+	.overlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 999;
+	}
+	.primary-bg {
+		background-color: #57c3df;
+		-webkit-animation: loading 7s ease-in-out 1;
+		-moz-animation: loading 7s ease-in-out 1;
+		animation: loading 7s ease-in-out 1;
+	}
+		.primary-bg.loaded{
+			opacity:0;
+		}
+	.feature-container--margin-top {
+		margin: 76px auto 0;
+		z-index: 21;
+		position: relative;
+		height:500px;
+	}
+		.feature-container--margin-top h2{
+			font-size: 60px;
+			line-height: 1.14em;
+			letter-spacing: .02em;
+			width: 40%;
+			font-weight:normal;
+			color:White;
+			font-family:'Din-Light';
+		}
+	.heading--bottom-left {
+		position: absolute;
+		bottom: 25px;
+		left: 40px;
+	}
+	</style>
+</head>
+<body>
+	<!--[if lt IE 7]>
+		<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+		<![endif]-->
 
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/main.css">
-        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
-    </head>
-    <body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+		<section class="overlay primary-bg">
+			<div class="navbar">
+				<ul class="nav page-width">
+					<li class="logo">
+						<a href="#">
+							<img src="/img/teague-logo-white-2x.png" alt="Cyanrhino" />
+						</a>
+					</li>
+				</ul>
+			</div>
+			<article class="page-width feature-container--margin-top">
+                <h1>青犀<span>[Cyan rhino]</span></h1>        
+				<h2 class="heading--bottom-left">VISION DESIGN. PHOTOGRAPHY PRODUCT.</h2>                    
+			</article>
+		</section>
 
-        <!-- Add your site or application content here -->
-        <p>Hello world! This is HTML5 Boilerplate.</p>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+		<script src="js/plugins.js"></script>
+		<script src="js/main.js"></script>
+		
+		<script>
+			var tt = document.querySelector(".primary-bg");
+		    tt.addEventListener("webkitAnimationEnd", function(){
+		               this.className += ' loaded';
+		    }, false);
+		</script>
+		
+		<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
-        <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
+		ga('create', 'UA-10224456-13', 'cyanrhino.com');
+		ga('send', 'pageview');
 
-        <script>
-          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-          ga('create', 'UA-10224456-13', 'cyanrhino.com');
-          ga('send', 'pageview');
-
-        </script>
-    </body>
-</html>
+		</script>
+	</body>
+	</html>
