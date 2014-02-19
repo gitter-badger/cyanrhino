@@ -19,12 +19,6 @@
 	<link rel="stylesheet" href="css/main.css">
 	<script src="js/vendor/modernizr-2.6.2.min.js"></script>
 	<style>
-	html{
-		overflow:hidden;
-	}
-	body{
-		overflow:auto;
-	}
 	*,html,body,div,p,span,label,input,textarea,select,a,td,th,i,strong,em{
 		font-family:'Hiragino Sans GB W3';
 		-webkit-font-smoothing:antialiased;
@@ -65,11 +59,11 @@
 	}
 	@font-face {
 		font-family: 'Din-LightAlternate';
-		src: url('deibi-webfont.eot');
-		src: url('deibi-webfont.eot?#iefix') format('embedded-opentype'),
-		url('deibi-webfont.woff') format('woff'),
-		url('deibi-webfont.ttf') format('truetype'),
-		url('deibi-webfont.svg#DeibiRegular') format('svg'),
+		src: url('css/din-lightalternate.eot');
+		src: url('css/din-lightalternate.eot?#iefix') format('embedded-opentype'),
+		url('css/DIN_LightAlternate.woff') format('woff'),
+		url('css/din-lightalternate.ttf') format('truetype'),
+		url('cssDIN_LightAlternate.svg#DIN_LightAlternate') format('svg'),
 		url('css/DIN-LightAlternate.otf') format('otf');
 		font-weight: normal;
 		font-style: normal;
@@ -77,11 +71,11 @@
 		
 	@font-face {
 		font-family: 'Din-Light';
-		src: url('deibi-webfont.eot');
-		src: url('deibi-webfont.eot?#iefix') format('embedded-opentype'),
-		url('deibi-webfont.woff') format('woff'),
-		url('deibi-webfont.ttf') format('truetype'),
-		url('deibi-webfont.svg#DeibiRegular') format('svg'),
+		src: url('css/din-light.eot');
+		src: url('css/din-light.eot?#iefix') format('embedded-opentype'),
+		url('css/DIN-Light.woff') format('woff'),
+		url('css/din-light.ttf') format('truetype'),
+		url('css/DIN-Light.svg#DINLight') format('svg'),
 		url('css/DIN-Light.otf') format('otf');
 		font-weight: normal;
 		font-style: normal;
@@ -101,18 +95,20 @@
 	<style>
 	@-webkit-keyframes loading
 	{
-		from {opacity: 1;}
-		to {opacity: 0;}
+		0% {opacity:1;}
+		50% {opacity:0.7;}
+		100% {opacity:0;}
 	}
 	@-moz-keyframes loading  {
 		0% {opacity:1;}
-		50% {opacity:0.4;}
+		50% {opacity:0.7;}
 		100% {opacity:0;}
 	}
 	@keyframes loading
 	{
-		from {opacity: 1;}
-		to {opacity: 0;}
+		0% {opacity:1;}
+		50% {opacity:0.7;}
+		100% {opacity:0;}
 	}
 	</style>
 	<style>
@@ -123,16 +119,21 @@
 		width: 100%;
 		height: 100%;
 		z-index: 999;
+		-webkit-animation: loading 10s ease-in-out 1;
+		-moz-animation: loading 10s ease-in-out 1;
+		animation: loading 10s ease-in-out 1;
 	}
-	.primary-bg {
-		background-color: #57c3df;
-		-webkit-animation: loading 7s ease-in-out 1;
-		-moz-animation: loading 7s ease-in-out 1;
-		animation: loading 7s ease-in-out 1;
-	}
-		.primary-bg.loaded{
+		.overlay.loaded{
+			opacity:0;
+			z-index:-1;
+		}
+		.overlay.loaded h1{
 			opacity:0;
 		}
+	.primary-bg {
+		background-color: #57c2de;		
+	}
+		
 	.feature-container--margin-top {
 		margin: 76px auto 0;
 		z-index: 21;
@@ -143,15 +144,98 @@
 			font-size: 60px;
 			line-height: 1.14em;
 			letter-spacing: .02em;
-			width: 40%;
-			font-weight:normal;
+			width: 30%;
+			font-weight:100;
 			color:White;
 			font-family:'Din-Light';
 		}
+	@media only screen and (min-width:0) and (max-width:549px){
+		.feature-container--margin-top h2{font-size:36px;width:50%;top:120px;}
+	}
+	@media only screen and (min-width:550px) and (max-width:825px){
+		.feature-container--margin-top h2{font-size:47px;line-height:1.14em;width:43%}
+	}
+	@media only screen and (min-width:826px) and (max-width:1099px){
+		.feature-container--margin-top h2{font-size:60px;line-height:1.14em;width:50%}
+	}
+	@media only screen and (min-width:1100px) and (max-width:1374px){
+		.feature-container--margin-top h2{font-size:60px;line-height:1.14em;letter-spacing:.02em;width:39%}
+	}
+	@media only screen and (min-width:1375px) and (max-width:1649px){
+		.feature-container--margin-top h2{font-size:60px;line-height:1.14em;letter-spacing:.02em;width:30%}
+	}
+	@media only screen and (min-width:1650px) and (max-width:1924px){
+		.feature-container--margin-top h2{font-size:60px;line-height:1.14em;letter-spacing:.02em;width:30%}
+	}
+	@media only screen and (min-width:1925px){
+		.feature-container--margin-top h2{font-size:60px;line-height:1.14em;letter-spacing:.02em;width:30%}
+	}
 	.heading--bottom-left {
 		position: absolute;
 		bottom: 25px;
-		left: 40px;
+		left: 10px;
+	}
+	.feature-container--margin-top h1{
+		position: absolute;
+		top: 40px;
+		left: 0;
+		font-size: 60px;
+		line-height: 1.14em;
+		letter-spacing: .02em;
+		font-weight:100;
+		color:White;
+		vertical-align:bottom;
+		font-family:'STXIHEI';
+	}
+		.feature-container--margin-top h1 span{
+			font-size: 20px;
+			line-height:1.1em;
+			letter-spacing: .02em;
+			font-weight:100;
+			font-family:'Din-LightAlternate';
+		}
+		.feature-container--margin-top h1 label{
+			font-size:30px;
+			font-weight:300;
+			vertical-align:bottom;
+			line-height:1.6em;
+		}
+	.feature-module{
+		margin-top:0;
+		padding-top:76px;
+	}
+	.feature-module h1{
+		top:116px;
+	}
+	.navbar{
+		width: 100%;
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 24;
+		background-color: transparent;
+		-webkit-transition: background-color .3s;
+		-moz-transition: background-color .3s;
+		-o-transition: background-color .3s;
+		transition: background-color .3s;
+	}
+		.navbar .nav{
+			height: 100%;
+			padding: 20px 0;
+			margin: 0 auto;
+			position: relative;
+			list-style: none;
+			overflow: hidden;
+		}
+	.banner-bg{
+		background:url(img/banner.png) no-repeat;
+		background-size:cover;
+		opacity:0.5;
+		width:100%;
+		top: 0;
+		height: 100%;
+		z-index: -1;
+		position: absolute;
 	}
 	</style>
 </head>
@@ -164,24 +248,43 @@
 			<div class="navbar">
 				<ul class="nav page-width">
 					<li class="logo">
-						<a href="#">
-							<img src="/img/teague-logo-white-2x.png" alt="Cyanrhino" />
-						</a>
+						<object type="application/x-shockwave-flash" 
+						data="img/logo.swf" wmode="transparent"
+						width="76" height="50">
+						<param name="movie" value="img/logo.swf" />
+						<param name="wmode" value="transparent" />
+						<param name="quality" value="high"/>
+						<embed name="Sample" value="img/logo.swf"></embed>
+						</object>
 					</li>
 				</ul>
 			</div>
 			<article class="page-width feature-container--margin-top">
-                <h1>青犀<span>[Cyan rhino]</span></h1>        
+                <h1>青犀 <label>[</label><span>Cyan rhino</span><label>]</label></h1>        
 				<h2 class="heading--bottom-left">VISION DESIGN. PHOTOGRAPHY PRODUCT.</h2>                    
 			</article>
 		</section>
 		
-		<article class="page-width feature-container--margin-top">
-            <h1>青犀<span>[Cyan rhino]</span></h1>        
-			<h2 class="heading--bottom-left">VISION DESIGN. PHOTOGRAPHY PRODUCT.</h2>                    
+		<div class="navbar">
+			<ul class="nav page-width">
+				<li class="logo">
+					<object type="application/x-shockwave-flash" 
+					data="img/logo.swf" wmode="transparent"
+					width="76" height="50">
+					<param name="movie" value="img/logo.swf" />
+					<param name="wmode" value="transparent" />
+					<param name="quality" value="high"/>
+					<embed name="Sample" value="img/logo.swf"></embed>
+					</object>
+				</li>
+			</ul>
+		</div>
+		<article class="page-width feature-container--margin-top primary-bg feature-module">                 
+			<h2 class="heading--bottom-left">VISION DESIGN. PHOTOGRAPHY PRODUCT.</h2>   
+			<div class="banner-bg"></div>
 		</article>
 
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
 		<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
 		<script src="js/plugins.js"></script>
 		<script src="js/main.js"></script>
