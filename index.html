@@ -112,6 +112,7 @@
 	}
 	</style>
 	<style>
+	h1,h2{margin:0; padding:0;}
 	.overlay {
 		position: absolute;
 		top: 0;
@@ -121,7 +122,7 @@
 		z-index: 999;
 		-webkit-animation: loading 10s ease-in-out 1;
 		-moz-animation: loading 10s ease-in-out 1;
-		animation: loading 10s ease-in-out 1;
+/*		animation: loading 10s ease-in-out 1;*/
 	}
 		.overlay.loaded{
 			opacity:0;
@@ -150,7 +151,7 @@
 			font-family:'Din-Light';
 		}
 	@media only screen and (min-width:0) and (max-width:549px){
-		.feature-container--margin-top h2{font-size:36px;width:50%;top:120px;}
+		.feature-container--margin-top h2{font-size:36px;width:50%;top:180px;}
 	}
 	@media only screen and (min-width:550px) and (max-width:825px){
 		.feature-container--margin-top h2{font-size:47px;line-height:1.14em;width:43%}
@@ -173,12 +174,12 @@
 	.heading--bottom-left {
 		position: absolute;
 		bottom: 25px;
-		left: 10px;
+		left: 40px;
 	}
 	.feature-container--margin-top h1{
 		position: absolute;
-		top: 40px;
-		left: 0;
+		bottom: 310px;
+		left: 30px;
 		font-size: 60px;
 		line-height: 1.14em;
 		letter-spacing: .02em;
@@ -189,24 +190,22 @@
 	}
 		.feature-container--margin-top h1 span{
 			font-size: 20px;
-			line-height:1.1em;
 			letter-spacing: .02em;
-			font-weight:100;
-			font-family:'Din-LightAlternate';
+			font-weight: 100;
+			line-height: 20px;
+			font-family: 'Din-LightAlternate';
 		}
 		.feature-container--margin-top h1 label{
-			font-size:30px;
-			font-weight:300;
-			vertical-align:bottom;
-			line-height:1.6em;
+			font-size: 30px;
+			font-weight: 300;
+			vertical-align: bottom;
+			line-height: 1.3em;
 		}
 	.feature-module{
 		margin-top:0;
 		padding-top:76px;
 	}
-	.feature-module h1{
-		top:116px;
-	}
+	
 	.navbar{
 		width: 100%;
 		position: fixed;
@@ -226,6 +225,9 @@
 			position: relative;
 			list-style: none;
 			overflow: hidden;
+		}
+		.navbar .nav .logo{
+			padding-left:30px;
 		}
 	.banner-bg{
 		background:url(img/banner.png) no-repeat;
@@ -279,9 +281,10 @@
 				</li>
 			</ul>
 		</div>
-		<article class="page-width feature-container--margin-top primary-bg feature-module">                 
+		<article class="page-width feature-container--margin-top primary-bg feature-module">      
+			<div class="banner-bg"></div>        
+			<h1>青犀 <label>[</label><span>Cyan rhino</span><label>]</label></h1>   
 			<h2 class="heading--bottom-left">VISION DESIGN. PHOTOGRAPHY PRODUCT.</h2>   
-			<div class="banner-bg"></div>
 		</article>
 
 		<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
@@ -290,10 +293,19 @@
 		<script src="js/main.js"></script>
 		
 		<script>
-			var tt = document.querySelector(".primary-bg");
-		    tt.addEventListener("webkitAnimationEnd", function(){
-		               this.className += ' loaded';
-		    }, false);
+		$(function(){
+
+			$('.overlay').bind("webkitAnimationEnd mozAnimationEnd msAnimationEnd oAnimationEnd animationEnd", function(){
+				$(this).addClass('loaded');
+			});  
+			var IE = (!! window.ActiveXObject && +(/msie\s(\d+)/i.exec(navigator.userAgent)[1])) || NaN;
+
+			if(IE){
+				$('.overlay').fadeOut(5000,function(){
+					//$('.overlay h1').fadeOut();
+				});
+			}
+		});
 		</script>
 		
 		<script>
