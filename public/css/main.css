@@ -302,3 +302,6 @@ textarea {
         page-break-after: avoid;
     }
 }
+
+
+img{-webkit-touch-callout: none;}
