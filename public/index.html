@@ -31,6 +31,8 @@
         <link rel="stylesheet" href="css/normalize.css">
 		<link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" media="screen" title="no title" charset="utf-8">
         <link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/ie.css" type="text/css" media="screen" title="no title" charset="utf-8">
+        
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
 		<!--[if lt IE 9]>
 			<script src="js/css3-mediaqueries.js" type="text/javascript" charset="utf-8"></script>
@@ -58,6 +60,26 @@
 		::-webkit-scrollbar-thumb:hover {
 			border:1px solid #636363;
 			background-color:#929292;
+		}
+		@media only screen and (max-width:825px){
+			.page-width{width:320px!important}
+			.home-induce{
+				background-image: url(img/home-820.png);
+				background-image: -webkit-image-set(
+				  url(img/home-820.png) 1x,
+				  url(img/home-820 2x.png) 2x
+				);
+				background-image: image-set(
+				  url(img/home-820.png) 1x,
+				  url(img/home-820 2x.png) 2x
+				);
+				background-repeat:no-repeat;
+				width:276px;
+				height:219px;
+			}
+			.feature-module {
+				padding-top:120px !important;
+			}
 		}
 		@media only screen and (min-width:826px) and (max-width:1099px){
 			.page-width{width:820px!important}
