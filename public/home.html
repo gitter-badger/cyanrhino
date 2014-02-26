@@ -33,7 +33,7 @@
         <link rel="stylesheet" href="css/main.css">
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
 		<!--[if lt IE 9]>
-			<script src="js/css3-mediaqueries.js" type="text/javascript" charset="utf-8"></script>
+			<script src="js/vendor/css3-mediaqueries.js" type="text/javascript" charset="utf-8"></script>
 		<![endif]-->
 		<style>
 		*,html,body,div,p,span,label,input,textarea,select,a,td,th,i,strong,em{
@@ -235,24 +235,24 @@
 		}
 		@font-face {
 			font-family: 'Din-LightAlternate';
-			src: url('css/din-lightalternate.eot');
-			src: url('css/din-lightalternate.eot?#iefix') format('embedded-opentype'),
-			url('css/DIN_LightAlternate.woff') format('woff'),
-			url('css/din-lightalternate.ttf') format('truetype'),
+			src: url('fonts/din-lightalternate.eot');
+			src: url('fonts/din-lightalternate.eot?#iefix') format('embedded-opentype'),
+			url('fonts/DIN_LightAlternate.woff') format('woff'),
+			url('fonts/din-lightalternate.ttf') format('truetype'),
 			url('cssDIN_LightAlternate.svg#DIN_LightAlternate') format('svg'),
-			url('css/DIN-LightAlternate.otf') format('otf');
+			url('fonts/DIN-LightAlternate.otf') format('otf');
 			font-weight: normal;
 			font-style: normal;
 		}
 		
 		@font-face {
 			font-family: 'Din-Light';
-			src: url('css/din-light.eot');
-			src: url('css/din-light.eot?#iefix') format('embedded-opentype'),
-			url('css/DIN-Light.woff') format('woff'),
-			url('css/din-light.ttf') format('truetype'),
-			url('css/DIN-Light.svg#DINLight') format('svg'),
-			url('css/DIN-Light.otf') format('otf');
+			src: url('fonts/din-light.eot');
+			src: url('fonts/din-light.eot?#iefix') format('embedded-opentype'),
+			url('fonts/DIN-Light.woff') format('woff'),
+			url('fonts/din-light.ttf') format('truetype'),
+			url('fonts/DIN-Light.svg#DINLight') format('svg'),
+			url('fonts/DIN-Light.otf') format('otf');
 			font-weight: normal;
 			font-style: normal;
 		}
@@ -262,8 +262,18 @@
 			src: url('deibi-webfont.eot');
 			src: url('deibi-webfont.eot?#iefix') format('embedded-opentype'),
 			url('deibi-webfont.woff') format('woff'),
-			url('css/STXIHEI.ttf') format('truetype'),
+			url('fonts/STXIHEI.ttf') format('truetype'),
 			url('deibi-webfont.svg#DeibiRegular') format('svg');
+			font-weight: normal;
+			font-style: normal;
+		}
+		@font-face {
+			font-family: 'teague-icons';
+			src: url('fonts/teague-icons.eot');
+			src: url('fonts/teague-icons.eot?#iefix') format('embedded-opentype'),
+			url('fonts/teague-icons.woff') format('woff'),
+			url('fonts/teague-icons.ttf') format('truetype'),
+			url('fonts/teague-icons.svg#teague-icons') format('svg');
 			font-weight: normal;
 			font-style: normal;
 		}
@@ -438,21 +448,86 @@
 				 letter-spacing: .02em;
 			}
 		</style>
+		<style>
+		.back-to--top {
+			display: block;
+			width: 95px;
+			height: 95px;
+			margin: 80px auto;
+			background-color: #4d4846;
+			color: #fff;
+			position: relative;
+			overflow: hidden;
+			-webkit-border-radius: 50px;
+			-moz-border-radius: 50px;
+			-ms-border-radius: 50px;
+			-o-border-radius: 50px;
+			border-radius: 50px;
+			behavior: url(js/vendor/PIE.htc);
+		}
+		.hover-animate-up--span {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			text-align: center;
+			padding: 0 20px;
+			display: table;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+			text-transform: uppercase;
+		}
+		
+		
+		.hover-animate-up--span > i,
+		.hover-animate-up--span > span{
+			display:table-cell;
+			vertical-align:middle;
+			font-size:34px;
+		}
+		.hover-animate-up--span > span{
+			font-size:11px;
+			font-family:Din-Light;
+		}
+		[class^=icon-],
+		.icon {
+			font-family: teague-icons;
+			line-height: 1;
+			speak: none;
+			font-style: normal!important;
+			font-weight: 400;
+			font-variant: normal;
+			text-transform: none;
+			-webkit-font-smoothing: antialiased;
+			display: -moz-inline-stack;
+			display: inline-block;
+			vertical-align: middle;
+			zoom: 1;
+		}
+		.icon-arrow-up:before {
+			content: "\e010";
+			font-size:34px;
+			font-family:teague-icons;
+		}
+		
+		</style>
     </head>
 	<body>
 		<!--[if lt IE 7]>
 			<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 			<![endif]-->
-		<header>
-			<div class="navbar">
-				<div class="logo page-width">
-					<object type="application/x-shockwave-flash" 
-					data="img/logo.swf" wmode="transparent"
-					width="76" height="50">
-					<param name="movie" value="img/logo.swf" />
-					<param name="wmode" value="transparent" />
-					<param name="quality" value="high"/>
-					<embed name="Sample" value="img/logo.swf"></embed>
+			<header>
+				<div class="navbar">
+					<div class="logo page-width">
+						<object type="application/x-shockwave-flash" 
+						data="img/logo.swf" wmode="transparent"
+						width="76" height="50">
+						<param name="movie" value="img/logo.swf" />
+						<param name="wmode" value="transparent" />
+						<param name="quality" value="high"/>
+						<embed name="Sample" value="img/logo.swf"></embed>
 					</object>
 					
 					<ul id="js-main-nav" class="nav">
@@ -477,29 +552,41 @@
 				
 					
 					
-			<div class="main">
-				<div class="page-width">
-					<ul class="heading--feature">
-						<li>vision</li>
-						<li>design.</li>
-						<li>photography</li>
-						<li>product.</li>
-					</ul>
-				</div>
-				<div class="module-overlay">
-					<div class="module-overlay-cover"></div>
-				</div>
-				<div class="home-banner"></div>
-				<div id="freewall" class="free-wall page-width"></div>
-			
+		<div class="main">
+			<div class="page-width">
+				<ul class="heading--feature">
+					<li>vision</li>
+					<li>design.</li>
+					<li>photography</li>
+					<li>product.</li>
+				</ul>
 			</div>
+			<div class="module-overlay">
+				<div class="module-overlay-cover"></div>
+			</div>
+			<div class="home-banner"></div>
+			<div id="freewall" class="free-wall page-width"></div>
+			
+		</div>
+			
+		<div class="back-to">
+			<a href="#" class="back-to--top">
+				<span class="hover-animate-up--span">
+					<!-- <i class="fa fa-arrow-up"></i> -->
+					<span class="icon icon-arrow-up"></span>
+				</span>
+				<span class="hover-animate-up--span">
+					<span>Return To Top</span>
+				</span>
+			</a>
+		</div>
 
     
-			<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
-			<script src="js/plugins.js"></script>
-			<script src="js/helper.js"></script>
-			<script src="js/main.js"></script>
-			<script src="js/freewall.js" type="text/javascript" charset="utf-8"></script>
+		<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+		<script src="js/plugins.js"></script>
+		<script src="js/helper.js"></script>
+		<script src="js/main.js"></script>
+		<script src="js/vendor/freewall.js" type="text/javascript" charset="utf-8"></script>
 
 			<script type="text/javascript">
 			var temp = "<div class='cell' style='width:{width}px; height: {height}px; background-image: url(i/photo/{index}.jpg)'></div>";

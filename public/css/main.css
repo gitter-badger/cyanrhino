@@ -305,3 +305,10 @@ textarea {
 
 
 img{-webkit-touch-callout: none;}
+a {
+	text-decoration: none;
+	-webkit-transition: color .3s;
+	-moz-transition: color .3s;
+	-o-transition: color .3s;
+	transition: color .3s;
+}
