@@ -31,8 +31,10 @@
         <link rel="stylesheet" href="css/normalize.css">
 		<link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" media="screen" title="no title" charset="utf-8">
         <link rel="stylesheet" href="css/main.css">
+		
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
 		<!--[if lt IE 9]>
+			<link rel="stylesheet" href="css/ie.css" type="text/css" media="screen" title="no title" charset="utf-8">
 			<script src="js/vendor/css3-mediaqueries.js" type="text/javascript" charset="utf-8"></script>
 		<![endif]-->
 		<style>
@@ -451,18 +453,18 @@
 		<style>
 		.back-to--top {
 			display: block;
-			width: 95px;
-			height: 95px;
+			width: 64px;
+			height: 64px;
 			margin: 80px auto;
 			background-color: #4d4846;
 			color: #fff;
 			position: relative;
 			overflow: hidden;
-			-webkit-border-radius: 50px;
-			-moz-border-radius: 50px;
-			-ms-border-radius: 50px;
-			-o-border-radius: 50px;
-			border-radius: 50px;
+			-webkit-border-radius: 32px;
+			-moz-border-radius: 32px;
+			-ms-border-radius: 32px;
+			-o-border-radius: 32px;
+			border-radius: 32px;
 			behavior: url(js/vendor/PIE.htc);
 		}
 		.hover-animate-up--span {
@@ -472,7 +474,7 @@
 			width: 100%;
 			height: 100%;
 			text-align: center;
-			padding: 0 20px;
+			padding: 0 5px;
 			display: table;
 			-webkit-box-sizing: border-box;
 			-moz-box-sizing: border-box;
@@ -511,7 +513,89 @@
 			font-size:34px;
 			font-family:teague-icons;
 		}
-		
+		.hover-animate-up--span:nth-child(2){
+			top:200px;
+		}
+		</style>
+		<style>
+	
+		nav.pagination ul {
+			margin:0;
+			padding:0;
+			list-style:none;
+		}
+
+		nav.pagination ul li {
+			display:inline-block;
+		}
+
+		nav.pagination ul li + li {
+			margin-left:3px;
+		}
+		nav.pagination li a{
+			font-family:"Din-Light",serif;
+			color:#332d2b;
+			font-size:1.8em;
+			line-height:1em;
+			display:block;
+		}
+		nav.pagination li a.current{
+			border-bottom:2px solid #332d2b;
+		}
+		</style>
+		<style>
+		.box {
+			display:inline-block;
+			float:left;
+			opacity: 1;
+			padding-right:5px;
+			padding-bottom:5px;
+			-webkit-transition: all .5s;
+			transition: all .5s;
+			height:200px;
+			box-sizing:border-box;
+			background-color:red;
+			position:relative;
+		}
+		.one{
+			width:33.33333333333%;
+		}
+		.double{
+			width:66.666666666667%;
+		}
+		.half{
+			width:50%;
+		}
+		.full{
+			width:100%;
+		}
+		.row{
+			width:100%;
+			overflow:hidden;
+			float:none;
+			clear:both;
+			zoom:1;
+		}
+		.figure{
+			position:absolute;
+			background-color:red;
+			width:100%;
+			height:100%;
+		}
+		.figure-caption{
+			position:absolute;
+			top:200px;
+			background-color:black;
+			opacity:0.5;
+			-webkit-blend-mode: multiply;
+			blend-mode: multiply;
+			filter:alpha(opacity=50);
+			width:100%;
+			height:100%;
+			-webkit-transition:all .5s;
+			-moz-transition:all .5s;
+			transition:all .5s;
+		}
 		</style>
     </head>
 	<body>
@@ -565,9 +649,44 @@
 				<div class="module-overlay-cover"></div>
 			</div>
 			<div class="home-banner"></div>
+			
 			<div id="freewall" class="free-wall page-width"></div>
 			
+			<div id="wall" class="free-wall page-width">
+				<div class="row">
+					<div class="box one">
+						<div class="figure"></div>
+						<div class="figure-caption"></div>	
+					</div>
+					<div class="box double">2</div>
+				</div>
+				<div class="row">
+					<div class="box double">2</div>
+					<div class="box one">1</div>
+				</div>
+				<div class="row">
+					<div class="box half">1.5</div>
+					<div class="box half">1.5</div>
+				</div>
+			
+				<div class="row">
+					<div class="box full">3</div>
+				</div>
+			</div>
+			
+			<nav class='pagination page-width text-right' role='toolbar'>
+				<ul>
+					<li><a rel="prev" href="">&larr;</a></li>
+					<li><a rel="first" href="">1</a></li>
+					<li><a class="current" href="">2</a></li>
+					<li><a href="">3</a></li>
+					<li><a href="">4</a></li>
+					<li><a rel="last" href="">5</a></li>
+					<li><a rel="next" href="">&rarr;</a></li>
+				</ul>
+			</nav>
 		</div>
+		
 			
 		<div class="back-to">
 			<a href="#" class="back-to--top">
@@ -645,6 +764,22 @@
 				}).on('mouseout','.subnav',function(){
 					$('.subnav').removeClass('hovering');
 					$('.subnav__div').removeClass('hover');
+				});
+				
+				
+				$('.back-to--top').hover(function() {
+					$(this).find(".hover-animate-up--span:first").clearQueue().stop().animate({top: "-100px"}, {duration: 400});
+					$(this).find(".hover-animate-up--span:last").clearQueue().stop().delay(400).animate({top: "0px"}, {duration: 750});
+				}, function() {
+					$(this).find(".hover-animate-up--span:first").clearQueue().stop().animate({top: "0px"}, {duration: 500});
+					$(this).find(".hover-animate-up--span:last").clearQueue().stop().animate({top: "200px"}, {duration: 500});
+				});
+				
+				
+				$('.figure').on('mouseover',function(){
+					$(this).parent().find('.figure-caption').css('top',0);
+				}).on('mouseout',function(){
+					$(this).parent().find('.figure-caption').css('top',200);
 				});
 			});
 			</script>

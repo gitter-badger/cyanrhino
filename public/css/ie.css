@@ -1,3 +1,19 @@
 .lt-ie9 .feature-module{
 	padding-top:280px !important;
 }
+.lt-ie10 .nav,.lt-ie8 .nav{
+	top:-70px;
+}
+.lt-ie9 .hover-animate-up--span + .hover-animate-up--span{
+	top:200px;
+}
+.lt-ie8 nav.pagination ul {
+	float:right;
+}
+
+.lt-ie8 nav.pagination ul li {
+	float:left;
+}
+.lt-ie8 .hover-animate-up--span{
+	padding:0 !important;
+}
