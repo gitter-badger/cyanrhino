@@ -427,16 +427,21 @@
 		
 		<style>
 		/* ---- .element-item ---- */
+		#tiles{
+			padding-top:10px;
+		}
 		.item {
 		  float: left;
-		  width: 33.3333333333%;
-		  height: 200px;
-		  margin: 2px;
+		  width: 32.94%;
+		  height: 362px;	
+		  margin: 2px; 
 		  background: #888;
+		  background-size:cover;
+		  background-repeat:no-repeat;
 		}
 
 		.big{
-		  width:65.933333333333%;
+		  width:66.3%;
 		}
 
 		.mid{
@@ -453,9 +458,9 @@
 		  margin: 0;
 		}
 
-		.item[data-color="red"] { background: red; }
+		/*.item[data-color="red"] { background: red; }
 		.item[data-color="blue"] { background: blue; }
-		.item[data-color="yellow"] { background: yellow; }
+		.item[data-color="yellow"] { background: yellow; }*/
 		</style>
 		<style>
 		@media only screen and (max-width:825px){
@@ -480,11 +485,11 @@
 				background-size:100% auto;
 			}
 			.item {
-			  width: 104px;
+			  width: 102.6667px;
 			}
 
 			.big{
-			  width:208px;
+			  width:209.3px;
 			}
 
 			.mid{
@@ -527,11 +532,11 @@
 				line-height: 1.14em;
 			}
 			.item {
-			  width: 33.3333333333%;
+			  width: 32.84%;
 			}
 
 			.big{
-			  width:65.69%;
+			  width:66.18%;
 			}
 
 			.mid{
@@ -598,11 +603,11 @@
 				line-height: 1.14em;
 			}
 			.item {
-			  width: 33.3333333333%;
+			  width: 33%;
 			}
 
 			.big{
-			  width:66%;
+			  width:66.3%;
 			}
 
 			.mid{
@@ -645,11 +650,11 @@
 				line-height: 1.14em;
 			}
 			.item {
-			  width: 33.3333333333%;
+			  width: 33.01444444444%;
 			}
 
 			.big{
-			  width:66.18%;
+			  width:66.5%;
 			}
 
 			.mid{
@@ -690,6 +695,21 @@
 			.heading--feature li{
 				font-size: 60px !important;
 				line-height: 1.14em;
+			}
+			.item {
+			  width: 33.01444444444%;
+			}
+
+			.big{
+			  width:66.5%;
+			}
+
+			.mid{
+			  width:49.757%;
+			}
+
+			.full{
+			  width:99.8%;
 			}
 		}
 		</style>
@@ -746,7 +766,7 @@
 			</div>
 			<div class="home-banner"></div>
 			
-			<div id="freewall" class="free-wall page-width"></div>
+			
 			
 			<!-- <div id="wall" class="free-wall page-width">
 				<div class="row">
@@ -771,35 +791,46 @@
 			</div> -->
 			
 			<div class="page-width" id="tiles">
-				<div class="item big" data-color="yellow">
+				<div class="item big" data-color="yellow" style="background-image:url(img/foto/twothird.png);">
 					<p class="number">3</p>
 				</div>
-				<div class="item big" data-color="blue">
+				<div class="item big" data-color="blue" style="background-image:url(img/foto/twothird.png);">
 					<p class="number">2</p>
 				</div>
-				<div class="item" data-color="blue">
+				<div class="item" data-color="blue" style="background-image:url(img/foto/onethird.png);">
 					<p class="number">1</p>
 				</div>
-				<div class="item mid" data-color="yellow">
+				<div class="item mid" data-color="yellow" style="background-image:url(img/foto/half_2.png);">
 					<p class="number">1</p>
 				</div>
-				<div class="item full" data-color="yellow">
+				<div class="item full" data-color="yellow" style="background-image:url(img/foto/full_1.png);">
 					<p class="number">2</p>
 				</div>
-				<div class="item big" data-color="blue">
+				<div class="item big" data-color="blue" style="background-image:url(img/foto/twothird.png);">
 					<p class="number">3</p>
 				</div>
-				<div class="item" data-color="yellow">
+				<div class="item" data-color="yellow" style="background-image:url(img/foto/onethird.png);">
 					<p class="number">2</p>
 				</div>
-				<div class="item" data-color="red">
+				<div class="item" data-color="red" style="background-image:url(img/foto/onethird.png);">
 					<p class="number">2</p>
 				</div>
-				<div class="item mid" data-color="red">
+				<div class="item mid" data-color="red" style="background-image:url(img/foto/half_1.png);">
+					<p class="number">3</p>
+				</div>
+				<div class="item" data-color="yellow" style="background-image:url(img/foto/onethird.png);">
+					<p class="number">3</p>
+				</div>
+				<div class="item" data-color="yellow" style="background-image:url(img/foto/onethird.png);">
+					<p class="number">3</p>
+				</div>
+				<div class="item" data-color="yellow" style="background-image:url(img/foto/onethird.png);">
 					<p class="number">3</p>
 				</div>
 			</div>
 			<div class="clearfix"></div>
+			
+			<div id="freewall" class="free-wall page-width"></div>
 			
 			<nav class='pagination page-width text-right' role='toolbar'>
 				<ul>
