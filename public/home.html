@@ -43,7 +43,7 @@
 			-webkit-font-smoothing:antialiased;
 			text-rendering: optimizeLegibility;
 		}
-		::-webkit-scrollbar-track-piece {
+		/*::-webkit-scrollbar-track-piece {
 			background-color:#f5f5f5;
 			border-left:1px solid #d2d2d2;
 		}
@@ -60,7 +60,45 @@
 		::-webkit-scrollbar-thumb:hover {
 			border:1px solid #636363;
 			background-color:#929292;
-		}
+		}*/
+
+		/*	::-webkit-scrollbar {
+				width: 9px;
+				height: 9px
+			}
+
+			::-webkit-scrollbar-track-piece {
+				background-color: #ccc;
+				border: 1px solid #999
+			}
+
+			::-webkit-scrollbar-thumb {
+				background-color: #f5f5f5;
+				border: 1px solid;
+				border-color: #ccc #BBBBBb #aaa
+			}
+
+			::-webkit-scrollbar-thumb:vertical {
+				background-repeat: no-repeat;
+				background-position: center center;
+				background-image: -webkit-gradient(linear,left top,left bottom,from(#bbb),color-stop(.2,#bbb),color-stop(.2,transparent),color-stop(.4,transparent),color-stop(.4,#bbb),color-stop(.6,#bbb),color-stop(.6,transparent),color-stop(.8,transparent),color-stop(.8,#bbb),to(#bbb));
+				background-image: -moz-linear-gradient(#bbb 20%,transparent 20%,transparent 40%,#bbb 40%,#bbb 60%,transparent 60%,transparent 80%,#bbb 80%,#bbb);
+				background-image: -o-linear-gradient(#bbb 20%,transparent 20%,transparent 40%,#bbb 40%,#bbb 60%,transparent 60%,transparent 80%,#bbb 80%,#bbb);
+				background-image: linear-gradient(#bbb 20%,transparent 20%,transparent 40%,#bbb 40%,#bbb 60%,transparent 60%,transparent 80%,#bbb 80%,#bbb);
+				-webkit-background-size: 5px 5px;
+				-moz-background-size: 5px 5px;
+				background-size: 5px 5px
+			}*/
+			::-webkit-scrollbar {
+				-webkit-appearance: none;
+				width: 7px
+			}
+
+			::-webkit-scrollbar-thumb {
+				border-radius: 4px;
+				background-color: rgba(0,0,0,.5);
+				-webkit-box-shadow: 0 0 1px rgba(255,255,255,.5)
+			}
 		
 		@font-face {
 			font-family: 'Din-LightAlternate';
@@ -127,10 +165,10 @@
 		}
 		</style>
 		<style type="text/css">
-		.free-wall {
+		/*.free-wall {
 			margin: 15px auto;
 		}
-		div.cell{background:pink;}
+		div.cell{background:pink;}*/
 		</style>
 		<style>
 		.navbar {
@@ -239,6 +277,7 @@
 			}
 				.subnav__div a span {
 					border-bottom: 0;
+					font-size:12px;
 				}
 		 .module-overlay{
 			position: absolute;
@@ -262,7 +301,7 @@
 			 z-index:23;
 			 margin:0 auto;
 			 margin-left: 35px;
-			 margin-top: 150px;
+			 margin-top: 230px;
 			 padding:0;
 			 list-style:none;
 			 width: 40%;
@@ -346,7 +385,7 @@
 		<style>
 	
 		nav.pagination ul {
-			margin:0;
+			margin:20px 0 0;
 			padding:0;
 			list-style:none;
 		}
@@ -574,7 +613,12 @@
 			background: #000;
 			width: 100%;
 			height: 100%;
+			-webkit-opacity:0;
+			-moz-opacity:0;
+			-ms-opacity:0;
+			-o-opacity:0;
 			opacity: 0;
+			_filter:alpha(opacity=0);
 	
 			-webkit-transition: all 0.4s ease-in-out;
 			-moz-transition: all 0.4s ease-in-out;
@@ -591,27 +635,37 @@
 			-webkit-backface-visibility: hidden;
 
 		}
-
+		.ch-info span {
+			display:block;
+			color: rgb(86,194,222);
+			text-transform: uppercase;
+			letter-spacing: 2px;
+			font-size: 1em;
+			margin: 30px 0 0 40px;
+			font-family: 'Din-LightAlternate', 'Din-Light',Arial, sans-serif;
+			text-shadow: 
+				0 0 1px #fff, 
+				0 1px 2px rgba(0,0,0,0.3);
+		}
 		.ch-info h3 {
 			color: #fff;
 			text-transform: uppercase;
 			letter-spacing: 2px;
-			font-size: 22px;
-			margin: 0 30px;
-			padding: 45px 0 0 0;
-			height: 140px;
-			font-family: 'Open Sans', Arial, sans-serif;
+			font-size: 2.2em;
+			margin: 150px 0 0 40px;
+			padding:0;
+			font-weight:normal;
+			font-family: 'Din-LightAlternate', 'Din-Light',Arial, sans-serif;
 			text-shadow: 
 				0 0 1px #fff, 
 				0 1px 2px rgba(0,0,0,0.3);
 		}
 
 		.ch-info p {
-			color: #fff;
-			padding: 10px 5px;
-			font-style: italic;
-			margin: 0 30px;
-			font-size: 12px;
+			color: rgb(86,194,222);
+			padding: 0;
+			margin: 0 0 0 40px;
+			font-size: 2.2em;
 			border-top: 1px solid rgba(255,255,255,0.5);
 			opacity: 0;
 			-webkit-transition: all 1s ease-in-out 0.4s;
@@ -621,23 +675,17 @@
 			transition: all 1s ease-in-out 0.4s;
 		}
 
-		.ch-info p a {
-			display: block;
-			color: #fff;
-			color: rgba(255,255,255,0.7);
-			font-style: normal;
-			font-weight: 700;
+		/*.ch-info p a {
+			color: rgba(86,194,222,0.7);
 			text-transform: uppercase;
-			font-size: 9px;
 			letter-spacing: 1px;
-			padding-top: 4px;
-			font-family: 'Open Sans', Arial, sans-serif;
+			vertical-align:bottom;
 		}
 
 		.ch-info p a:hover {
 			color: #fff222;
 			color: rgba(255,242,34, 0.8);
-		}
+		}*/
 
 		.item:hover .ch-info {
 			-webkit-transform: scale(1);
@@ -645,7 +693,12 @@
 			-o-transform: scale(1);
 			-ms-transform: scale(1);
 			transform: scale(1);
+			-webkit-opacity:0.8;
+			-moz-opacity:0.8;
+			-ms-opacity:0.8;
+			-o-opacity:0.8;
 			opacity: 0.8;
+			_filter:alpha(opacity=80);
 			/*-webkit-transform: rotate3d(0,1,0,-180deg);
 			-moz-transform: rotate3d(0,1,0,-180deg);
 			-o-transform: rotate3d(0,1,0,-180deg);
@@ -654,6 +707,12 @@
 		}
 
 		.item:hover .ch-info p {
+			-webkit-opacity:1;
+			-moz-opacity:1;
+			-ms-opacity:1;
+			-o-opacity:1;
+			opacity: 1;
+			_filter:alpha(opacity=100);
 			opacity: 1;
 		}
 
@@ -724,10 +783,10 @@
 			}
 			.heading--feature {
 				width: 50% !important;
-				margin-top:80px !important;
+				margin-top:180px !important;
 			}
 			.heading--feature li{
-				font-size: 50px !important;
+				font-size: 24px !important;
 				line-height: 1.14em;
 			}
 			.item {
@@ -753,6 +812,10 @@
 				width:1095px;
 				height:417px;
 				margin:auto;
+			}
+			.heading--feature li{
+				font-size: 36px !important;
+				line-height: 1.14em;
 			}
 			.home-banner{
 				background-image: url(img/home-banner-1095.png);
@@ -932,15 +995,15 @@
 					<ul id="js-main-nav" class="nav">
 						<li class="subnav"><a href="javascript:void(0);"><span>About</span></a>
 							<div class="subnav__div">
-								<a href="/everything"><span>Career</span></a>
-								<a href="/showcase"><span>Contact</span></a>
+								<a href="career.html"><span>Career</span></a>
+								<a href="contact.html"><span>Contact</span></a>
 							</div>
 						</li>
 						<li class="subnav">
-							<a class="subnav__top-most" href="/everything"><span>Works</span></a>
+							<a class="subnav__top-most" href="javascript:;"><span>Works</span></a>
 							<div class="subnav__div">
-								<a href="/everything"><span>News</span></a>
-								<a href="/showcase"><span>Showcase</span></a>
+								<a href="#"><span>News</span></a>
+								<a href="javascript:;"><span>Showcase</span></a>
 							</div>
 						</li>
 					</ul>
@@ -988,69 +1051,93 @@
 					<div class="box full">3</div>
 				</div>
 			</div> -->
-			
+			<div class="clearfix"></div>
 			<div class="page-width" id="tiles">
 				<div class="item big" data-num="1" style="background-image:url(img/foto/twothird.png);">
 					<div class="ch-info">
 						<div class="ch-info-back">
-							<h3>Salon Spaces illustrations</h3>
-							<p>by Jeremy Slagle <a href="http://drbl.in/elmi">View on Dribbble</a></p>
+							<a href="#">
+								<span>showcase</span>
+								<h3>da yuan</h3>
+								<p>九华大愿 <i class="fa fa-caret-right"></i></p>
+							</a>
 						</div>
 					</div>
 				</div>
 				<div class="item" data-num="2" style="background-image:url(img/foto/onethird.png);">
 					<div class="ch-info">
 						<div class="ch-info-back">
-							<h3>Salon Spaces illustrations</h3>
-							<p>by Jeremy Slagle <a href="http://drbl.in/elmi">View on Dribbble</a></p>
+							<a href="#">
+								<span>showcase</span>
+								<h3>da yuan</h3>
+								<p>九华大愿 <i class="fa fa-caret-right"></i></p>
+							</a>
 						</div>
 					</div>
 				</div>
 				<div class="item" data-num="3" style="background-image:url(img/foto/onethird.png);">
 					<div class="ch-info">
 						<div class="ch-info-back">
-							<h3>Salon Spaces illustrations</h3>
-							<p>by Jeremy Slagle <a href="http://drbl.in/elmi">View on Dribbble</a></p>
+							<a href="#">
+								<span>showcase</span>
+								<h3>da yuan</h3>
+								<p>九华大愿 <i class="fa fa-caret-right"></i></p>
+							</a>
 						</div>
 					</div>
 				</div>
 				<div class="item big" data-num="4" style="background-image:url(img/foto/twothird.png);">
 					<div class="ch-info">
 						<div class="ch-info-back">
-							<h3>Salon Spaces illustrations</h3>
-							<p>by Jeremy Slagle <a href="http://drbl.in/elmi">View on Dribbble</a></p>
+							<a href="#">
+								<span>showcase</span>
+								<h3>da yuan</h3>
+								<p>九华大愿 <i class="fa fa-caret-right"></i></p>
+							</a>
 						</div>
 					</div>
 				</div>
 				<div class="item mid" data-num="5" style="background-image:url(img/foto/half_1.png);">
 					<div class="ch-info">
 						<div class="ch-info-back">
-							<h3>Salon Spaces illustrations</h3>
-							<p>by Jeremy Slagle <a href="http://drbl.in/elmi">View on Dribbble</a></p>
+							<a href="#">
+								<span>showcase</span>
+								<h3>da yuan</h3>
+								<p>九华大愿 <i class="fa fa-caret-right"></i></p>
+							</a>
 						</div>
 					</div>
 				</div>
 				<div class="item mid" data-num="6" style="background-image:url(img/foto/half_2.png);">
 					<div class="ch-info">
 						<div class="ch-info-back">
-							<h3>Salon Spaces illustrations</h3>
-							<p>by Jeremy Slagle <a href="http://drbl.in/elmi">View on Dribbble</a></p>
+							<a href="#">
+								<span>showcase</span>
+								<h3>da yuan</h3>
+								<p>九华大愿 <i class="fa fa-caret-right"></i></p>
+							</a>
 						</div>
 					</div>
 				</div>
 				<div class="item full" data-num="7" style="background-image:url(img/foto/full_1.png);">
 					<div class="ch-info">
 						<div class="ch-info-back">
-							<h3>Salon Spaces illustrations</h3>
-							<p>by Jeremy Slagle <a href="http://drbl.in/elmi">View on Dribbble</a></p>
+							<a href="#">
+								<span>showcase</span>
+								<h3>da yuan</h3>
+								<p>九华大愿 <i class="fa fa-caret-right"></i></p>
+							</a>
 						</div>
 					</div>
 				</div>
 				<div class="item big" data-num="8" style="background-image:url(img/foto/twothird.png);">
 					<div class="ch-info">
 						<div class="ch-info-back">
-							<h3>Salon Spaces illustrations</h3>
-							<p>by Jeremy Slagle <a href="http://drbl.in/elmi">View on Dribbble</a></p>
+							<a href="#">
+								<span>showcase</span>
+								<h3>da yuan</h3>
+								<p>九华大愿 <i class="fa fa-caret-right"></i></p>
+							</a>
 						</div>
 					</div>
 				</div>
@@ -1107,53 +1194,64 @@
 		<script src="js/vendor/freewall.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/vendor/isotope.pkgd.min.js" type="text/javascript" charset="utf-8"></script>
 
-
-			<script type="text/javascript">
-			var temp = "<div class='cell' style='width:{width}px; height: {height}px; background-image: url(i/photo/{index}.jpg)'></div>";
-			//var temp = "<div class='cell' style='width:{width}px;'><img src='i/photo/{index}.jpg' width='100%'></div>";
-			var w = 1, html = '', limitItem = 49;
-			for (var i = 0; i < limitItem; ++i) {
-				w = 200 +  200 * Math.random() << 0;
-				html += temp.replace(/\{height\}/g, 200).replace(/\{width\}/g, w).replace("{index}", i + 1);
+		<script>
+		$(function(){
+			if($('html').hasClass('lt-ie9')){
+				$('.item .ch-info').hide();
+				$('.item').on('mouseenter',function(){
+					$(this).find('.ch-info').fadeTo('slow',0.8);
+				}).on('mouseleave',function(){
+					$(this).find('.ch-info').fadeOut();
+				});
 			}
-			$("#freewall").html(html);
-			
-			var wall = new freewall("#freewall");
-			wall.reset({
-				selector: '.cell',
-				animate: true,
-				cellW: 20,
-				//cellW:'auto',
-				gutterX:5,
-				gutterY:5,
-				// cellW: function(width) {
-// 					var cellWidth = width / 4;
-// 					return cellWidth - 5;
-// 				},
-				cellH: 200,
-				//fixSize:false,
-				draggable:true,
-				onResize: function() {
-					wall.fitWidth();
-					//wall.fitHeight($(window).height() - 170);
-				}
-			});
-			wall.fitWidth();
-			
-			// var images = wall.container.find('.cell');
-// 			var length = images.length;
-// 			images.css({visibility: 'hidden'});
-// 			images.find('img').load(function() {
-// 				-- length;
-// 				if (!length) {
-// 					setTimeout(function() {
-// 						images.css({visibility: 'visible'});
-// 						wall.fitWidth();
-// 					}, 505);
+		})
+		</script>
+			<script type="text/javascript">
+			// var temp = "<div class='cell' style='width:{width}px; height: {height}px; background-image: url(i/photo/{index}.jpg)'></div>";
+// 			//var temp = "<div class='cell' style='width:{width}px;'><img src='i/photo/{index}.jpg' width='100%'></div>";
+// 			var w = 1, html = '', limitItem = 49;
+// 			for (var i = 0; i < limitItem; ++i) {
+// 				w = 200 +  200 * Math.random() << 0;
+// 				html += temp.replace(/\{height\}/g, 200).replace(/\{width\}/g, w).replace("{index}", i + 1);
+// 			}
+// 			$("#freewall").html(html);
+// 			
+// 			var wall = new freewall("#freewall");
+// 			wall.reset({
+// 				selector: '.cell',
+// 				animate: true,
+// 				cellW: 20,
+// 				//cellW:'auto',
+// 				gutterX:5,
+// 				gutterY:5,
+// 				// cellW: function(width) {
+// // 					var cellWidth = width / 4;
+// // 					return cellWidth - 5;
+// // 				},
+// 				cellH: 200,
+// 				//fixSize:false,
+// 				draggable:true,
+// 				onResize: function() {
+// 					wall.fitWidth();
+// 					//wall.fitHeight($(window).height() - 170);
 // 				}
 // 			});
-						
-			$(window).trigger("resize");
+// 			wall.fitWidth();
+// 			
+// 			// var images = wall.container.find('.cell');
+// // 			var length = images.length;
+// // 			images.css({visibility: 'hidden'});
+// // 			images.find('img').load(function() {
+// // 				-- length;
+// // 				if (!length) {
+// // 					setTimeout(function() {
+// // 						images.css({visibility: 'visible'});
+// // 						wall.fitWidth();
+// // 					}, 505);
+// // 				}
+// // 			});
+// 						
+// 			$(window).trigger("resize");
 	
 			</script>
 			
@@ -1177,27 +1275,30 @@
 				});
 				
 				
-				$('.figure').on('mouseover',function(){
-					$(this).parent().find('.figure-caption').css('top',0);
-				}).on('mouseout',function(){
-					$(this).parent().find('.figure-caption').css('top',200);
-				});
+				
 			});
 			</script>
 			
 			<script>
 			$(function(){
 				var $container = $('#tiles').isotope({
-				    itemSelector: '.item',
-				    layoutMode: 'fitRows',
-				    resizesContainer : false,
-				    getSortData: {
-				      num: '[data-num] parseInt',
-				      number: '.number parseInt'
-				    },
-				    // sort by color then number
-				    sortBy: [ 'num' ]
-				  });
+					itemSelector: '.item',
+					layoutMode: 'fitRows',
+					resizesContainer : false,
+					transitionDuration: 0,
+					hiddenStyle: {
+						opacity: 0
+					},
+					visibleStyle: {
+						opacity: 1
+					},
+					getSortData: {
+						num: '[data-num] parseInt',
+						number: '.number parseInt'
+					},
+					// sort by color then number
+					sortBy: [ 'num' ]
+				});
 			});
 			</script>
 			
