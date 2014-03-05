@@ -215,6 +215,7 @@
 				.nav a span {
 					border-bottom: 2px solid #fff;
 					margin-bottom: 1px;
+					font-family:'Din-Light';
 				}
 		.subnav {
 			position: relative;
@@ -276,6 +277,7 @@
 				.subnav__div a span {
 					border-bottom: 0;
 					font-size:12px;
+					font-family:'Din-Light';
 				}
 		 .module-overlay{
 			position: absolute;
@@ -325,16 +327,23 @@
 				zoom:1;
 			}
 			.contact li{
+				padding-left:45px;
 				float:left;
 				display:inline-block;
 				list-style:none;
 				color:#fff;
 				font-size:12px;
-				font-family:Din-LightAlternate,sans-serif;
+				line-height:23px;
+				background-image:url(img/icon_contact.png);
+				background-repeat:no-repeat;
+				background-position:0 -75px;
+				font-family:STXIHEI,'华文细黑',sans-serif;
 			}
 			.contact li.pull-right{
 				float:right !important;
 				margin-left:40px;
+				padding-left:28px;
+				background-position:0 0;
 			}
 			.main footer{
 				position:absolute; z-index:900; top:332px; padding:20px;
@@ -401,6 +410,9 @@
    			}
 			.main footer{
 				top:212px; padding:40px;
+			}
+			.contact li.pull-right{
+				margin-left:10px;
 			}
 			
 		}
@@ -573,7 +585,7 @@
 						<li class="subnav">
 							<a class="subnav__top-most" href="javascript:;"><span>Works</span></a>
 							<div class="subnav__div">
-								<a href="/everything"><span>News</span></a>
+								<a href="/news"><span>News</span></a>
 								<a href="/showcase"><span>Showcase</span></a>
 							</div>
 						</li>

@@ -144,6 +144,17 @@
 			font-weight: normal;
 			font-style: normal;
 		}
+		@font-face {
+			font-family: 'DINCond-Light';
+			src: url('fonts/dincond-light.eot');
+			src: url('fonts/dincond-light.eot?#iefix') format('embedded-opentype'),
+			url('fonts/dincond-light.woff') format('woff'),
+			url('fonts/dincond-light.ttf') format('truetype'),
+			url('fonts/dincond-light.svg#DINLight') format('svg'),
+			url('fonts/dincond-light.otf') format('otf');
+			font-weight: normal;
+			font-style: normal;
+		}
 		</style>
 		<style>
 		@-webkit-keyframes loading
@@ -212,6 +223,7 @@
 				.nav a span {
 					border-bottom: 2px solid #fff;
 					margin-bottom: 1px;
+					font-family:'Din-Light';
 				}
 		.subnav {
 			position: relative;
@@ -273,6 +285,7 @@
 				.subnav__div a span {
 					border-bottom: 0;
 					font-size:12px;
+					font-family:'Din-Light';
 				}
 		 .module-overlay{
 			position: absolute;
@@ -316,7 +329,7 @@
 		}
 		.career .title{
 			font-size:35px;
-			font-family:Din-LightAlternate;
+			font-family:'DINCond-Light','Din-Light',Din-LightAlternate;
 			text-transform:uppercase;
 			font-weight:300;
 			border-bottom:2px solid #5dc3df;
@@ -345,6 +358,7 @@
 		.career > article > p.blue a{
 			color:#5dc3df;
 			margin: 30px 0;
+			font-family:'STXIHEI','华文细黑';
 		}
 			
 		</style>
@@ -560,7 +574,7 @@
 						<li class="subnav">
 							<a class="subnav__top-most" href="javascript:;"><span>Works</span></a>
 							<div class="subnav__div">
-								<a href="/everything"><span>News</span></a>
+								<a href="/news"><span>News</span></a>
 								<a href="/showcase"><span>Showcase</span></a>
 							</div>
 						</li>
