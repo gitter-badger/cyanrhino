@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if IEMobile 7 ]>    <html class="no-js iem7"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+		<meta http-equiv="cleartype" content="on">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/img/touch/apple-touch-icon-144x144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/img/touch/apple-touch-icon-114x114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/img/touch/apple-touch-icon-72x72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="/img/touch/apple-touch-icon-57x57-precomposed.png">
+        <link rel="shortcut icon" href="/img/touch/apple-touch-icon.png">
+		
+        <meta name="msapplication-TileImage" content="/img/touch/apple-touch-icon-144x144-precomposed.png">
+        <meta name="msapplication-TileColor" content="#222222">
+		
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="apple-mobile-web-app-title" content="">
+
+
+        <link rel="stylesheet" href="/css/normalize.css">
+		<link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css" media="screen" title="no title" charset="utf-8">
+        <link rel="stylesheet" href="/css/main.css">
+		
+        <script src="/js/vendor/modernizr-2.6.2.min.js"></script>
+		<!--[if lt IE 9]>
+			<link rel="stylesheet" href="/css/ie.css" type="text/css" media="screen" title="no title" charset="utf-8">
+			<script src="/js/vendor/css3-mediaqueries.js" type="text/javascript" charset="utf-8"></script>
+		<![endif]-->
+		<style>
+		*,html,body,div,p,span,label,input,textarea,select,a,td,th,i,strong,em{
+			font-family:'Hiragino Sans GB W3';
+			-webkit-font-smoothing:antialiased;
+			text-rendering: optimizeLegibility;
+		}
+		/*::-webkit-scrollbar-track-piece {
+			background-color:#f5f5f5;
+			border-left:1px solid #d2d2d2;
+		}
+		::-webkit-scrollbar {
+			width:13px;
+			height:13px;
+		}
+		::-webkit-scrollbar-thumb {
+			background-color:#c2c2c2;
+			background-clip:padding-box;
+			border:1px solid #979797;
+			min-height:28px;
+		}
+		::-webkit-scrollbar-thumb:hover {
+			border:1px solid #636363;
+			background-color:#929292;
+		}*/
+
+		/*	::-webkit-scrollbar {
+				width: 9px;
+				height: 9px
+			}
+
+			::-webkit-scrollbar-track-piece {
+				background-color: #ccc;
+				border: 1px solid #999
+			}
+
+			::-webkit-scrollbar-thumb {
+				background-color: #f5f5f5;
+				border: 1px solid;
+				border-color: #ccc #BBBBBb #aaa
+			}
+
+			::-webkit-scrollbar-thumb:vertical {
+				background-repeat: no-repeat;
+				background-position: center center;
+				background-image: -webkit-gradient(linear,left top,left bottom,from(#bbb),color-stop(.2,#bbb),color-stop(.2,transparent),color-stop(.4,transparent),color-stop(.4,#bbb),color-stop(.6,#bbb),color-stop(.6,transparent),color-stop(.8,transparent),color-stop(.8,#bbb),to(#bbb));
+				background-image: -moz-linear-gradient(#bbb 20%,transparent 20%,transparent 40%,#bbb 40%,#bbb 60%,transparent 60%,transparent 80%,#bbb 80%,#bbb);
+				background-image: -o-linear-gradient(#bbb 20%,transparent 20%,transparent 40%,#bbb 40%,#bbb 60%,transparent 60%,transparent 80%,#bbb 80%,#bbb);
+				background-image: linear-gradient(#bbb 20%,transparent 20%,transparent 40%,#bbb 40%,#bbb 60%,transparent 60%,transparent 80%,#bbb 80%,#bbb);
+				-webkit-background-size: 5px 5px;
+				-moz-background-size: 5px 5px;
+				background-size: 5px 5px
+			}*/
+			::-webkit-scrollbar {
+				-webkit-appearance: none;
+				width: 7px
+			}
+
+			::-webkit-scrollbar-thumb {
+				border-radius: 4px;
+				background-color: rgba(0,0,0,.5);
+				-webkit-box-shadow: 0 0 1px rgba(255,255,255,.5)
+			}
+		
+		@font-face {
+			font-family: 'Din-LightAlternate';
+			src: url('/fonts/din-lightalternate.eot');
+			src: url('/fonts/din-lightalternate.eot?#iefix') format('embedded-opentype'),
+			url('/fonts/DIN_LightAlternate.woff') format('woff'),
+			url('/fonts/din-lightalternate.ttf') format('truetype'),
+			url('/fonts/DIN_LightAlternate.svg#DIN_LightAlternate') format('svg'),
+			url('/fonts/DIN-LightAlternate.otf') format('otf');
+			font-weight: normal;
+			font-style: normal;
+		}
+		
+		@font-face {
+			font-family: 'Din-Light';
+			src: url('/fonts/din-light.eot');
+			src: url('/fonts/din-light.eot?#iefix') format('embedded-opentype'),
+			url('/fonts/DIN-Light.woff') format('woff'),
+			url('/fonts/din-light.ttf') format('truetype'),
+			url('/fonts/DIN-Light.svg#DINLight') format('svg'),
+			url('/fonts/DIN-Light.otf') format('otf');
+			font-weight: normal;
+			font-style: normal;
+		}
+	
+		@font-face {
+			font-family: 'STXIHEI';
+			src: url('deibi-webfont.eot');
+			src: url('deibi-webfont.eot?#iefix') format('embedded-opentype'),
+			url('deibi-webfont.woff') format('woff'),
+			url('/fonts/STXIHEI.ttf') format('truetype'),
+			url('deibi-webfont.svg#DeibiRegular') format('svg');
+			font-weight: normal;
+			font-style: normal;
+		}
+		@font-face {
+			font-family: 'teague-icons';
+			src: url('/fonts/teague-icons.eot');
+			src: url('/fonts/teague-icons.eot?#iefix') format('embedded-opentype'),
+			url('/fonts/teague-icons.woff') format('woff'),
+			url('/fonts/teague-icons.ttf') format('truetype'),
+			url('/fonts/teague-icons.svg#teague-icons') format('svg');
+			font-weight: normal;
+			font-style: normal;
+		}
+		@font-face {
+			font-family: 'hanyitexidengxianj';
+			src: url('/fonts/hytexidengxianj.eot');
+			src: url('/fonts/hytexidengxianj.eot?#iefix') format('embedded-opentype'),
+			url('/fonts/hytexidengxianj.woff') format('woff'),
+			url('/fonts/hytexidengxianj.ttf') format('truetype'),
+			url('/fonts/hytexidengxianj.svg#teague-icons') format('svg');
+			font-style: normal;
+		}
+		</style>
+		<style>
+		@-webkit-keyframes loading
+		{
+			0% {opacity:1;}
+			50% {opacity:0.7;}
+			100% {opacity:0;}
+		}
+		@-moz-keyframes loading  {
+			0% {opacity:1;}
+			50% {opacity:0.7;}
+			100% {opacity:0;}
+		}
+		@keyframes loading
+		{
+			0% {opacity:1;}
+			50% {opacity:0.7;}
+			100% {opacity:0;}
+		}
+		</style>
+		
+		<style>
+		.navbar {
+			width: 100%;
+			position: fixed;
+			top: 0;
+			left: 0;
+			z-index: 24;
+			background-color: transparent;
+			-webkit-transition: background-color .3s;
+			-moz-transition: background-color .3s;
+			-o-transition: background-color .3s;
+			transition: background-color .3s;
+		}
+		.logo{
+			margin:0 auto;
+		}
+		.logo object{
+			margin-left:30px;
+			margin-top:20px;
+		}
+		.nav{
+			height: 100%;
+			padding: 10px 0;
+			margin:0 20px;
+			float:right;
+			position: relative;
+			list-style: none;
+			overflow: hidden;
+			text-transform: uppercase;
+		}
+			.nav>li {
+				float: right;
+				margin: 0;
+			}
+			.nav a {
+				float: left;
+				padding: 20px 25px 20px 25px;
+				font-size: 15px;
+				letter-spacing: 1px;
+				color: #fff;
+				font-family: Din-LightAlternate,Helvetica,Times,Arial,sans-serif;
+				text-decoration:none;
+				color:white;
+			}
+				.nav a span {
+					border-bottom: 2px solid #56c2de;
+					color:#56c2de;
+					margin-bottom: 1px;
+					font-family:'Din-Light';
+				}
+		.subnav {
+			position: relative;
+			font-family: Din-LightAlternate,Helvetica,Times,Arial,sans-serif;
+			min-height: 20px;
+			-webkit-transition: min-height .75s ease;
+			-moz-transition: min-height .75s ease;
+			-o-transition: min-height .75s ease;
+			transition: min-height .75s ease;
+		}
+		.subnav.hovering,
+		.subnav:hover{
+			min-height: 180px;
+			-webkit-transition: min-height .75s ease;
+			-moz-transition: min-height .75s ease;
+			-o-transition: min-height .75s ease;
+			transition: min-height .75s ease;
+		}
+			.subnav .subnav__top-most {
+				color: #fff;
+				cursor: pointer;
+				min-width: 30px;
+				position: relative;
+				z-index: 1;
+			}
+		.subnav__div {
+			position: absolute;
+			z-index: 3;
+			top: 50px;
+			left: 25px;
+			width: 100%;
+			padding: 0;
+			list-style: none;
+			filter: alpha(Opacity=0);
+			opacity: 0;
+			-webkit-transition: opacity .2s;
+			-moz-transition: opacity .2s;
+			-o-transition: opacity .2s;
+			transition: opacity .2s;
+		}
+		.subnav.hovering .subnav__div.hover,
+		.subnav:hover .subnav__div:hover,
+		.subnav.hovering .subnav__div:hover,
+		.subnav:hover .subnav__div.hover    {
+			-webkit-transition: opacity .5s;
+			-moz-transition: opacity .5s;
+			-o-transition: opacity .5s;
+			transition: opacity .5s;
+			filter: alpha(Opacity=100);
+			opacity: 1;
+		}
+			.subnav__div a {
+				float: left;
+				width: 100%;
+				margin: 4% 0;
+				display: block;
+				padding: 0;
+			}
+				.subnav__div a span {
+					border-bottom: 0;
+					font-size:12px;
+					font-family:'Din-Light';
+				}
+		 .module-overlay{
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 2;
+			width: 100%;
+		 }
+		 .module-overlay-cover{
+ 			opacity:.65;
+ 			filter:alpha(opacity=65);
+ 			-webkit-transition: opacity .5s,background-color .5s;
+ 			-moz-transition: opacity .5s,background-color .5s;
+ 			-o-transition: opacity .5s,background-color .5s;
+ 			transition: opacity .5s,background-color .5s;
+			background-color: #5dc3df;
+			background-image:none;
+		 }
+		 .heading--feature{
+			 position:absolute;
+			 z-index:23;
+			 margin:0 auto;
+			 margin-left: 35px;
+			 margin-top: 230px;
+			 padding:0;
+			 list-style:none;
+			 width: 40%;
+			 text-transform: uppercase;
+			 color:white;
+		 }
+		 	.heading--feature li{
+				 font-size: 60px;
+				 font-family: Din-Light,Helvetica,Times,Arial,sans-serif;
+				 line-height: 1.14em;
+				 letter-spacing: .02em;
+			}
+		</style>
+		
+		<style>
+		@media only screen and (max-width:825px){
+			.page-width{width:320px!important;margin:auto;}
+			.module-overlay-cover,
+			.home-banner{
+				width:320px;
+				height:120px;
+				margin:auto;
+			}
+			.home-banner{
+				background-image: url(/img/news-820.png);
+				background-image: -webkit-image-set(
+				  url(/img/news-820.png) 1x,
+				  url(/img/news-820 2x.png) 2x
+				);
+				background-image: image-set(
+				  url(/img/news-820.png) 1x,
+				  url(/img/news-820 2x.png) 2x
+				);
+				background-repeat:no-repeat;
+				background-size:100% auto;
+			}
+			
+		}
+		@media only screen and (min-width:826px) and (max-width:1099px){
+			.page-width{width:820px!important;margin:auto;}
+			.module-overlay-cover,
+			.home-banner{
+				width:820px;
+				height:312px;
+				margin:auto;
+			}
+			.home-banner{
+				background-image: url(/img/news-820.png);
+				background-image: -webkit-image-set(
+				  url(/img/news-820.png) 1x,
+				  url(/img/news-820 2x.png) 2x
+				);
+				background-image: image-set(
+				  url(/img/news-820.png) 1x,
+				  url(/img/news-820 2x.png) 2x
+				);
+				background-repeat:no-repeat;
+				width:820px;
+				height:312px;
+				margin:auto;
+			}
+			.heading--feature {
+				width: 50% !important;
+				margin-top:180px !important;
+			}
+			.heading--feature li{
+				font-size: 24px !important;
+				line-height: 1.14em;
+			}
+			
+		}
+		@media only screen and (min-width:1100px) and (max-width:1374px){
+			.page-width{width:1095px!important;margin:auto;}
+			.module-overlay-cover,
+			.home-banner{
+				width:1095px;
+				height:417px;
+				margin:auto;
+			}
+			.heading--feature li{
+				font-size: 36px !important;
+				line-height: 1.14em;
+			}
+			.home-banner{
+				background-image: url(/img/news-1095.png);
+				background-image: -webkit-image-set(
+				  url(/img/news-1095.png) 1x,
+				  url(/img/news-1095 2x.png) 2x
+				);
+				background-image: image-set(
+				  url(/img/news-1095.png) 1x,
+				  url(/img/news-1095 2x.png) 2x
+				);
+				background-repeat:no-repeat;
+				width:1095px;
+				height:417px;
+				margin:auto;
+			}
+		}
+		@media only screen and (min-width:1375px) and (max-width:1649px){
+			.page-width{width:1370px!important;margin:auto;}
+			.module-overlay-cover,
+			.home-banner{
+				width:1370px;
+				height:521px;
+				margin:auto;
+			}
+			.home-banner{
+				background-image: url(/img/news-1370.png);
+				background-image: -webkit-image-set(
+				  url(/img/news-1370.png) 1x,
+				  url(/img/news-1370 2x.png) 2x
+				);
+				background-image: image-set(
+				  url(/img/news-1370.png) 1x,
+				  url(/img/news-1370 2x.png) 2x
+				);
+				background-repeat:no-repeat;
+				width:1370px;
+				height:521px;
+				margin:auto;
+			}
+			.heading--feature {
+				width: 30% !important;
+				margin-top:230px !important;
+			}
+			.heading--feature li{
+				font-size: 60px !important;
+				line-height: 1.14em;
+			}
+			
+		}
+		@media only screen and (min-width:1650px) and (max-width:1924px){
+			.page-width{width:1645px!important;margin:auto;}
+			.module-overlay-cover,
+			.home-banner{
+				width:1645px;
+				height:626px;
+				margin:auto;
+			}
+			.home-banner{
+				background-image: url(/img/news-1645.png);
+				background-image: -webkit-image-set(
+				  url(/img/news-1645.png) 1x,
+				  url(/img/news-1645 2x.png) 2x
+				);
+				background-image: image-set(
+				  url(/img/news-1645.png) 1x,
+				  url(/img/news-1645 2x.png) 2x
+				);
+				background-repeat:no-repeat;
+				width:1645px;
+				height:626px;
+				margin:auto;
+			}
+			.heading--feature {
+				width: 30% !important;
+				margin-top:330px !important;
+			}
+			.heading--feature li{
+				font-size: 60px !important;
+				line-height: 1.14em;
+			}
+			
+		}
+		@media only screen and (min-width:1925px){
+			.page-width{width:1645px!important;margin:auto;}
+			.module-overlay-cover,
+			.home-banner{
+				width:1645px;
+				height:626px;
+				margin:auto;
+			}
+			.home-banner{
+				background-image: url(/img/news-1645.png);
+				background-image: -webkit-image-set(
+				  url(/img/news-1645.png) 1x,
+				  url(/img/news-1645 2x.png) 2x
+				);
+				background-image: image-set(
+				  url(/img/news-1645.png) 1x,
+				  url(/img/news-1645 2x.png) 2x
+				);
+				background-repeat:no-repeat;
+				width:1645px;
+				height:626px;
+				margin:auto;
+			}
+			.heading--feature {
+				width: 30% !important;
+				margin-top:330px !important;
+			}
+			.heading--feature li{
+				font-size: 60px !important;
+				line-height: 1.14em;
+			}
+			
+		}
+		</style>
+		
+		<style>
+		.news-detail{
+			width:80%;
+			margin:30px auto;
+		}
+			.news-detail  h2{
+				font-family:hanyitexidengxianj;
+				color:#595857;
+			}
+			.news-detail .pubdate{
+				font-family:Din-Light,serif;
+				color:#595857;
+			}
+			.news-detail p{
+				font-family:STXIHEI,'华文细黑';
+				color:#595857;
+			}
+			
+		</style>
+    </head>
+	<body>
+		<!--[if lt IE 7]>
+			<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+			<![endif]-->
+			<header>
+				<div class="navbar">
+					<div class="logo page-width">
+						<object type="application/x-shockwave-flash" 
+						data="/img/logo.swf" wmode="transparent"
+						width="76" height="50">
+						<param name="movie" value="/img/logo.swf" />
+						<param name="wmode" value="transparent" />
+						<param name="quality" value="high"/>
+						<embed name="Sample" value="/img/logo.swf"></embed>
+					</object>
+					
+					<ul id="js-main-nav" class="nav">
+						<li class="subnav"><a href="javascript:void(0);"><span>About</span></a>
+							<div class="subnav__div">
+								<a href="/career"><span>Career</span></a>
+								<a href="/contact"><span>Contact</span></a>
+							</div>
+						</li>
+						<li class="subnav">
+							<a class="subnav__top-most" href="javascript:;"><span>Works</span></a>
+							<div class="subnav__div">
+								<a href="/news"><span>News</span></a>
+								<a href="/showcase"><span>Showcase</span></a>
+							</div>
+						</li>
+					</ul>
+					
+				</div>
+			</div>
+		</header>
+				
+					
+					
+		<div class="main">
+			<div class="page-width">
+				<!-- <ul class="heading--feature">
+					<li>vision</li>
+					<li>design.</li>
+					<li>photography</li>
+					<li>product.</li>
+				</ul> -->
+			</div>
+			<div class="module-overlay">
+				<!-- <div class="module-overlay-cover"></div> -->
+			</div>
+			<div class="home-banner"></div>
+			
+			
+			<div class="clearfix"></div>
+			<div class="container page-width">
+				<section class="news-detail">
+					<article>
+						<header>
+							<time datetime="2013.01.05" pubdate="pubdate" class="pubdate">2013.01.05</time>
+							<h2>								
+								THE SOUTH CHINA SEA VOYAGE 南海慈航
+							</h2>
+							
+						</header>
+						<p>我把这个广告系列命名为"读书的人",试图以正在看书的人身上散发出的那种特殊的美来表现对坚持自己人生信条的人们从心底的尊严。广告文案是"欢迎回到书的世界"。考虑将穿孔金属板进行冲压后,制作成 半透明且极薄的结构体。将大号文字摆放在便于识别的位置。这种结构具有薄轻性和穿透性,而且表里均可识读。欲望的教育这个词,在这段时间,将会成为创意的起点。如果一个物品是为了满足人们的期望 而诞生的,那么期望的本质就会作用于物品的本质。如果是要满足肚子的期望而将腰带放松些的话,那么估计就会诞生出追求宽松舒适的服装时尚吧。"欲求"(needs),常常是有惰性的。因此有必要对欲求 。进行教育。虽说无论是欲望还是教育都是太直白的词汇,但一时也找不到更合适的词能够与之替换。其实,在英文Education这个词汇里,除去教育这个含义之外,还有着赋予潜在的能力以梦想,并使之开花结 果的含义。而所谓设计,就必须要深刻作用于欲求的本质,即期望的水平,并需要起到潜移默化的教育作用。在杰出作品中所蕴含的美的意识常常会给人们以触动,并带来一次小的觉醒,就像花苞会慢慢膨胀 开放一样。对生活的期望也会因此而膨胀,与膨胀的期望相呼应,会诞生出新的物品,通过这样无数的循环与连接,就会酝酿出文化的土壤。而设计就是与土壤本质相关联的。</p>
+					</article>
+					
+				</section>
+				
+			</div>
+			
+			
+		
+		</div>
+		
+		
+	
+
+    
+		<script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+		<script src="/js/plugins.js"></script>
+		<script src="/js/helper.js"></script>
+		<script src="/js/main.js"></script>
+
+
+			
+			
+			<script>
+			$(function(){
+				$('.nav').on('mouseover','.subnav',function(){
+					$('.subnav').removeClass('hovering');
+					$(this).addClass('hovering').find('.subnav__div').addClass('hover');
+				}).on('mouseout','.subnav',function(){
+					$('.subnav').removeClass('hovering');
+					$('.subnav__div').removeClass('hover');
+				});
+				
+				
+			
+				
+			});
+			</script>
+			
+			
+			
+			<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+				(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+				m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+			ga('create', 'UA-10224456-13', 'cyanrhino.com');
+			ga('send', 'pageview');
+
+			</script>
+		</body>
+</html>
