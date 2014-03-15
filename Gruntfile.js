@@ -1,5 +1,7 @@
 'use strict';
-
+var glob=require('glob');
+var path = require('path');
+var join = path.join;
 module.exports = function(grunt) {
     
     // Load grunt tasks automatically
@@ -9,120 +11,26 @@ module.exports = function(grunt) {
     require('time-grunt')(grunt);
 
     // Project configuration.
-    grunt.initConfig({
-        nodeunit: {
-            files: ['test/**/*_test.js'],
-        },
-        jshint: {
-            options: {
-                jshintrc: '.jshintrc'
-            },
-            gruntfile: {
-                src: 'Gruntfile.js'
-            },
-            lib: {
-                src: ['lib/**/*.js']
-            },
-            test: {
-                src: ['test/**/*.js']
-            },
-        },
-        watch: {
-            gruntfile: {
-                files: '<%= jshint.gruntfile.src %>',
-                tasks: ['jshint:gruntfile']
-            },
-            lib: {
-                files: '<%= jshint.lib.src %>',
-                tasks: ['jshint:lib', 'nodeunit']
-            },
-            test: {
-                files: '<%= jshint.test.src %>',
-                tasks: ['jshint:test', 'nodeunit']
-            },
-        },
-        pkg: grunt.file.readJSON('package.json'),
-        concat: {
-            options: {
-                stripBanners: true,
-                banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +'<%= grunt.template.today("yyyy-mm-dd") %> */',
-            },
-            dist: {
-                src: ['lib/cyanrhino.js'],
-                dest: 'dist/js/scripts.js',
-            },
-            extras: {
-                src: ['public/js/main.js', 'public/js/extras.js'],
-                dest: 'dist/js/with_extras.js',
-            }
-        },
-        uglify: {
-            options: {
-                mangle: {
-                    except: ['jQuery', 'Backbone']
-                },
-                compress: {
-                    drop_console: true
-                },
-                banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +'<%= grunt.template.today("yyyy-mm-dd") %> */'
-            },
-            my_target: {
-                files: {
-                    'dist/js/scripts.min.js': ['lib/cyanrhino.js', 'dist/js/scripts.js']
-                },
-                //files: [{
-                    //	expand: true,
-                    //	cwd: 'lib',
-                    //	src: '**/*.js',
-                    //	dest: 'dist/js'
-                    //}],
-                    options: {
-                        beautify: {
-                            beautify:false,
-                            width:80
-                        }
-                    }
-                }
-            },
-            htmlmin: {                                     // Task
-                dist: {                                      // Target
-                    options: {                                 // Target options
-                        removeComments: true,
-                        collapseWhitespace: true
-                    },
-                    files: {                                   // Dictionary of files
-                        'dist/index.html': 'public/index.html',     // 'destination': 'source'
-                        'dist/home.html': 'public/home.html'
-                    }
-                }
-            },
-            csslint: {
-                strict: {
-                    options: {
-                        import: false
-                    },
-                    src: ['public/css/**/*.css']
-                },
-                lax: {
-                    options: {
-                        import: 2
-                    },
-                    src: ['dist/css/**/*.css']
-                }
-            }
-        });
-
-        // These plugins provide necessary tasks.
-        grunt.loadNpmTasks('grunt-contrib-nodeunit');
-        grunt.loadNpmTasks('grunt-contrib-jshint');
-        grunt.loadNpmTasks('grunt-contrib-watch');
-        grunt.loadNpmTasks('grunt-contrib-concat');
-        grunt.loadNpmTasks('grunt-contrib-qunit');
-        grunt.loadNpmTasks('grunt-contrib-uglify');
-        grunt.loadNpmTasks('grunt-contrib-htmlmin');
-        grunt.loadNpmTasks('grunt-contrib-csslint');
-  
-        // Default task.
-        grunt.registerTask('test', ['jshint', 'nodeunit','watch']);
-
+    var config={
+        pkg: grunt.file.readJSON('package.json')
     };
+    grunt.util._.extend(config, loadConfig('./tasks/options/'));
+    grunt.initConfig(config);
+    
+  
+    // Default task.
+    grunt.loadTasks('tasks');
+};
+
+
+function loadConfig(configPath) {
+    var config = {};
+
+    glob.sync('*', { cwd: configPath })
+    .forEach(function(configFile) {
+        var prop = configFile.replace(/\.js$/, '');
+        config[prop] = require(join(__dirname, configPath, configFile));
+    });
+
+    return config;
+}
