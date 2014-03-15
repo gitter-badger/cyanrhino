@@ -19,6 +19,9 @@
     "connect": "~2.13.0",
     "load-grunt-tasks": "~0.3.0",
     "time-grunt": "~0.2.9",
-    "consolidate": "~0.10.0"
+    "consolidate": "~0.10.0",
+    "passport": "~0.2.0",
+    "passport-weibo": "~0.1.0",
+    "glob": "~3.2.9"
   }
 }
