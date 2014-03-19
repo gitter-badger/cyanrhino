@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="viewport" content="width=1024, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<base href="/backend/" />
+	<title>CyanRhino Backend System</title>
+
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="css/reset.css" />
+	<link rel="stylesheet" href="css/icons.css" />
+	<link rel="stylesheet" href="css/formalize.css" />
+	<link rel="stylesheet" href="css/checkboxes.css" />
+	<link rel="stylesheet" href="css/sourcerer.css" />
+	<link rel="stylesheet" href="css/jqueryui.css" />
+	<link rel="stylesheet" href="css/tipsy.css" />
+	<link rel="stylesheet" href="css/calendar.css" />
+	<link rel="stylesheet" href="css/tags.css" />
+	<link rel="stylesheet" href="css/fonts.css" />
+	<link rel="stylesheet" href="css/selectboxes.css" />
+	<link rel="stylesheet" href="css/960.css" />
+	<link rel="stylesheet" href="css/main.css" />
+	<link rel="stylesheet" media="all and (orientation:portrait)" href="css/portrait.css" />
+	<link rel="apple-touch-icon" href="tables/apple-touch-icon-precomposed.png" />
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+
+	<!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/excanvas.js"></script>
+    <![endif]-->
+
+	<!-- JavaScript -->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/jqueryui.min.js"></script>
+	<script src="js/jquery.cookies.js"></script>
+	<script src="js/jquery.pjax.js"></script>
+	<script src="js/formalize.min.js"></script>
+	<script src="js/jquery.metadata.js"></script>
+	<script src="js/jquery.validate.js"></script>
+	<script src="js/jquery.checkboxes.js"></script>
+	<script src="js/jquery.chosen.js"></script>
+	<script src="js/jquery.fileinput.js"></script>
+	<script src="js/jquery.datatables.js"></script>
+	<script src="js/jquery.sourcerer.js"></script>
+	<script src="js/jquery.tipsy.js"></script>
+	<script src="js/jquery.calendar.js"></script>
+	<script src="js/jquery.inputtags.min.js"></script>
+	<script src="js/jquery.wymeditor.js"></script>
+	<script src="js/jquery.livequery.js"></script>
+	<script src="js/jquery.flot.min.js"></script>
+	<script src="js/application.js"></script>
+</head>
+
+<body>
+
+	<!-- Primary navigation -->
+	<nav id="primary">
+		<ul>
+			<li>
+				<a href="home">
+					<span class="glyph dashboard"></span>
+					控制台
+          </a>
+			</li>
+			<li>
+				<a href="uielements/miscellaneous.html">
+					<span class="glyph shuffle"></span>
+					界面外观
+          </a>
+			</li>
+			<li>
+				<a href="forms/forms.html">
+					<span class="glyph pencil"></span>
+					图片
+          </a>
+			</li>
+			<li class="active">
+				<a href="javascript:;">
+					<span class="glyph listicon"></span>
+					新闻管理
+          </a>
+			</li>
+			<li>
+				<a href="https://www.google.com/analytics/web/#home/a40133822w69229745p71305695/">
+					<span class="glyph chart"></span>
+					统计
+          </a>
+			</li>
+			<li class="bottom">
+				<a href="logout">
+					<span class="glyph quit"></span>
+					登出
+          </a>
+			</li>
+		</ul>
+	</nav>
+
+	<!-- Secondary navigation -->
+	<nav id="secondary">
+		<ul>
+			<li class="active"><a href="javascript:;">新闻列表页</a></li>
+			<li><a href="news/add">新增文章（高级）</a></li>
+		</ul>
+
+		<div id="notifications">
+			<ul>
+			</ul>
+		</div>
+	</nav>
+
+	<section id="maincontainer">
+		<div id="main" class="container_12">
+
+			<div class="box">
+				<div class="box-header">
+					<h1>新闻列表</h1>
+				</div>
+
+				<table class="datatable">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Title</th>
+							<th>Read Count</th>
+							<th>Details</th>
+							<th>Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>92901</td>
+							<td>Bram Jetten</td>
+							<td>2</td>
+							<td>Does not like plagiarism</td>
+							<td>
+								<a href="#" class="button plain">编辑</a>
+								<a href="#modal1" class="button plain modal">删除</a>
+							</td>
+						</tr>
+						<tr>
+							<td>23982</td>
+							<td>Lorem Ipsum</td>
+							<td>12</td>
+							<td>Does not like plagiarism</td>
+							<td>
+								<a href="#" class="button plain">编辑</a>
+								<a href="#" class="button plain">删除</a>
+							</td>
+						</tr>
+						<tr>
+							<td>73762</td>
+							<td>Dolor Sit</td>
+							<td>8</td>
+							<td>Awesome Zerg player</td>
+							<td>
+								<a href="#" class="button plain">编辑</a>
+								<a href="#" class="button plain">删除</a>
+							</td>
+						</tr>
+						<tr>
+							<td>92901</td>
+							<td>Bram Jetten</td>
+							<td>2</td>
+							<td>Does not like plagiarism</td>
+							<td>
+								<a href="#" class="button plain">编辑</a>
+								<a href="#" class="button plain">删除</a>
+							</td>
+						</tr>
+						<tr>
+							<td>23982</td>
+							<td>Lorem Ipsum</td>
+							<td>12</td>
+							<td>Does not like plagiarism</td>
+							<td>
+								<a href="#" class="button plain">编辑</a>
+								<a href="#" class="button plain">删除</a>
+							</td>
+						</tr>
+						<tr>
+							<td>73762</td>
+							<td>Dolor Sit</td>
+							<td>8</td>
+							<td>Awesome Zerg player</td>
+							<td>
+								<a href="#" class="button plain">编辑</a>
+								<a href="#" class="button plain">删除</a>
+							</td>
+						</tr>
+						<tr>
+							<td>92901</td>
+							<td>Bram Jetten</td>
+							<td>2</td>
+							<td>Does not like plagiarism</td>
+							<td>
+								<a href="#" class="button plain">编辑</a>
+								<a href="#" class="button plain">删除</a>
+							</td>
+						</tr>
+						<tr>
+							<td>23982</td>
+							<td>Lorem Ipsum</td>
+							<td>12</td>
+							<td>Does not like plagiarism</td>
+							<td>
+								<a href="#" class="button plain">编辑</a>
+								<a href="#" class="button plain">删除</a>
+							</td>
+						</tr>
+						<tr>
+							<td>73762</td>
+							<td>Dolor Sit</td>
+							<td>8</td>
+							<td>Awesome Zerg player</td>
+							<td>
+								<a href="#" class="button plain">编辑</a>
+								<a href="#" class="button plain">删除</a>
+							</td>
+						</tr>
+						<tr>
+							<td>92901</td>
+							<td>Bram Jetten</td>
+							<td>2</td>
+							<td>Does not like plagiarism</td>
+							<td>
+								<a href="#" class="button plain">编辑</a>
+								<a href="#" class="button plain">删除</a>
+							</td>
+						</tr>
+						<tr>
+							<td>23982</td>
+							<td>Lorem Ipsum</td>
+							<td>12</td>
+							<td>Does not like plagiarism</td>
+							<td>
+								<a href="#" class="button plain">编辑</a>
+								<a href="#" class="button plain">删除</a>
+							</td>
+						</tr>
+						<tr>
+							<td>73762</td>
+							<td>Dolor Sit</td>
+							<td>8</td>
+							<td>Awesome Zerg player</td>
+							<td>
+								<a href="#" class="button plain">编辑</a>
+								<a href="#" class="button plain">删除</a>
+							</td>
+						</tr>
+						<tr>
+							<td>92901</td>
+							<td>Bram Jetten</td>
+							<td>2</td>
+							<td>Does not like plagiarism</td>
+							<td>
+								<a href="#" class="button plain">编辑</a>
+								<a href="#" class="button plain">删除</a>
+							</td>
+						</tr>
+						<tr>
+							<td>23982</td>
+							<td>Lorem Ipsum</td>
+							<td>12</td>
+							<td>Does not like plagiarism</td>
+							<td>
+								<a href="#" class="button plain">编辑</a>
+								<a href="#" class="button plain">删除</a>
+							</td>
+						</tr>
+						<tr>
+							<td>73762</td>
+							<td>Dolor Sit</td>
+							<td>8</td>
+							<td>Awesome Zerg player</td>
+							<td>
+								<a href="#" class="button plain">编辑</a>
+								<a href="#" class="button plain">删除</a>
+							</td>
+						</tr>
+						<tr>
+							<td>92901</td>
+							<td>Bram Jetten</td>
+							<td>2</td>
+							<td>Does not like plagiarism</td>
+							<td>
+								<a href="#" class="button plain">编辑</a>
+								<a href="#" class="button plain">删除</a>
+							</td>
+						</tr>
+						<tr>
+							<td>23982</td>
+							<td>Lorem Ipsum</td>
+							<td>12</td>
+							<td>Does not like plagiarism</td>
+							<td>
+								<a href="#" class="button plain">编辑</a>
+								<a href="#" class="button plain">删除</a>
+							</td>
+						</tr>
+						<tr>
+							<td>73762</td>
+							<td>Dolor Sit</td>
+							<td>8</td>
+							<td>Awesome Zerg player</td>
+							<td>
+								<a href="#" class="button plain">编辑</a>
+								<a href="#" class="button plain">删除</a>
+							</td>
+						</tr>
+						<tr>
+							<td>92901</td>
+							<td>Bram Jetten</td>
+							<td>2</td>
+							<td>Does not like plagiarism</td>
+							<td>
+								<a href="#" class="button plain">编辑</a>
+								<a href="#" class="button plain">删除</a>
+							</td>
+						</tr>
+						<tr>
+							<td>23982</td>
+							<td>Lorem Ipsum</td>
+							<td>12</td>
+							<td>Does not like plagiarism</td>
+							<td>
+								<a href="#" class="button plain">编辑</a>
+								<a href="#" class="button plain">删除</a>
+							</td>
+						</tr>
+						<tr>
+							<td>73762</td>
+							<td>Dolor Sit</td>
+							<td>8</td>
+							<td>Awesome Zerg player</td>
+							<td>
+								<a href="#" class="button plain">编辑</a>
+								<a href="#" class="button plain">删除</a>
+							</td>
+						</tr>
+						<tr>
+							<td>92901</td>
+							<td>Bram Jetten</td>
+							<td>2</td>
+							<td>Does not like plagiarism</td>
+							<td>
+								<a href="#" class="button plain">编辑</a>
+								<a href="#" class="button plain">删除</a>
+							</td>
+						</tr>
+						<tr>
+							<td>23982</td>
+							<td>Lorem Ipsum</td>
+							<td>12</td>
+							<td>Does not like plagiarism</td>
+							<td>
+								<a href="#" class="button plain">编辑</a>
+								<a href="#" class="button plain">删除</a>
+							</td>
+						</tr>
+						<tr>
+							<td>73762</td>
+							<td>Dolor Sit</td>
+							<td>8</td>
+							<td>Awesome Zerg player</td>
+							<td>
+								<a href="#" class="button plain">编辑</a>
+								<a href="#" class="button plain">删除</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			
+			
+			<div id="modal1" class="box">
+				<div class="box-header">
+					<h1>Modal number 1</h1>
+				</div>
+
+				<div class="box-content">
+					<p>You can just use the usual syntax to create modal boxes.</p>
+					<p>Just don't forget to add a close button so that the window can be closed.</p>
+					<br />
+					<code class="html"><a href="../uielements/modal1" class="modal button">Launch modal nr 1.</a>
+						...
+						<div id="modal1" class="box">
+							...
+ 
+							<div class="action_bar">
+								<a href="#" class="close button blue">Close window</a>
+							</div>
+						</div>
+					</code>
+
+					<div class="action_bar">
+						<a href="#" class="close button blue">Close window</a>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</section>
+
+
+</body>
+
+
+</html>

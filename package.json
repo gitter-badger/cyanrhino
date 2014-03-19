@@ -16,12 +16,15 @@
     "grunt-contrib-csslint": "~0.2.0",
     "express": "~3.4.8",
     "ejs": "~0.8.5",
-    "connect": "~2.13.0",
     "load-grunt-tasks": "~0.3.0",
     "time-grunt": "~0.2.9",
     "consolidate": "~0.10.0",
     "passport": "~0.2.0",
     "passport-weibo": "~0.1.0",
-    "glob": "~3.2.9"
+    "glob": "~3.2.9",
+    "passport-facebook": "~1.0.3",
+    "passport-twitter": "~1.0.2",
+    "passport-github": "~0.1.5",
+    "passport-google": "~0.3.0"
   }
 }

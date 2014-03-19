@@ -1,6 +1,6 @@
 exports.list = function(req, res){
-    res.render('user', { name: 'Tobi' }, function(err, html){
-      console.log(html);
+    res.render('backend/users', { name: 'Tobi' }, function(err, html){
+      res.send(html);
       console.log(err);
     });
 };
