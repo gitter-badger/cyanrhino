@@ -8,7 +8,7 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
 	<meta name="viewport" content="width=1024, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
+	<base href="/backend/" />
 	<title>CyanRhino Backend System</title>
 
 	<!-- Stylesheets -->
@@ -61,7 +61,7 @@
 	<!-- Primary navigation -->
 	<nav id="primary">
 		<ul>
-			<li class="active">
+			<li>
 				<a href="home">
 					<span class="glyph dashboard"></span>
 					控制台
@@ -79,8 +79,8 @@
 					图片
           </a>
 			</li>
-			<li>
-				<a href="news/list">
+			<li class="active">
+				<a href="javascript:;">
 					<span class="glyph listicon"></span>
 					新闻管理
           </a>
@@ -103,9 +103,8 @@
 	<!-- Secondary navigation -->
 	<nav id="secondary">
 		<ul>
-			<li><a href="home">控制台</a></li>
-			<li class="active"><a href="javascript:;">用户管理</a></li>
-			<li><a href="#">系统日志</a></li>
+			<li class="active"><a href="javascript:;">新闻列表页</a></li>
+			<li><a href="news/add">新增文章（高级）</a></li>
 		</ul>
 
 		<div id="notifications">
@@ -119,15 +118,15 @@
 
 			<div class="box">
 				<div class="box-header">
-					<h1>系统注册用户</h1>
+					<h1>新闻列表</h1>
 				</div>
 
 				<table class="datatable">
 					<thead>
 						<tr>
 							<th>ID</th>
-							<th>Name</th>
-							<th>Times signed in</th>
+							<th>Title</th>
+							<th>Read Count</th>
 							<th>Details</th>
 							<th>Actions</th>
 						</tr>
