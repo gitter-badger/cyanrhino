@@ -1,3 +1,6 @@
+var newsService=require('../lib/news');
+var usersService=require('../lib/users');
+
 exports.index= function(req,res) {
     res.render('backend/dashboard',{ user: req.user });
 };
@@ -11,9 +14,37 @@ exports.postLogin=function(req,res){
 };
 
 exports.newsList=function(req,res){
-    res.render('backend/news',{ user: req.user });
+	newsService.list(function(data){
+	    res.render('backend/news',{ 
+			list:data
+		});	
+	});
 };
 
 exports.newsAdd=function(req,res){
     res.render('backend/edit',{ user: req.user });
+};
+
+exports.newsSave=function(req,res){
+    res.send(newsService.post(req,res));
+};
+
+exports.newsRemove=function(req,res){
+    newsService.remove(req,res,function(){
+		res.redirect('/backend/news/list');
+    });
+};
+
+exports.usersList = function(req, res){
+	usersService.list(function(data){
+	    res.render('backend/users', { list: data }, function(err, html){
+	      res.send(html);
+	    });
+	});
+};
+
+exports.usersRemove=function(req,res){
+    usersService.remove(req,res,function(){
+		res.redirect('/backend/users');
+    });
 };

@@ -156,7 +156,7 @@
 				
 				<div class="box column-right">
 					<div class="box-header">
-						<h1>Current Plan</h1>
+						<h1>Current Hosting Plan</h1>
 					</div>
 					
 					<table>
@@ -170,27 +170,27 @@
 								<td>239/1000 GB used</td>
 							</tr>
 							<tr>
-								<td>Databases:</td>
-								<td>Mongo DB v2.4.9</td>
+								<td>MySQL databases:</td>
+								<td class="red">5/5 used</td>
 							</tr>
 							<tr>
 								<td>Email accounts:</td>
-								<td>0/0 used</td>
+								<td class="red">25/25 used</td>
 							</tr>
 							<tr>
-								<td>NodeJS version:</td>
-								<td>0.10.25</td>
+								<td>Ruby version:</td>
+								<td>1.9.3</td>
 							</tr>
 							<tr>
-								<td>Contract Signed:</td>
-								<td>2/24/2014</td>
+								<td>Rails version:</td>
+								<td>3.0.1</td>
 							</tr>
 						</tbody>
 					</table>
 					
 					<div class="action_bar">
-						<a href="tel:+86 013916844079" class="button blue"><span class="glyph plus2"></span>Upgrade plan</a>
-						<a href="mailto:webmaster@joe1cafe.com?subject=cancel%20order">Cancel subscription</a>
+						<a href="#" class="button blue"><span class="glyph plus2"></span>Upgrade plan</a>
+						<a href="#">Cancel subscription</a>
 					</div>
 				</div>
 				
@@ -200,18 +200,18 @@
 					</div>
 					
 					<div class="box-content">
-						<form method="post" action="/backend/news/add">
+						<form method="post" action="#">
 							<p>
-								<input type="text" name="title" id="title" placeholder="文章标题" required="required" />
+								<input type="text" name="title" id="title" placeholder="文章标题" />
 							</p>
 							
 							<p>
-								<textarea id="content" name="content" placeholder="文章内容..." required="required"></textarea>
+								<textarea id="content" name="content" placeholder="文章内容..."></textarea>
 							</p>
 							
 							<div class="action_bar">
-								<a href="#" class="close button">取消</a>
 								<input type="submit" class="button blue" value="发布" />
+								<a href="#" class="close button">取消</a>
 							</div>
 						</form>
 					</div>
@@ -242,18 +242,12 @@
 			
 		<script>
 		$(function(){
-			$('#quickpost form :submit').on('click',function(e){
+			$('#quickpost form').submit(function(e){
 				e.preventDefault();
-				if (!$('#quickpost form input')[0].checkValidity()) {
-				  $('#quickpost form').submit();
-				}
-				else {
-					$.post('/backend/news/add',$('#quickpost form').serialize(),function(data){
-						$('#quickpost form').find('.close').trigger('click');	
-					});
-				}
+				$.post('/backend/news/add',$(this).serialize(),function(data){
+					$('#quickpost form').find('.close').trigger('click');	
+				});			
 			});
-			
 		});
 		</script>
 	</body>
