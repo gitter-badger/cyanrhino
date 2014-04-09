@@ -127,7 +127,7 @@
 				<div class="box-content">
 					<form method="post" action="/backend/users">
 						<p>
-							<input type="text" name="username" id="username" placeholder="用户名" required="required" class="{validate:{required:true, minlength:3}}" />
+							<input type="text" name="username" id="username" placeholder="用户名" readonly="readonly" />
 						</p>
 						
 						<p>
@@ -150,6 +150,7 @@
 						</p> -->
 						
 						<div class="action_bar">
+							<input type="hidden" name="_id" id="_id" value="" />
 							<a href="#" class="close button">取消</a>
 							<input type="submit" class="button blue" value="更新" />
 						</div>
@@ -170,6 +171,7 @@
 		
 		$('.datatable td a[href="#user"]').on('click',function(e){
 			$('#username').val($(this).parent().parent().find('td:eq(1)').text());
+			$('#_id').val($(this).parent().parent().find('td:eq(0)').text());
 			$('#email').val($(this).parent().parent().find('td:eq(2)').text());
 			
 			if("Admin"==$(this).parent().parent().find('td:eq(3)').text()){

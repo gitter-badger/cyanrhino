@@ -25,6 +25,20 @@ exports.newsAdd=function(req,res){
     res.render('backend/edit',{ user: req.user });
 };
 
+exports.newsEdit=function(req,res){
+	newsService.update(req,res,function(news){
+	    res.render('backend/edit',{ 
+			article:news
+		});	
+	});
+};
+
+exports.newsUpdate=function(req,res){
+    newsService.doUpdate(req,res,function(){
+		res.redirect('/backend/news/update/'+req.params._id);
+    });
+};
+
 exports.photoAdd=function(req,res){
     res.render('backend/foto',{ user: req.user });
 };
@@ -34,7 +48,9 @@ exports.photoGallery=function(req,res){
 };
 
 exports.newsSave=function(req,res){
-    res.send(newsService.post(req,res));
+    newsService.post(req,res,function(){
+		res.redirect('/backend/news/list');
+    });
 };
 
 exports.newsRemove=function(req,res){
@@ -53,6 +69,12 @@ exports.usersList = function(req, res){
 
 exports.usersRemove=function(req,res){
     usersService.remove(req,res,function(){
+		res.redirect('/backend/users');
+    });
+};
+
+exports.usersUpdate=function(req,res){
+    usersService.update(req,res,function(){
 		res.redirect('/backend/users');
     });
 };

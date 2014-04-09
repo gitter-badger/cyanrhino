@@ -687,33 +687,32 @@
 			<div class="clearfix"></div>
 			<div class="container page-width">
 				<section class="news-detail">
+					<% for(var i=0;i<2;i++) {%>
 					<article>
 						<header>
 							<h2>
-								<time datetime="2014-10-26" pubdate="pubdate" class="pubdate">10/26</time>
-								参与中国工商银行私人银行部项目“亲历而不亲为”
+								<time datetime="<%=list[list.length-i-1].postdate%>" pubdate="pubdate" class="pubdate"><%=(list[list.length-i-1].postdate.getMonth()+1)+'/'+ list[i].postdate.getDate()%></time>
+								<%=list[list.length-i-1].title%>
 							</h2>
 							
 						</header>
-						<p>…</p>
+						<p>
+							<%=list[list.length-i-1].content%>							
+						</p>
 					</article>
-					<article>
-						<header>
-							<h2>
-								<time datetime="2014-12-18" pubdate="pubdate" class="pubdate">12/18</time>
-								参与中国工商银行私人银行部项目
-							</h2>
-							
-						</header>
-						<p>…</p>
-					</article>
+					<%}%>					
 				</section>
 				<aside class="news-list">  
 					<h3>news</h3>
 					<ul>  
-						<li><a href="#"><span class="pubdate">2013.1.5</span>”灵活操控”我们由这几个字联想到的生活必备品——遥控器</a></li>
-						<li><a href="#"><span class="pubdate">2013.3.5</span>新式的遥控器造型现代，设计风格极尽最大人性化</a></li>
-						<li><a href="#"><span class="pubdate">2013.5.5</span>”灵活操控”我们由这几个字联想到的生活必备品——遥控器</a></li>
+						<% list.forEach(function(news){ %>
+							<li>
+								<a href="#">
+									<span class="pubdate"><%= news.postdate.getFullYear()+'.'+(1+news.postdate.getMonth())+'.'+news.postdate.getDate()%></span>
+									<%=news.title%>
+								</a>
+							</li>
+						<% }) %>						
 					</ul>  
 				</aside>
 			</div>

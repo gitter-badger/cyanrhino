@@ -72,33 +72,45 @@
 				</div>
 
 				<div class="box-content">
-					<form method="post" action="/backend/news/add">
+					<% if(typeof article !== "undefined") {%>
+						<form method="post" action="/backend/news/update/<%=article._id%>">
+					<%} else {%>
+						<form method="post" action="/backend/news/add">
+					<%}%>
 						<p>
-							<input type="text" id="title" placeholder="文章标题" name="title" class="{validate:{required:true, minlength:3}}" autocomplete="off" required="required" />
+							<input type="text" id="title" placeholder="文章标题" name="title" class="{validate:{required:true, minlength:3}}" autocomplete="off" required="required" <% if(typeof article !== "undefined") {%> value="<%= article.title %>" <%}%> />
 							<span class="icon tick valid"></span>
 						</p>
 			
 						<div>							
 						</div>
 						<textarea name="content" id="content" class="wysiwym" required="required" class="{validate:{required:true}}">
-							<h4>Heading</h4>
+							<% if(typeof article !== "undefined") {%>
+							<%= article.content%>
+							<%} else {%>
+								<h4>Heading</h4>
     
-							<ul>
-								<li>This is a list</li>
-								<li>Of all kinds of things</li>
-							</ul>
+								<ul>
+									<li>This is a list</li>
+									<li>Of all kinds of things</li>
+								</ul>
       
-							<ol>
-								<li>Numbered lists</li>
-								<li>Are also possible</li>
-							</ol>
+								<ol>
+									<li>Numbered lists</li>
+									<li>Are also possible</li>
+								</ol>
       
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+							<%}%>
 						</textarea>
 
 						<div class="action_bar">
 							<input type="reset" id="reset" value="重置" class="button" />
-							<input type="submit" id="submit" value="发布" class="button blue" />
+							<% if(typeof article !== "undefined") {%>
+							<input type="submit" id="submit" value="更新" class="button blue wymupdate" />
+							<%} else {%>
+							<input type="submit" id="submit" value="发布" class="button blue wymupdate" />
+							<%}%>							
 						</div>
 					</form>
 				</div>
@@ -111,15 +123,15 @@
 	<script>
 	$(function(){
 		$('#main form :submit').on('click',function(e){
-			e.preventDefault();
+			//e.preventDefault();
 			if (!$('#main form input')[0].checkValidity()) {
 			  $('#main form').submit();
 			}
-			else {
-				$.post('/backend/news/add',$('#main form').serialize(),function(data){
-					window.location.href='news/list';
-				});
-			}
+			// else {
+			// 	$.post('/backend/news/add',$('#main form').serialize(),function(data){
+			// 		window.location.href='news/list';
+			// 	});
+			// }
 		});
 		
 	});
