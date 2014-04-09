@@ -1,0 +1,118 @@
+	<base href="/backend/" />
+	<% include meta.ejs %>
+	
+	<title>CyanRhino Backend System</title>
+</head>
+
+<body>
+
+	<!-- Primary navigation -->
+	<nav id="primary">
+		<ul>
+			<li>
+				<a href="home">
+					<span class="glyph dashboard"></span>
+					控制台
+				</a>
+			</li>
+			<li>
+				<a href="uielements/miscellaneous.html">
+					<span class="glyph shuffle"></span>
+					界面外观
+				</a>
+			</li>
+			<li class="active">
+				<a href="javascript:;">
+					<span class="glyph pencil"></span>
+					图片
+				</a>
+			</li>
+			<li>
+				<a href="news/list">
+					<span class="glyph listicon"></span>
+					新闻管理
+				</a>
+			</li>
+			<li>
+				<a href="https://www.google.com/analytics/web/#home/a40133822w69229745p71305695/">
+					<span class="glyph chart"></span>
+					统计
+				</a>
+			</li>
+			<li class="bottom">
+				<a href="logout">
+					<span class="glyph quit"></span>
+					登出
+				</a>
+			</li>
+		</ul>
+	</nav>
+
+	<!-- Secondary navigation -->
+	<nav id="secondary">
+		<ul>
+			<li class="active"><a href="javascript:;">上传图片</a></li>
+			<li><a href="gallery">图片库</a></li>
+		</ul>
+
+		<div id="notifications">
+			<ul>
+			</ul>
+		</div>
+	</nav>
+
+	<section id="maincontainer">
+		<div id="main" class="container_12">
+
+			<div class="box">
+				<div class="box-header">
+					<h1>图片上传向导</h1>
+
+					<ul>
+						<li class="active"><a href="#step1">上传图片</a></li>
+						<li><a href="#step2">图片裁切</a></li>
+						<li><a href="#step3">保存</a></li>
+					</ul>
+				</div>
+
+				<div class="box-content">
+					<form method="get" action="../wizard.html">
+					<div class="tab-content" id="step1">
+						<p>
+							<input type="file" id="file" name="file" placeholder="请选择图片" />
+						</p>
+						
+					</div>
+					
+					<div class="tab-content" id="step2">
+						<div class="container">
+							<div class="contr">
+								<button onclick="getResults()">Crop</button>
+							</div>
+							<canvas id="panel" width="779" height="519"></canvas>
+							<div id="results">
+								<h2>请根据1/3, 2/3, 1/2以及全尺寸进行裁切</h2>
+								<img id="crop_result" />
+							</div>
+						</div>
+					</div>
+
+					<div class="tab-content" id="step3">
+						<p>Fin.</p>
+						<div class="action_bar">
+							<input type="submit" name="submit" value="保存" class="button blue" />
+						</div>
+					</div>
+					</form>
+				</div>
+			</div>
+
+		</div>
+	</section>
+	
+	<% include js.ejs %>
+
+</body>
+
+
+</html>
