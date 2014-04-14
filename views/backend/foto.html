@@ -208,19 +208,18 @@
 				</div>
 
 				<div class="box-content">
-					<form method="post" action="../wizard.html" enctype="multipart/form-data">
+					<form method="post" action="../wizard.html" enctype="multipart/form-data" id="upload_form">
 					<div class="tab-content" id="step1">
 						<p>
 							<input type="file" id="files" name="files[]" placeholder="请选择图片" multiple required="required"  class="{validate: {required: true}}" />							
 						</p>
-						<progress max="100" value="0" class="percent"></progress>
 						
 					</div>
 					
 					<div class="tab-content" id="step2">
 						<div class="container">				
 							<div class="contr">
-								<button onclick="getResults()">Crop</button>
+								<button type="button" class="button">Crop</button>
 							</div>
 							<output id="list"></output>
 							<!-- <canvas id="panel" width="779" height="519"></canvas> -->
@@ -232,6 +231,7 @@
 					</div>
 
 					<div class="tab-content" id="step3">
+						<progress max="100" value="0" class="percent"></progress>
 						<p>Fin.</p>
 						<div class="action_bar">
 							<input type="submit" name="submit" value="保存" class="button blue" />
@@ -322,7 +322,7 @@
 			
 			var reader = new FileReader();
 			reader.onerror = errorHandler;
-			reader.onprogress = updateProgress;
+			//reader.onprogress = updateProgress;
 			reader.onload = function(e) {
 				progress.value = 100;
 			}
@@ -344,12 +344,34 @@
 		}
 		
 		//document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
+		
+		$('.box-header ul li:eq(1)').trigger('click');
 	}
 	
 	function handleDragOver(evt) {
 		evt.stopPropagation();
 		evt.preventDefault();
 		evt.dataTransfer.dropEffect = 'copy'; 
+	}
+	
+	function startUploading(file) {
+	    //var vFD = document.getElementById('upload_form').getFormData(); // for FF3
+	    var vFD = new FormData(document.getElementById('upload_form'));
+
+	    var oXHR = new XMLHttpRequest();
+	    oXHR.upload.addEventListener('progress', updateProgress, false);
+	    //oXHR.addEventListener('load', uploadFinish, false);
+		// oXHR.onload = function() {};
+		// oXHR.onerror = function() {};
+		// oXHR.upload.onprogress = function(event) {
+		// 	updateProgress(event);
+		// };
+		// oXHR.upload.onloadstart = function(event) {};
+		
+		if(file) vFD.append('myfile', file);
+		
+	    oXHR.open('POST', 'url');
+	    oXHR.send(vFD);
 	}
 
 	document.getElementById('files').addEventListener('change', handleFileSelect, false);
