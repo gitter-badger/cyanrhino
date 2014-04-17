@@ -81,6 +81,14 @@
 							<input type="text" id="title" placeholder="文章标题" name="title" class="{validate:{required:true, minlength:3}}" autocomplete="off" required="required" <% if(typeof article !== "undefined") {%> value="<%= article.title %>" <%}%> />
 							<span class="icon tick valid"></span>
 						</p>
+						
+						<p>
+							<select name="category" id="category" placeholder="栏目" class="{validate:{required:true}}">
+								<option value="news" <% if(typeof article !== "undefined") {%><%= "news"==article.category?"selected=\"selected\"":"" %><%}%>>News</option>
+								<option value="career" <% if(typeof article !== "undefined") {%><%= "career"==article.category?"selected=\"selected\"":"" %><%}%>>Career</option>
+							</select>
+						</p>
+						
 			
 						<div>							
 						</div>

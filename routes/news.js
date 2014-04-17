@@ -5,5 +5,7 @@ exports.index = function(req, res){
 	    res.render('news', { title: 'CyanRhino', list:news },function(err,html){
 	        res.end(html);
 	    });
-	})
+	});
 };
+
+exports.showPage=newsService.showPage;

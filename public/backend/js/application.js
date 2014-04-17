@@ -296,7 +296,7 @@ $('document').ready(function() {
       $('.chzn-container').each(function(){
         $(".chzn-container").css({'width': '100%'});
         var res_wid_drop = ($(".chzn-container").width() - 2);
-        $(".chzn-drop").css({'width': res_wid_drop});
+        //$(".chzn-drop").css({'width': res_wid_drop});
       });
     });
 
