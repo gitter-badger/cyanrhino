@@ -1,5 +1,6 @@
 var newsService=require('../lib/news');
 var usersService=require('../lib/users');
+var photosService=require('../lib/photos');
 
 exports.index= function(req,res) {
     res.render('backend/dashboard',{ user: req.user });
@@ -44,7 +45,10 @@ exports.photoAdd=function(req,res){
 };
 
 exports.photoGallery=function(req,res){
-    res.render('backend/gallery',{ user: req.user });
+	photosService.listFoto(function(data){
+		console.log(data);
+		res.render('backend/gallery',{ data:data,user: req.user });
+	});
 };
 
 exports.newsSave=function(req,res){

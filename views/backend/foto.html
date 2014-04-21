@@ -224,7 +224,7 @@
 					<form method="post" action="/backend/upload" enctype="multipart/form-data" id="upload_form">
 					<div class="tab-content" id="step1">
 						<p>
-							<input type="file" id="files" name="files[]" placeholder="请选择图片" multiple />							
+							<input type="file" id="files" name="files" placeholder="请选择图片" multiple />							
 						</p>
 						
 					</div>
@@ -513,7 +513,12 @@
 		// };
 		// oXHR.upload.onloadstart = function(event) {};
 				
-		vFD.append('jcrop_api', jcrop_api);
+		var s=[];
+		jcrop_api.forEach(function(el){
+			s.push(JSON.stringify(el.tellSelect()));
+		});
+
+		vFD.append('jcrop_api', JSON.stringify(s));
 		
 	    oXHR.open('POST', document.getElementById('upload_form').action);
 	    oXHR.send(vFD);
