@@ -215,9 +215,7 @@ $('document').ready(function() {
       Tags
     *******/
     
-    $('.taginput').tagsInput({
-      'width':'auto'
-    });
+    $('.taginput').tagsInput();
   
     /****************
       Progress bars

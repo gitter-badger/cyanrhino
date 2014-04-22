@@ -1,40 +1,14 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
+	<% include meta.ejs %>
 
-<head>
-	<meta charset="utf-8" />
-	<meta name="apple-mobile-web-app-capable" content="yes" />
-	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
-	<meta name="viewport" content="width=1024, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	
 	<title>CyanRhino Backend System</title>
+	<style>
+	#sortable { list-style-type: none; margin: 0; padding: 0; width: 450px; }
+	#sortable li { margin: 3px 3px 3px 0; padding: 1px; float: left; width: 100px; height: 90px; font-size: 4em; text-align: center; list-style:none;}
 	
-	<!-- Stylesheets -->
-	<link rel="stylesheet" href="css/reset.css" />
-	<link rel="stylesheet" href="css/icons.css" />
-	<link rel="stylesheet" href="css/formalize.css" />
-	<link rel="stylesheet" href="css/checkboxes.css" />
-	<link rel="stylesheet" href="css/sourcerer.css" />
-	<link rel="stylesheet" href="css/jqueryui.css" />
-	<link rel="stylesheet" href="css/tipsy.css" />
-	<link rel="stylesheet" href="css/calendar.css" />
-	<link rel="stylesheet" href="css/tags.css" />
-	<link rel="stylesheet" href="css/fonts.css" />
-	<link rel="stylesheet" href="css/selectboxes.css" />
-	<link rel="stylesheet" href="css/960.css" />
-	<link rel="stylesheet" href="css/main.css" />
-	<link rel="stylesheet" media="all and (orientation:portrait)" href="css/portrait.css" />
-	<link rel="apple-touch-icon" href="apple-touch-icon-precomposed.png" />
-	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-	
-	<!--[if lt IE 9]>
-		<script src="js/html5shiv.js"></script>
-		<script src="js/excanvas.js"></script>
-		<![endif]-->
-		
-		<!-- JavaScript -->
-		
+	.box-content{
+		overflow:hidden;
+	}
+	</style>
 	</head>
 	
 	<body>
@@ -42,20 +16,20 @@
 		<!-- Primary navigation -->
 		<nav id="primary">
 			<ul>
-				<li class="active">
-					<a href="javascript:;">
+				<li>
+					<a href="home">
 						<span class="glyph dashboard"></span>
 						控制台
 					</a>
 				</li>
-				<li>
-					<a href="uielements/miscellaneous.html">
+				<li class="active">
+					<a href="javascript:;">
 						<span class="glyph shuffle"></span>
 						界面外观
 					</a>
 				</li>
 				<li>
-					<a href="forms/forms.html">
+					<a href="gallery/add">
 						<span class="glyph pencil"></span>
 						图片
 					</a>
@@ -84,9 +58,8 @@
 		<!-- Secondary navigation -->
 		<nav id="secondary">
 			<ul>
-				<li class="active"><a href="javascript:;">控制台</a></li>
-				<li><a href="users">用户管理</a></li>
-				<li><a href="#">系统日志</a></li>
+				<li class="active"><a href="javascript:;">首页布局</a></li>
+				<li><a href="/backend/layout/banner">Banner设置</a></li>
 			</ul>
 			
 			<div id="notifications">
@@ -97,157 +70,41 @@
 		
 		<section id="maincontainer">
 			<div id="main" class="container_12">
-				
-				<div class="quick-actions">
-					<a href="#quickpost" class="modal">
-						<span class="glyph new"></span>
-						新增文章
-					</a>
-					
-					<a href="#">
-						<span class="glyph export"></span>
-						上传图片
-					</a>
-					
-					<a href="#" class="disabled">
-						<span class="glyph switch"></span>
-						消息通知
-					</a>
-				</div>
-				
-				<div class="box column-left">
+				<div class="box">
 					<div class="box-header">
-						<span class="glyph chart"></span>
-						<h1>Statistics</h1>
+						<h1>首页布局设置</h1>
+
 					</div>
-					
-					<ul class="statistics">
-						<li>
-							<a href="#">
-								<span>1.3k</span>
-								New visitors
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<span>23</span>
-								Returning visitors
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<span>16%</span>
-								Bounce rate
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<span>7%</span>
-								Increase since last month
-							</a>
-						</li>
-					</ul>
-					
-					<div class="action_bar">
-						<a href="#" class="button small"><span class="glyph export"></span>Export data</a>
-						<a href="#" class="button small"><span class="glyph print"></span>Print statistics</a>
-					</div>
-				</div>
 				
-				<div class="box column-right">
-					<div class="box-header">
-						<h1>Current Hosting Plan</h1>
-					</div>
-					
-					<table>
-						<tbody>
-							<tr>
-								<td>Webhosting:</td>
-								<td><strong>VPS Server 1</strong></td>
-							</tr>
-							<tr>
-								<td>Available space:</td>
-								<td>239/1000 GB used</td>
-							</tr>
-							<tr>
-								<td>MySQL databases:</td>
-								<td class="red">5/5 used</td>
-							</tr>
-							<tr>
-								<td>Email accounts:</td>
-								<td class="red">25/25 used</td>
-							</tr>
-							<tr>
-								<td>Ruby version:</td>
-								<td>1.9.3</td>
-							</tr>
-							<tr>
-								<td>Rails version:</td>
-								<td>3.0.1</td>
-							</tr>
-						</tbody>
-					</table>
-					
-					<div class="action_bar">
-						<a href="#" class="button blue"><span class="glyph plus2"></span>Upgrade plan</a>
-						<a href="#">Cancel subscription</a>
-					</div>
-				</div>
-				
-				<div id="quickpost" class="box">
-					<div class="box-header">
-						<h1>新增文章</h1>
-					</div>
-					
 					<div class="box-content">
-						<form method="post" action="#">
-							<p>
-								<input type="text" name="title" id="title" placeholder="文章标题" />
-							</p>
-							
-							<p>
-								<textarea id="content" name="content" placeholder="文章内容..."></textarea>
-							</p>
-							
-							<div class="action_bar">
-								<input type="submit" class="button blue" value="发布" />
-								<a href="#" class="close button">取消</a>
-							</div>
-						</form>
+						<ul id="sortable">
+							<li class="ui-state-default">1</li>
+							<li class="ui-state-default">2</li>
+							<li class="ui-state-default">3</li>
+							<li class="ui-state-default">4</li>
+							<li class="ui-state-default">5</li>
+							<li class="ui-state-default">6</li>
+							<li class="ui-state-default">7</li>
+							<li class="ui-state-default">8</li>
+							<li class="ui-state-default">9</li>
+							<li class="ui-state-default">10</li>
+							<li class="ui-state-default">11</li>
+							<li class="ui-state-default">12</li>
+						</ul>
+						
+
 					</div>
 				</div>
 				
 			</div>
 		</section>
 		
-		<script src="js/jquery.min.js"></script>
-		<script src="js/jqueryui.min.js"></script>
-		<script src="js/jquery.cookies.js"></script>
-		<script src="js/jquery.pjax.js"></script>
-		<script src="js/formalize.min.js"></script>
-		<script src="js/jquery.metadata.js"></script>
-		<script src="js/jquery.validate.js"></script>
-		<script src="js/jquery.checkboxes.js"></script>
-		<script src="js/jquery.chosen.js"></script>
-		<script src="js/jquery.fileinput.js"></script>
-		<script src="js/jquery.datatables.js"></script>
-		<script src="js/jquery.sourcerer.js"></script>
-		<script src="js/jquery.tipsy.js"></script>
-		<script src="js/jquery.calendar.js"></script>
-		<script src="js/jquery.inputtags.min.js"></script>
-		<script src="js/jquery.wymeditor.js"></script>
-		<script src="js/jquery.livequery.js"></script>
-		<script src="js/jquery.flot.min.js"></script>
-		<script src="js/application.js"></script>
+		<% include js.ejs %>
 			
 		<script>
-		$(function(){
-			$('#quickpost form').submit(function(e){
-				e.preventDefault();
-				$.post('/backend/news/add',$(this).serialize(),function(data){
-					$('#quickpost form').find('.close').trigger('click');	
-				});			
-			});
+		$(function() {
+			$( "#sortable" ).sortable();
+			$( "#sortable" ).disableSelection();
 		});
 		</script>
 	</body>

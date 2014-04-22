@@ -6,6 +6,10 @@ exports.index= function(req,res) {
     res.render('backend/dashboard',{ user: req.user });
 };
 
+exports.layout= function(req,res) {
+    res.render('backend/layout',{ user: req.user });
+};
+
 exports.getLogin=function(req,res){
     res.render('backend/login',{ user: req.user });
 };
