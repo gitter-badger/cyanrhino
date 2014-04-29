@@ -1,0 +1,592 @@
+	<base href="/backend/" />
+	<% include meta.ejs %>
+	
+	<title>CyanRhino Backend System</title>
+	<link rel="stylesheet" href="css/jquery.Jcrop.min.css" type="text/css" media="screen" title="no title" charset="utf-8">	
+	<style>
+	progress[value] {
+		appearance: none;
+		border: none;
+		width: 100%; 
+		height: 10px;
+		background-color: whiteSmoke;
+		border-radius: 2px;
+		box-shadow: 0 2px 3px rgba(0,0,0,.5) inset;
+		color: royalblue;
+		position: relative;
+		margin: 0 0 1.5em; 
+	}
+	progress[value]::-webkit-progress-bar {
+		background-color: whiteSmoke;
+		border-radius: 3px;
+		box-shadow: 0 2px 3px rgba(0,0,0,.5) inset;
+	}
+	progress[value]::-webkit-progress-value {
+		position: relative;
+		background-size: 35px 20px, 100% 100%, 100% 100%;
+		border-radius:3px;
+		animation: animate-stripes 5s linear infinite;
+	}
+	@keyframes animate-stripes { 
+		100% { 
+			background-position: -100px 0; 
+		} 
+	}
+	progress[value]::-webkit-progress-value:after {
+		content: '';
+		position: absolute;	
+		width:5px; 
+		height:5px;
+		top:2px; 
+		right:7px;
+		background-color: white;
+		border-radius: 100%;
+	}
+	progress[value]::-moz-progress-bar {
+		background-image:
+			-moz-linear-gradient( 135deg,
+				transparent,
+				transparent 33%,
+				rgba(0,0,0,.1) 33%,
+				rgba(0,0,0,.1) 66%,
+				transparent 66%),
+			-moz-linear-gradient( top,
+				rgba(255, 255, 255, .25),
+				rgba(0,0,0,.2)),
+			-moz-linear-gradient( left, #09c, #f44);
+				background-size: 35px 20px, 100% 100%, 100% 100%;
+				border-radius:3px;
+
+	}
+	.progress-bar {
+		background-color: whiteSmoke;
+		border-radius: 3px;
+		box-shadow: 0 2px 3px rgba(0,0,0,.5) inset;
+		width: 100%; 
+		height:20px;
+	}
+		.progress-bar span {
+			background-color: royalblue;
+			border-radius: 3px;	
+			display: block;
+			text-indent: -9999px;
+		}
+
+	p[data-value] { 
+		position: relative; 
+	}
+	p[data-value]:after {
+		content: attr(data-value) '%';
+		position: absolute; 
+		right:0;
+	}
+
+	.mid::-webkit-progress-value{
+		background-image:
+		-webkit-linear-gradient( 135deg,
+			transparent,
+			transparent 33%,
+			rgba(0,0,0,.1) 33%,
+			rgba(0,0,0,.1) 66%,
+			transparent 66%),
+		-webkit-linear-gradient( top,
+			rgba(255, 255, 255, .25),
+			rgba(0,0,0,.2)),
+		-webkit-linear-gradient( left, #09c, #ff0);
+	}
+
+	.mid::-moz-progress-bar {
+		background-image:
+			-moz-linear-gradient( 135deg,
+				transparent,
+				transparent 33%,
+				rgba(0,0,0,.1) 33%,
+				rgba(0,0,0,.1) 66%,
+				transparent 66%),
+			-moz-linear-gradient( top,
+				rgba(255, 255, 255, .25),
+				rgba(0,0,0,.2)),
+			-moz-linear-gradient( left, #09c, #ff0);
+	}
+	.high::-moz-progress-bar{
+		background-image:
+		-moz-linear-gradient( 135deg,
+			transparent,
+			transparent 33%,
+			rgba(0,0,0,.1) 33%,
+			rgba(0,0,0,.1) 66%,
+			transparent 66%),
+		-moz-linear-gradient( top,
+			rgba(255, 255, 255, .25),
+			rgba(0,0,0,.2)),
+		-moz-linear-gradient( left, #09c, #f44);
+	}
+	.high::-webkit-progress-value{
+		background-image:
+		-webkit-linear-gradient( 135deg,
+			transparent,
+			transparent 33%,
+			rgba(0,0,0,.1) 33%,
+			rgba(0,0,0,.1) 66%,
+			transparent 66%),
+		-webkit-linear-gradient( top,
+			rgba(255, 255, 255, .25),
+			rgba(0,0,0,.2)),
+		-webkit-linear-gradient( left, #09c, #f44);
+	}
+	
+	.thumb{
+		max-width:100%;
+		/*width:100%;*/
+	}
+	.previewWrapper{
+		width:272.655px;
+		height:90.5px;
+		overflow:hidden;
+		margin:20px 0 10px 0;
+		position:relative;
+	}
+	</style>
+</head>
+
+<body>
+
+	<!-- Primary navigation -->
+	<nav id="primary">
+		<ul>
+			<li>
+				<a href="home">
+					<span class="glyph dashboard"></span>
+					控制台
+				</a>
+			</li>
+			<li>
+				<a href="layout">
+					<span class="glyph shuffle"></span>
+					界面外观
+				</a>
+			</li>
+			<li class="active">
+				<a href="javascript:;">
+					<span class="glyph pencil"></span>
+					图片
+				</a>
+			</li>
+			<li>
+				<a href="news/list">
+					<span class="glyph listicon"></span>
+					新闻管理
+				</a>
+			</li>
+			<li>
+				<a href="https://www.google.com/analytics/web/#home/a40133822w69229745p71305695/">
+					<span class="glyph chart"></span>
+					统计
+				</a>
+			</li>
+			<li class="bottom">
+				<a href="logout">
+					<span class="glyph quit"></span>
+					登出
+				</a>
+			</li>
+		</ul>
+	</nav>
+
+	<!-- Secondary navigation -->
+	<nav id="secondary">
+		<ul>
+			<li class="active"><a href="javascript:;">上传图片</a></li>
+			<li><a href="gallery">图片库</a></li>
+		</ul>
+
+		<div id="notifications">
+			<ul>
+			</ul>
+		</div>
+	</nav>
+
+	<section id="maincontainer">
+		<div id="main" class="container_12">
+
+			<div class="box">
+				<div class="box-header">
+					<h1>图片上传向导</h1>
+
+					<ul>
+						<li class="active"><a href="#step1">上传图片</a></li>
+						<li><a href="#step2">图片裁切</a></li>
+						<li><a href="#step3">保存</a></li>
+					</ul>
+				</div>
+
+				<div class="box-content">
+					<form method="post" action="/backend/upload" enctype="multipart/form-data" id="upload_form">
+					<div class="tab-content" id="step1">
+						<p>
+							<input type="file" id="files" name="files" placeholder="请选择图片" multiple />							
+						</p>
+						
+					</div>
+					
+					<div class="tab-content" id="step2">
+						<div class="container">				
+							<!-- <div class="contr">
+								<button type="button" class="button">Crop</button>								
+							</div> -->
+							<output id="list"></output>
+							<!-- <canvas id="panel" width="779" height="519"></canvas> -->
+							<div id="results">
+								<p>请根据1/3, 2/3, 1/2以及全尺寸进行裁切</p>
+								<img id="crop_result" />
+							</div>
+						</div>
+						<div class="action_bar">
+							<!-- <input type="hidden" id="x1" name="x1" />
+							<input type="hidden" id="y1" name="y1" />
+							<input type="hidden" id="x2" name="x2" />
+							<input type="hidden" id="y2" name="y2" />
+							<input type="hidden" id="w" name="w" />
+							<input type="hidden" id="h" name="h" /> -->
+							
+							
+							<input type="submit" name="submit" value="裁切" class="button" />
+						</div>
+					</div>
+
+					<div class="tab-content" id="step3">
+						<progress max="100" value="0" class="percent"></progress>
+						<p>Fin.</p>
+						<div class="action_bar">
+							<!-- <input type="hidden" id="x1" name="x1" />
+							<input type="hidden" id="y1" name="y1" />
+							<input type="hidden" id="x2" name="x2" />
+							<input type="hidden" id="y2" name="y2" />
+							<input type="hidden" id="w" name="w" />
+							<input type="hidden" id="h" name="h" /> -->
+							
+							
+							<input type="button" name="button" value="完成" class="button blue" />
+						</div>
+					</div>
+					</form>
+				</div>
+			</div>
+
+		</div>
+	</section>
+	
+	<% include js.ejs %>
+	<script src="js/jquery.Jcrop.min.js" type="text/javascript" charset="utf-8"></script>
+	
+	<script>
+	// Check for the various File API support.
+	if (window.File && window.FileReader && window.FileList && window.Blob) {
+		// Great success! All the File APIs are supported.
+	} else {
+		alert('当前浏览器不支持拖拽上传！');
+	}
+	</script>
+	
+	<script>
+	var progress = document.querySelector('.percent');
+	
+	function bytesToSize(bytes) {
+		var sizes = ['Bytes', 'KB', 'MB'];
+		if (bytes == 0) return 'n/a';
+		var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
+		return (bytes / Math.pow(1024, i)).toFixed(1) + ' ' + sizes[i];
+	}
+	
+	function errorHandler(evt) {
+		switch(evt.target.error.code) {
+		case evt.target.error.NOT_FOUND_ERR:
+			alert('File Not Found!');
+			break;
+		case evt.target.error.NOT_READABLE_ERR:
+			alert('File is not readable');
+			break;
+		case evt.target.error.ABORT_ERR:
+			break; // noop
+		default:
+			alert('An error occurred reading this file.');
+		};
+	}
+	
+	function updateProgress(evt) {
+		if (evt.lengthComputable) {
+			var percentLoaded = Math.round((evt.loaded / evt.total) * 100);
+			if (percentLoaded < 70) {
+				progress.value = percentLoaded;
+				progress.classList.remove('high');
+				progress.classList.add('mid');	
+			}
+			else  {
+				progress.value = percentLoaded;
+				progress.classList.remove('mid');
+				progress.classList.add('high');	
+			}
+		}
+	}
+
+	function handleFileSelect(evt) {
+		evt.stopPropagation();
+		evt.preventDefault();
+		
+		var files = evt.dataTransfer?evt.dataTransfer.files:evt.target.files; 
+		
+		var output = [];
+		jcrop_api=[];
+		document.getElementById('list').innerHTML='';
+		
+		for (var i = 0, f; f = files[i]; i++) {
+			if (!f.type.match('image.*')) {
+				alert('请上传jpg,png,gif,tiff格式的图片文件');
+				continue;
+			}
+			
+			output.push(
+				'<li><strong>', 
+				escape(f.name), 
+				'</strong> (', 
+				f.type || 'n/a', 
+				') - ',
+				f.size, 
+				' bytes, last modified: ',
+				f.lastModifiedDate.toLocaleDateString(), 
+				'</li>'
+			);
+			
+			var reader = new FileReader();
+			reader.onerror = errorHandler;
+			//reader.onprogress = updateProgress;
+			reader.onload = function(e) {
+				progress.value = 100;
+			}
+			reader.onload = (function(theFile,index) {
+				return function(e) {
+					var span = document.createElement('div');
+					var c = document.createAttribute("class");
+					c.nodeValue = "fotoWrapper";
+					span.setAttributeNode(c);
+					/**
+						full size
+					 */
+					span.innerHTML = [
+						'<div class="pull-right previewWrapper"><img src="'+e.target.result+'" id="preview'+index+'_full" /></div><div class="clearfix clear"></div>',
+						'<img class="thumb thumb'+index+'" draggable="false" src="', 
+						e.target.result,
+						'" title="', 
+						escape(theFile.name) + ' ('+bytesToSize(theFile.size)+') ', 
+						'"/>'
+					].join('');
+					document.getElementById('list').insertBefore(span, null);
+					
+					
+					
+					/**
+						mid size
+					 */
+					span = document.createElement('div');
+					c = document.createAttribute("class");
+					c.nodeValue = "fotoWrapper";
+					span.setAttributeNode(c);
+					span.innerHTML = [
+						'<div class="pull-right previewWrapper"><img src="'+e.target.result+'" id="preview'+index+'_mid" /><div style="position:absolute; right:0; top:0; background:#999; width:50%; height:100%;"></div></div><div class="clearfix clear"></div>',
+						'<img class="thumb thumb'+index+'" draggable="false" src="', 
+						e.target.result,
+						'" title="', 
+						escape(theFile.name) + ' ('+bytesToSize(theFile.size)+') ', 
+						'"/>'
+					].join('');
+					document.getElementById('list').insertBefore(span, null);
+					
+					
+					
+					
+					/**
+						1/3 size
+					 */
+					span = document.createElement('div');
+					c = document.createAttribute("class");
+					c.nodeValue = "fotoWrapper";
+					span.setAttributeNode(c);
+					span.innerHTML = [
+						'<div class="pull-right previewWrapper"><img src="'+e.target.result+'" id="preview'+index+'_onethird" /><div style="position:absolute; right:0; top:0; background:#999; width:66%; height:100%;"></div></div><div class="clearfix clear"></div>',
+						'<img class="thumb thumb'+index+'" draggable="false" src="', 
+						e.target.result,
+						'" title="', 
+						escape(theFile.name) + ' ('+bytesToSize(theFile.size)+') ', 
+						'"/>'
+					].join('');
+					document.getElementById('list').insertBefore(span, null);
+					
+					
+					
+					/**
+						2/3 size
+					 */
+					span = document.createElement('div');
+					c = document.createAttribute("class");
+					c.nodeValue = "fotoWrapper";
+					span.setAttributeNode(c);
+					span.innerHTML = [
+						'<div class="pull-right previewWrapper"><img src="'+e.target.result+'" id="preview'+index+'_twothirds" /><div style="position:absolute; right:0; top:0; background:#999; width:33%; height:100%;"></div></div><div class="clearfix clear"></div>',
+						'<img class="thumb thumb'+index+'" draggable="false" src="', 
+						e.target.result,
+						'" title="', 
+						escape(theFile.name) + ' ('+bytesToSize(theFile.size)+') ', 
+						'"/>'
+					].join('');
+					document.getElementById('list').insertBefore(span, null);
+					
+					
+					
+					
+					
+					$('.box-header ul li:eq(1)').trigger('click');
+					
+					
+					// if (typeof jcrop_api != 'undefined') {
+					// 	jcrop_api.destroy();
+					// 	jcrop_api = null;
+					// }
+					
+					setTimeout(function(){
+						$('.thumb'+index).each(function(i){
+							var self=this;
+							$(self).Jcrop({
+								minSize: [32, 362],
+								//aspectRatio : 1,
+								bgFade: true,
+								bgOpacity: .1
+								// ,boxWidth: 947, 
+								// boxHeight: 722
+								,trueSize:[self.width, self.height]
+							
+								// ,onChange: showPreview,
+								,onSelect: function(coords){
+									showPreview(coords,self,index,$(self).parents('.fotoWrapper').find('.previewWrapper img').attr('id').split('_')[1]);
+								}
+								// onRelease: clearInfo
+							}, function(){
+
+								// use the Jcrop API to get the real image size
+								// var bounds = this.getBounds();
+								// boundx = bounds[0];
+								// boundy = bounds[1];
+
+								// Store the Jcrop API in the jcrop_api variable
+								// jcrop_api = this;
+								jcrop_api.push(this);
+							});
+						});
+					},1000);
+				};
+			})(f,i);
+			reader.readAsDataURL(f);
+			//reader.readAsBinaryString(f);
+		}
+		
+		//document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
+		
+		
+	}
+	
+	function handleDragOver(evt) {
+		evt.stopPropagation();
+		evt.preventDefault();
+		evt.dataTransfer.dropEffect = 'copy'; 
+	}
+	
+	function startUploading(file) {
+	    //var vFD = document.getElementById('upload_form').getFormData(); // for FF3
+	    var vFD = new FormData(document.getElementById('upload_form'));
+
+	    var oXHR = new XMLHttpRequest();
+	    oXHR.upload.addEventListener('progress', updateProgress, false);
+	    //oXHR.addEventListener('load', uploadFinish, false);
+		// oXHR.onload = function() {};
+		// oXHR.onerror = function() {};
+		// oXHR.upload.onprogress = function(event) {
+		// 	updateProgress(event);
+		// };
+		// oXHR.upload.onloadstart = function(event) {};
+				
+		var s=[];
+		jcrop_api.forEach(function(el){
+			s.push(JSON.stringify(el.tellSelect()));
+		});
+
+		vFD.append('jcrop_api', JSON.stringify(s));
+		
+	    oXHR.open('POST', document.getElementById('upload_form').action);
+	    oXHR.send(vFD);
+	}
+
+	document.getElementById('files').addEventListener('change', handleFileSelect, false);
+	document.getElementById('files').addEventListener('dragover', handleDragOver, false);
+	document.getElementById('files').addEventListener('drop', handleFileSelect, false);
+	</script>
+	
+	<script>
+	var jcrop_api=[], boundx, boundy;
+	
+	// function clearInfo() {
+	//     $('#w').val('');
+	//     $('#h').val('');
+	// }
+	// function updateInfo(e) {
+	//     $('#x1').val(e.x);
+	//     $('#y1').val(e.y);
+	//     $('#x2').val(e.x2);
+	//     $('#y2').val(e.y2);
+	//     $('#w').val(e.w);
+	//     $('#h').val(e.h);
+	// }
+	function showPreview(e, img, index,size)
+	{
+		var or={y:90.5};
+		switch(size){		
+		case 'mid':
+			or.x=135.8703375;
+			break;
+		case 'onethird':
+			or.x=90.17325;
+			break;
+		case 'twothirds':
+			or.x=181.49625;
+			break;
+		case 'full':
+		default:
+			or.x=272.655;
+			break;
+		}
+		var rx = or.x / e.w;
+		var ry = or.y / e.h;
+		
+		$('#preview'+index+'_'+size).css({
+			width: Math.round(rx * $(img).width()) + 'px',
+			height: Math.round(ry * $(img).height()) + 'px',
+			marginLeft: '-' + Math.round(rx * e.x) + 'px',
+			marginTop: '-' + Math.round(ry * e.y) + 'px'
+		});
+	}
+	
+	$('form').submit(function(e){
+		e.preventDefault();
+		if($('#files').val()){
+			$('.box-header ul li:eq(2)').trigger('click');
+			startUploading();	
+		}		
+	});
+	
+	$('input:button').on('click',function(e){
+		window.location.reload();
+	});
+	</script>
+
+</body>
+
+
+</html>

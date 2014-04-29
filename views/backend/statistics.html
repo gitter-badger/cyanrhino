@@ -1,0 +1,118 @@
+	<% include meta.ejs %>
+	
+	<title>CyanRhino Backend System</title>
+</head>
+
+<body>
+
+	<!-- Primary navigation -->
+	<nav id="primary">
+		<ul>
+			<li class="active">
+				<a href="javascript:;">
+					<span class="glyph dashboard"></span>
+					控制台
+				</a>
+			</li>
+			<li>
+				<a href="layout">
+					<span class="glyph shuffle"></span>
+					界面外观
+				</a>
+			</li>
+			<li>
+				<a href="gallery/add">
+					<span class="glyph pencil"></span>
+					图片
+				</a>
+			</li>
+			<li>
+				<a href="news/list">
+					<span class="glyph listicon"></span>
+					新闻管理
+				</a>
+			</li>
+			<li>
+				<a href="https://www.google.com/analytics/web/#home/a40133822w69229745p71305695/">
+					<span class="glyph chart"></span>
+					统计
+				</a>
+			</li>
+			<li class="bottom">
+				<a href="logout">
+					<span class="glyph quit"></span>
+					登出
+				</a>
+			</li>
+		</ul>
+	</nav>
+
+	<!-- Secondary navigation -->
+	<nav id="secondary">
+		<ul>
+			<li><a href="home">控制台</a></li>
+			<li><a href="users">用户管理</a></li>
+			<li class="active"><a href="javascript:;">系统日志</a></li>
+		</ul>
+
+		<div id="notifications">
+			<ul>
+			</ul>
+		</div>
+	</nav>
+
+	<section id="maincontainer">
+		<div id="main" class="container_12">			
+
+			<div class="box">
+				<div class="box-header">
+					<h1>站点统计</h1>
+				</div>
+
+				<div class="box-content">
+					<div id="jflot" style="width: 100%; height: 300px">
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	</section>
+	
+	
+	<% include js.ejs %>
+	<script type="text/javascript">
+	$(function () {
+		var data = [];
+		var series = Math.floor(Math.random() * 10) + 2;
+
+		for (var i = 0; i < series; i++) {
+			data[i] = { label: "栏目" + (i + 1), data: Math.floor(Math.random() * 100) + 1 }
+		}
+
+		// DEFAULT
+		$.plot($("#jflot"), data,
+		{
+			series: {
+				pie: {
+					show: true,
+					radius: 1,
+					innerRadius: 0.3,
+					label: {
+						show: true,
+						radius: 1 / 2,
+						formatter: function (label, series) {
+							return '<div style="font-size:8pt;text-align:center;padding:2px;color:white;">' + Math.round(series.percent) + '%</div>';
+						},
+						background: { opacity: 0.5 }
+					}
+				}
+			}
+		});
+	});
+	</script>
+
+</body>
+
+
+</html>

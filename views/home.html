@@ -477,7 +477,7 @@
 		<style>
 		/* ---- .element-item ---- */
 		#tiles{
-			padding-top:10px;
+			padding-top:2px;
 		}
 		.item {
 			float: left;
@@ -1154,33 +1154,33 @@
 					</div>
 				</div>
 				
-				<div class="item" data-num="9" style="background-image:url(img/foto/onethird.png);">
+				<div class="item" data-num="9" style="background-image:url(img/grey.gif);" data-original="img/foto/onethird.png">
 					<div class="info"><p class="number">9</p></div>
 				</div>
 				
-				<div class="item" data-num="10" style="background-image:url(img/foto/onethird.png);">
+				<div class="item" data-num="10" style="background-image:url(img/grey.gif);" data-original="img/foto/onethird.png">
 					<div class="info"><p class="number">10</p></div>
 				</div>
-				<div class="item" data-num="11" style="background-image:url(img/foto/onethird.png);">
+				<div class="item" data-num="11" style="background-image:url(img/grey.gif);" data-original="img/foto/onethird.png">
 					<div class="info"><p class="number">11</p></div>
 				</div>
-				<div class="item" data-num="12" style="background-image:url(img/foto/onethird.png);">
+				<div class="item" data-num="12" style="background-image:url(img/grey.gif);" data-original="img/foto/onethird.png">
 					<div class="info"><p class="number">12</p></div>
 				</div>
 			</div>
 			<div class="clearfix"></div>
 			
-			<div id="freewall" class="free-wall page-width"></div>
+			<!-- <div id="freewall" class="free-wall page-width"></div> -->
 			
 			<nav class='pagination page-width text-right' role='toolbar'>
-				<ul>
-					<li><a rel="prev" href="">&larr;</a></li>
+				<ul id="pagination">
+					<li class="prev"><a rel="prev" href="">&larr;</a></li>
 					<li><a rel="first" href="">1</a></li>
 					<li><a class="current" href="">2</a></li>
 					<li><a href="">3</a></li>
 					<li><a href="">4</a></li>
 					<li><a rel="last" href="">5</a></li>
-					<li><a rel="next" href="">&rarr;</a></li>
+					<li class="next"><a rel="next" href="">&rarr;</a></li>
 				</ul>
 			</nav>
 		</div>
@@ -1203,7 +1203,7 @@
 		<script src="js/plugins.js"></script>
 		<script src="js/helper.js"></script>
 		<script src="js/main.js"></script>
-		<script src="js/vendor/freewall.js" type="text/javascript" charset="utf-8"></script>
+		<!--script src="js/vendor/freewall.js" type="text/javascript" charset="utf-8"></script-->
 		<script src="js/vendor/isotope.pkgd.min.js" type="text/javascript" charset="utf-8"></script>
 
 		<script>
@@ -1311,6 +1311,46 @@
 					// sort by color then number
 					sortBy: [ 'num' ]
 				});
+			});
+			</script>
+			
+			<script src="js/vendor/jquery.lazyload.min.js" type="text/javascript" charset="utf-8"></script>
+			<script>
+			$(function(){
+				$(".item").lazyload({
+					effect : "fadeIn"
+				});	
+			});
+			</script>
+			
+			<script src="js/vendor/jquery-ias.min.js" type="text/javascript" charset="utf-8"></script>
+			<script>
+			$(function(){
+				var ias = $.ias({
+					container:  "#tiles",
+					item:       ".item",
+					pagination: "#pagination",
+					next:       ".next a",
+					delay:      500
+				});
+
+				ias.extension(new IASSpinnerExtension());
+				ias.extension(new IASTriggerExtension({ offset: 2 ,text:'点击加载更多'}));
+				ias.extension(new IASPagingExtension());
+				ias.extension(new IASHistoryExtension({ prev: '.prev a' }));
+				ias.extension(new IASNoneLeftExtension({html: '<div style="position: absolute;text-align:center;bottom: -50px;width: 100%;"><p><em>暂时没新内容了，尽情期待哟!</em></p></div>'}));
+			});
+			</script>
+			
+			<script src="js/vendor/jquery.jscroll.min.js" type="text/javascript" charset="utf-8"></script>
+			<script>
+			$(function(){
+				$('#tiles').jscroll({
+				    loadingHtml: '',
+				    //padding: 2,
+				    nextSelector: '#pagination .next a:last',
+				    contentSelector: '.item'
+				});	
 			});
 			</script>
 			

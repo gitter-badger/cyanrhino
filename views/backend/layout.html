@@ -1,0 +1,112 @@
+	<% include meta.ejs %>
+
+	<title>CyanRhino Backend System</title>
+	<style>
+	#sortable { list-style-type: none; margin: 0; padding: 0; width: 450px; }
+	#sortable li { margin: 3px 3px 3px 0; padding: 1px; float: left; width: 100px; height: 90px; font-size: 4em; text-align: center; list-style:none;}
+	
+	.box-content{
+		overflow:hidden;
+	}
+	</style>
+	</head>
+	
+	<body>
+		
+		<!-- Primary navigation -->
+		<nav id="primary">
+			<ul>
+				<li>
+					<a href="home">
+						<span class="glyph dashboard"></span>
+						控制台
+					</a>
+				</li>
+				<li class="active">
+					<a href="javascript:;">
+						<span class="glyph shuffle"></span>
+						界面外观
+					</a>
+				</li>
+				<li>
+					<a href="gallery/add">
+						<span class="glyph pencil"></span>
+						图片
+					</a>
+				</li>
+				<li>
+					<a href="news/list">
+						<span class="glyph listicon"></span>
+						新闻管理
+					</a>
+				</li>
+				<li>
+					<a href="https://www.google.com/analytics/web/#home/a40133822w69229745p71305695/">
+						<span class="glyph chart"></span>
+						统计
+					</a>
+				</li>
+				<li class="bottom">
+					<a href="logout">
+						<span class="glyph quit"></span>
+						登出
+					</a>
+				</li>
+			</ul>
+		</nav>
+		
+		<!-- Secondary navigation -->
+		<nav id="secondary">
+			<ul>
+				<li class="active"><a href="javascript:;">首页布局</a></li>
+				<li><a href="/backend/layout/banner">Banner设置</a></li>
+			</ul>
+			
+			<div id="notifications">
+				<ul>
+				</ul>
+			</div>
+		</nav>
+		
+		<section id="maincontainer">
+			<div id="main" class="container_12">
+				<div class="box">
+					<div class="box-header">
+						<h1>首页布局设置</h1>
+
+					</div>
+				
+					<div class="box-content">
+						<ul id="sortable">
+							<li class="ui-state-default">1</li>
+							<li class="ui-state-default">2</li>
+							<li class="ui-state-default">3</li>
+							<li class="ui-state-default">4</li>
+							<li class="ui-state-default">5</li>
+							<li class="ui-state-default">6</li>
+							<li class="ui-state-default">7</li>
+							<li class="ui-state-default">8</li>
+							<li class="ui-state-default">9</li>
+							<li class="ui-state-default">10</li>
+							<li class="ui-state-default">11</li>
+							<li class="ui-state-default">12</li>
+						</ul>
+						
+
+					</div>
+				</div>
+				
+			</div>
+		</section>
+		
+		<% include js.ejs %>
+			
+		<script>
+		$(function() {
+			$( "#sortable" ).sortable();
+			$( "#sortable" ).disableSelection();
+		});
+		</script>
+	</body>
+	
+	</html>
