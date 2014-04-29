@@ -55,6 +55,14 @@ exports.photoGallery=function(req,res){
 	});
 };
 
+exports.photoUpdate=function(req,res){
+    photosService.photoUpdate(req,res);
+};
+
+exports.photoRemove=function(req,res,callback){
+    photosService.remove(req,res);
+};
+
 exports.newsSave=function(req,res){
     newsService.post(req,res,function(){
 		res.redirect('/backend/news/list');

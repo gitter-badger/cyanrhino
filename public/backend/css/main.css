@@ -959,12 +959,23 @@ input.button {
   text-shadow: 0 1px 0 #104266;
 }
 
+.button.red {
+  background: #990000;
+  border: 1px solid red;
+  color: #fff;
+  text-shadow: 0 1px 0 #104266;
+}
+
 .button:hover {
   background: #ebebeb;
 }
 
 .button.blue:hover {
   background: #558bbc;
+}
+
+.button.red:hover {
+  background: red;
 }
 
 .button .glyph {

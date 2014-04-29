@@ -76,6 +76,7 @@
 							<th>ID</th>
 							<th>Title</th>
 							<th>Category</th>
+							<th>isRecommend</th>
 							<th>PubDate</th>
 							<th>Author</th>
 							<th>Actions</th>
@@ -86,7 +87,8 @@
 							<tr>
 								<td><%= list[i]._id%></td>
 								<td><%= list[i].title %></td>
-								<td><%= list[i].category %></td>								
+								<td><%= list[i].category %></td>
+								<td><%= list[i].isRecommend?"是":"否" %></td>							
 								<td><%=new Date(list[i].postdate).toDateString()%></td>
 								<td><%=list[i].author%></td>
 
