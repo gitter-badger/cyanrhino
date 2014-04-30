@@ -79,7 +79,7 @@
 							<th>isRecommend</th>
 							<th>PubDate</th>
 							<th>Author</th>
-							<th>Actions</th>
+							<th style="width:100px;">Actions</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -102,7 +102,7 @@
 				</table>
 			</div>
 			
-			
+			<%if(list&&list.length>0){%>
 			<div id="confirm" class="box">
 				<div class="box-header">
 					<h1>友情提示</h1>
@@ -121,6 +121,7 @@
 					</div>
 				</div>
 			</div>
+			<%}%>
 
 		</div>
 	</section>
