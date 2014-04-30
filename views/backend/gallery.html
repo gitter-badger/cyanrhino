@@ -168,6 +168,7 @@
 
 	<section id="maincontainer">
 		<div id="main" class="container_12">
+			<% if(data && data.length>0) { %>
 			<div id="confirm" class="box">
 				<div class="box-header">
 					<h1>友情提示</h1>
@@ -186,7 +187,8 @@
 					</div>
 				</div>
 			</div>
-
+			<%}%>
+			
 			<div class="box">
 				<div class="box-header">
 					<h1>Gallery</h1>

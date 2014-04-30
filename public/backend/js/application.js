@@ -175,6 +175,7 @@ $('document').ready(function() {
   
     $('.datatable').dataTable({
       "sPaginationType": "full_numbers",
+	  "bAutoWidth":false,
       "bStateSave": true
     });
   
