@@ -2,17 +2,97 @@
 
 	<title>CyanRhino Backend System</title>
 	<style>
-	#sortable { list-style-type: none; margin: 0; padding: 0; width: 450px; }
-	#sortable li { margin: 3px 3px 3px 0; padding: 1px; float: left; width: 100px; height: 90px; font-size: 4em; text-align: center; list-style:none;}
-	
+	#sortable { list-style-type: none; margin: 0; padding: 0; width: 320px; overflow:hidden; float:left;}
+	#sortable li { margin: 3px 3px 3px 0; padding: 1px; float: left; height: 90px; font-size: 4em; text-align: center; list-style:none; box-sizing:border-box;
+		background-size: cover;
+		background-clip: content-box;
+		background-repeat: no-repeat;
+		filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale');
+		-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+	}
+	.ui-state-default{
+		position:relative;
+	}
+	.ui-icon{
+		position:absolute;
+		right:5px;
+		bottom:5px;
+		z-index:1;
+		cursor:pointer;
+	}
+	.ui-state-highlight { height: 1.5em; line-height: 1.2em; width:102.6667px; }
+	.onethird {
+	  width: 102.6667px;
+	}
+	.background{
+		display:block;
+		position:absolute;
+		width:100%;
+		height:100%;
+		overflow:hidden;
+		line-height:100%;
+		vertical-align:middle;
+		text-align:center;
+		color:#cdcdcd;
+		size:23em;
+		cursor:pointer;
+	}
+	.twothirds{
+	  width:209.3px;
+	}
+
+	.mid{
+	  width:156px;
+	}
+
+	.full{
+	  width:316px;
+	}
 	.box-content{
 		overflow:hidden;
 	}
+	#size_module label.list{
+		display:inline-block;
+	}
+	#fotoWrapper{
+		max-height:400px;
+		overflow-y:auto;
+		overflow-x:hidden;
+	}
+	.hidden{
+		display:none;
+	}
+	.item {
+		margin:5px 5px 0 0;
+		padding:15px;
+		float:left;
+		display:inline-block;
+		width:128px;
+		word-wrap:break-word;
+		white-space:normal;
+		word-break:break-word;
+		word-spacing:normal;
+		border:1px solid #fafafa;
+		cursor:pointer;
+		-webkit-transition:all .2s linear;
+		-khtml-transition:all .2s linear;
+		-moz-transition:all .2s linear;
+		-ms-transition:all .2s linear;
+		-o-transition:all .2s linear;
+		transition:all .2s linear;
+	}
+	.item:hover{
+		border:1px solid #666;
+	}
+	.item.on,.item + .on{
+		background:#ecf0f1;
+		box-shadow:inset 1px 1px 10px #cacaca;
+	}
 	</style>
 	</head>
-	
+
 	<body>
-		
+
 		<!-- Primary navigation -->
 		<nav id="primary">
 			<ul>
@@ -54,59 +134,236 @@
 				</li>
 			</ul>
 		</nav>
-		
+
 		<!-- Secondary navigation -->
 		<nav id="secondary">
 			<ul>
 				<li class="active"><a href="javascript:;">首页布局</a></li>
 				<li><a href="/backend/layout/banner">Banner设置</a></li>
 			</ul>
-			
+
 			<div id="notifications">
 				<ul>
 				</ul>
 			</div>
 		</nav>
-		
+
 		<section id="maincontainer">
 			<div id="main" class="container_12">
+				<div id="background" class="box hidden">
+					<div class="box-header">
+						<h1>图片设置</h1>
+					</div>
+
+					<div class="box-content">
+						<div id="fotoWrapper">
+						<% for(var i=0;data &&  i<data.length; i++) { %>
+							<div class="item">
+								<figure>
+									<img src="<%= data[i].imagePath%>" style="max-width:120px;" />
+								</figure>
+							</div>
+						<% } %>
+						</div>
+
+						<div class="action_bar">
+							<form action="" method="get">
+								<a href="#" class="close small button">取消</a>
+								<input type="submit" class="button small blue" value="确认" />
+							</form>
+						</div>
+					</div>
+				</div>
+
+
 				<div class="box">
 					<div class="box-header">
 						<h1>首页布局设置</h1>
 
 					</div>
-				
+
 					<div class="box-content">
 						<ul id="sortable">
-							<li class="ui-state-default">1</li>
-							<li class="ui-state-default">2</li>
-							<li class="ui-state-default">3</li>
-							<li class="ui-state-default">4</li>
-							<li class="ui-state-default">5</li>
-							<li class="ui-state-default">6</li>
-							<li class="ui-state-default">7</li>
-							<li class="ui-state-default">8</li>
-							<li class="ui-state-default">9</li>
-							<li class="ui-state-default">10</li>
-							<li class="ui-state-default">11</li>
-							<li class="ui-state-default">12</li>
+							<li class="ui-state-default onethird"></li>
+							<li class="ui-state-default twothirds"></li>
+							<li class="ui-state-default mid"></li>
+							<li class="ui-state-default mid"></li>
+							<li class="ui-state-default onethird"></li>
+							<li class="ui-state-default onethird"></li>
+							<li class="ui-state-default onethird"></li>
+							<li class="ui-state-default full"></li>
+							<li class="ui-state-default twothirds"></li>
+							<li class="ui-state-default onethird"></li>
+							<li class="ui-state-default mid"></li>
+							<li class="ui-state-default mid"></li>
 						</ul>
-						
+
+						<div class="box grid_8 omega">
+
+							<div class="box-content">
+
+								<p id="size_module">
+									添加模块
+									<input type="radio" name="size" id="radio1" value="0" />
+									<label for="radio1">1</label>
+
+									<input type="radio" name="size" id="radio2" value="1" />
+									<label for="radio2">1/2</label>
+
+									<input type="radio" name="size" id="radio3" value="2" />
+									<label for="radio3">1/3</label>
+
+									<input type="radio" name="size" id="radio4" value="3" />
+									<label for="radio4">2/3</label>
+
+
+
+									<a href="#" class="button small"><span class="glyph plus"></span>添加</a>
+
+								</p>
+								<p>
+									保存首页布局
+									<input type="submit" id="saveLayout" class="button small blue" value="保存" />
+								</p>
+							</div>
+						</div>
 
 					</div>
 				</div>
-				
+
 			</div>
 		</section>
-		
+
 		<% include js.ejs %>
-			
+
 		<script>
 		$(function() {
-			$( "#sortable" ).sortable();
-			$( "#sortable" ).disableSelection();
+			LAYOUT_SIZE=['full','mid','onethird','twothirds'];
+			changed=false;
+
+			$( "#sortable" ).sortable({
+				placeholder: "ui-state-highlight"
+			});
+			//$( "#sortable" ).disableSelection();
+			$( "#sortable" ).on( "sortchange", function( event, ui ) {
+				changed=true;
+			} );
+
+			$('.item').on('click',function(){
+				if(!$(this).hasClass('on')){
+					$('.item').removeClass('on');
+					$(this).addClass('on');
+				}
+			});
+
+			$('#sortable').on('mouseenter','li',function(e){
+				var self=this;
+				$(self).append('<div class="background modal" data-href="#background">+</div><span class="ui-icon ui-icon-trash"></span>');
+
+				$('#sortable').find('div.modal').each(function() {
+					var link = $(this);
+					var id = link.attr('data-href');
+					var target = $(id);
+					var size=link.parent().attr('class').split(' ');
+
+					if($("#modalcontainer " + id).length === 0) {
+						$("#modalcontainer").append(target);
+					}
+
+					target.find('form').attr('action','#'+$(self).index());
+
+					$("#main " + id).remove();
+
+					link.click(function() {
+						$('#modalcontainer > div').hide();
+						target.show();
+						$('#overlay').show();
+
+						changed=true;
+
+						$('#background').data('index',$(self).index());
+						if(size && size.length>0) {
+							$('#background').data('size',size[1]);
+						}
+
+						return false;
+					});
+
+					// $('.close').on('click',function() {
+					// 	changed=false;
+					// });
+
+
+				});
+
+
+
+			}).on('mouseleave','li',function(e){
+				$(this).find('.background').remove().end().find('.ui-icon').remove();
+			});
+
+
+			$('#background form').submit(function(e){
+				e.preventDefault();
+				var fullname=$('#fotoWrapper .on img').attr('src').slice($('#fotoWrapper .on img').attr('src').indexOf('/thumb/')+7,$('#fotoWrapper .on img').attr('src').lastIndexOf('/'));
+				$('#sortable li').eq($('#background').data('index')).css('background-image','url(/thumb/'+fullname+'/'+$('#background').data('size')+"_128_"+fullname+')');
+				$('.close').trigger('click');
+			});
+
+			// $('#sortable').on('click','.background',function(e){
+			// 	alert('background');
+			// 	changed=true;
+			// });
+
+			$('#sortable').on('click','.ui-icon-trash',function(e){
+				e.stopPropagation();
+				e.preventDefault();
+
+				$(this).parent().remove();
+				changed=true;
+			});
+
+			$('#size_module .button').on('click',function(e){
+				e.preventDefault();
+				if($('input[name="size"]:checked').val()){
+					$( "#sortable" ).append('<li class="ui-state-default '+LAYOUT_SIZE[$('input:radio[name="size"]:checked').val()]+'"></li>');
+				}
+			});
+
+			$('#saveLayout').on('click',function(e){
+
+
+				changed=false;
+				e.preventDefault();
+			});
+
+
+
+			window.onbeforeunload = function(){
+				if(changed) return 'You\'re about to leave without save the layout?';
+			}
 		});
+
+		var getLayoutData=function(){
+			var d=[];
+			$('#sortable li').each(function(){
+				var s=$(this).css('backgroundImage');
+				var c=$(this).attr('class');
+				s=s.slice(s.lastIndexOf('_')+1,-1);
+				c=c.split(' ');
+				c=c[1];
+				d.push({
+					backgroundImage:s,
+					class:c,
+					dataNum:$(this).index()
+				});
+			});
+
+			console.log(d);
+
+			return d;
+		}
 		</script>
 	</body>
-	
+
 	</html>

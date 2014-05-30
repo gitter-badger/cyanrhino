@@ -1,6 +1,6 @@
 ﻿	<base href="/backend/" />
 	<% include meta.ejs %>
-	
+
 	<title>CyanRhino Backend System</title>
 	<style>
 	.isotope:after {
@@ -8,10 +8,11 @@
 		display: block;
 		clear: both;
 	}
-	.item { 
+	.item {
 		margin:5px 5px 0 0;
 		padding:15px;
 		float:left;
+        display:inline-block;
 		width:128px;
 		word-wrap:break-word;
 		white-space:normal;
@@ -27,7 +28,7 @@
 		transition:all .2s linear;
 	}
 	.item:hover{
-		border:1px solid #666;		
+		border:1px solid #666;
 	}
 	.item.on,.item + .on{
 		background:#ecf0f1;
@@ -39,7 +40,7 @@
 		min-height:80%;
 	}
 	label.list{
-		display:inline-block;	
+		display:inline-block;
 	}
 	p{
 		margin:0;
@@ -177,7 +178,7 @@
 				<div class="box-content">
 					<p>你正在<strong>删除</strong>该条记录</p>
 					<p>是否继续？</p>
-			
+
 
 					<div class="action_bar">
 						<form action="" method="get">
@@ -188,13 +189,13 @@
 				</div>
 			</div>
 			<%}%>
-			
+
 			<div class="box">
 				<div class="box-header">
 					<h1>Gallery</h1>
 
 				</div>
-				
+
 				<div id="filters" class="button-group">
 					<button data-filter="*" class="button small">show all</button>
 					<button data-filter=".metal" class="button small">metal</button>
@@ -203,19 +204,19 @@
 					<button data-filter=":not(.transition)" class="button small">not transition</button>
 					<button data-filter=".metal:not(.transition)" class="button small">metal but not transition</button>
 				</div>
-				
+
 				<div class="box-content">
 
-					
+
 
 					<div id="fotoWrapper">
 						<% for(var i=0;data &&  i<data.length; i++) { %>
 							<div class="item">
 								<figure>
 									<img src="<%= data[i].imagePath%>" />
-									<!-- <figcaption><%= data[i].imageName%></figcaption> -->									
-								</figure>	
-								<form action="../" method="post" novalidate="novalidate">								
+									<!-- <figcaption><%= data[i].imageName%></figcaption> -->
+								</figure>
+								<form action="../" method="post" novalidate="novalidate">
 									<p>
 										<input type="radio" name="layout_<%= data[i]._id%>" value="0" id="<%= data[i]._id%>_0" <%if(0==data[i].layout) {%> checked="checked"<%}%>  />
 										<label for="<%= data[i]._id%>_0">Full</label>
@@ -226,10 +227,10 @@
 										<input type="radio" name="layout_<%= data[i]._id%>" value="3" id="<%= data[i]._id%>_3" <%if(3==data[i].layout) {%> checked="checked"<%}%> />
 										<label for="<%= data[i]._id%>_3">2/3</label>
 										<input type="hidden" value="<%= data[i]._id%>" name="target" />
-									</p>										
-								
+									</p>
+
 									<p>
-										<input type="text" id="caption_<%= data[i]._id%>" placeholder="图片标题" name="caption" class="{validate:{required:true, minlength:3}}" required="required" value="<%= data[i].title%>" />									
+										<input type="text" id="caption_<%= data[i]._id%>" placeholder="图片标题" name="caption" class="{validate:{required:true, minlength:3}}" required="required" value="<%= data[i].title%>" />
 									</p>
 									<p>
 										<textarea id="summary_<%= data[i]._id%>" placeholder="请输入图片描述" name="summary" class="{validate:{required:true, minlength:3}}" required="required"><%= data[i].content%></textarea>
@@ -243,8 +244,8 @@
 									</p>
 								</form>
 							</div>
-							
-							
+
+
 						<% } %>
 					</div>
 
@@ -254,29 +255,29 @@
 
 		</div>
 	</section>
-	
-	
-	
-	
+
+
+
+
 	<% include js.ejs %>
 
 	<script src="/js/vendor/isotope.pkgd.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="/js/vendor/fit-columns.js" type="text/javascript" charset="utf-8"></script>
 	<script src="/js/vendor/bootstrap-tagsinput.min.js" type="text/javascript" charset="utf-8"></script>
 
-	
+
 	<script>
 	$(function(){
-		var $container = $('#fotoWrapper');	
+		var $container = $('#fotoWrapper');
 		// $container.isotope({
 		// 	itemSelector: '.item',
 		// 	layoutMode: 'fitRows',
 		// 	filter:'.item'
 		// });
-		
 
-		
-		
+
+
+
 		$('#filters').on( 'click', 'button', function() {
 		  var filterValue = $(this).attr('data-filter');
 		  $container.isotope({ filter: filterValue,layoutMode: 'fitColumns' });
@@ -288,11 +289,11 @@
 				$(this).addClass('on');
 			}
 		});
-		
+
 		$('.tag').tagsinput({
 		  maxTags: 3
 		});
-		
+
 		$('#fotoWrapper form').submit(function(e){
 			e.preventDefault();
 			if ($(this)[0].checkValidity()) {
@@ -306,7 +307,7 @@
 				});
 			}
 		});
-		
+
 		$('#confirm form').submit(function(e){
 			e.preventDefault();
 			$.get( $(this).attr('action'), function( data ) {
@@ -321,12 +322,12 @@
 				alert( "error" );
 			});
 		});
-		
+
 		$('#fotoWrapper p a').on('click',function(e){
-			$('#confirm form').attr('action','/backend/gallery/remove/'+$(this).attr('data-id'));			
+			$('#confirm form').attr('action','/backend/gallery/remove/'+$(this).attr('data-id'));
 		});
-		
-		
+
+
 	});
 	</script>
 

@@ -231,7 +231,7 @@ $('document').ready(function() {
       Modal functionality
     **********************/
   
-    $('a.modal').each(function() {
+    $('a.modal,div.modal').each(function() {
       var link = $(this);
       var id = link.attr('href');
       var target = $(id);

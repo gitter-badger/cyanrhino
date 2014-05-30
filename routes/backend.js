@@ -7,7 +7,10 @@ exports.index= function(req,res) {
 };
 
 exports.layout= function(req,res) {
-    res.render('backend/layout',{ user: req.user });
+	photosService.listFoto(function(data){
+		res.render('backend/layout',{ data:data,user: req.user });
+	});
+
 };
 
 exports.getLogin=function(req,res){
@@ -20,9 +23,9 @@ exports.postLogin=function(req,res){
 
 exports.newsList=function(req,res){
 	newsService.list(function(data){
-	    res.render('backend/news',{ 
+	    res.render('backend/news',{
 			list:data
-		});	
+		});
 	});
 };
 
@@ -32,9 +35,9 @@ exports.newsAdd=function(req,res){
 
 exports.newsEdit=function(req,res){
 	newsService.update(req,res,function(news){
-	    res.render('backend/edit',{ 
+	    res.render('backend/edit',{
 			article:news
-		});	
+		});
 	});
 };
 
