@@ -345,7 +345,9 @@
 				background-repeat:no-repeat;
 				background-size:100% auto;
 			}
-			
+			.back{
+				margin-top:20px;
+			}
 		}
 		@media only screen and (min-width:826px) and (max-width:1099px){
 			.page-width{width:820px!important;margin:auto;}
@@ -378,7 +380,9 @@
 				font-size: 24px !important;
 				line-height: 1.14em;
 			}
-			
+			.back{
+				margin-top:200px;
+			}
 		}
 		@media only screen and (min-width:1100px) and (max-width:1374px){
 			.page-width{width:1095px!important;margin:auto;}
@@ -406,6 +410,9 @@
 				width:1095px;
 				height:417px;
 				margin:auto;
+			}
+			.back{
+				margin-top:300px;
 			}
 		}
 		@media only screen and (min-width:1375px) and (max-width:1649px){
@@ -439,7 +446,9 @@
 				font-size: 60px !important;
 				line-height: 1.14em;
 			}
-			
+			.back{
+				margin-top:400px;
+			}
 		}
 		@media only screen and (min-width:1650px) and (max-width:1924px){
 			.page-width{width:1645px!important;margin:auto;}
@@ -472,7 +481,9 @@
 				font-size: 60px !important;
 				line-height: 1.14em;
 			}
-			
+			.back{
+				margin-top:500px;
+			}
 		}
 		@media only screen and (min-width:1925px){
 			.page-width{width:1645px!important;margin:auto;}
@@ -505,7 +516,9 @@
 				font-size: 60px !important;
 				line-height: 1.14em;
 			}
-			
+			.back{
+				margin-top:600px;
+			}
 		}
 		</style>
 		
@@ -527,6 +540,38 @@
 				color:#595857;
 			}
 			
+			
+			.back li{
+				list-style:none;
+			}
+			.back li a{
+				color:#56c2de;
+			}
+			.back li a:hover {
+			    color: #666;
+			    -webkit-transition: color .7s 0;
+			    -moz-transition: color .7s 0;
+			    -o-transition: color .7s 0;
+			    transition: color .7s 0
+			}
+
+			[class^=icon-] {
+			    font-family: teague-icons;
+			    font-size: 20px;
+			    line-height: 1;
+			    speak: none;
+			    font-style: normal!important;
+			    font-weight: 400;
+			    font-variant: normal;
+			    text-transform: none;
+			    -webkit-font-smoothing: antialiased;
+			    display: -moz-inline-stack;
+			    display: inline-block;
+			    vertical-align: middle;
+			    *vertical-align: auto;
+			    zoom: 1;
+			    *display: inline
+			}
 		</style>
     </head>
 	<body>
@@ -559,6 +604,14 @@
 								<a href="/showcase"><span>Showcase</span></a>
 							</div>
 						</li>
+					</ul>
+					<ul class="back">
+						<li>
+							<a href="/showcase">
+								<span class="icon-grid"></span>
+								<span class="icon-arrow-right"></span>
+							</a>
+						</li>							
 					</ul>
 					
 				</div>

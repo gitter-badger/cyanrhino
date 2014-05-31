@@ -723,7 +723,7 @@ thead {
   -webkit-transition: width .3s linear;
   -moz-transition: width .3s linear;
   transition: width .3s linear;
-  width: 75px;
+  width: 85px;
 }
 
 .dataTables_filter input:focus {
@@ -959,12 +959,23 @@ input.button {
   text-shadow: 0 1px 0 #104266;
 }
 
+.button.red {
+  background: #990000;
+  border: 1px solid red;
+  color: #fff;
+  text-shadow: 0 1px 0 #104266;
+}
+
 .button:hover {
   background: #ebebeb;
 }
 
 .button.blue:hover {
   background: #558bbc;
+}
+
+.button.red:hover {
+  background: red;
 }
 
 .button .glyph {
@@ -1409,4 +1420,23 @@ h6 {
 
 #rotatedevice {
   display: none;
+}
+
+
+::-webkit-scrollbar {
+	-webkit-appearance: none;
+	width: 7px
+}
+
+::-webkit-scrollbar-thumb {
+	border-radius: 4px;
+	background-color: rgba(0,0,0,.5);
+	-webkit-box-shadow: 0 0 1px rgba(255,255,255,.5)
+}
+
+.pull-right{
+	float:right;
+}
+.text-right{
+	text-align:right;
 }

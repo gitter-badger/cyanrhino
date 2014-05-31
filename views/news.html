@@ -606,9 +606,10 @@
 			width:80%;
 			margin:30px auto;
 		}
-			.news-detail  h2{
+			.news-detail h2{
 				font-family:hanyitexidengxianj;
 				color:#595857;
+				margin-bottom:0;
 			}
 			.news-detail .pubdate{
 				font-family:Din-Light,serif;
@@ -617,6 +618,7 @@
 			.news-detail p{
 				font-family:STXIHEI,'华文细黑';
 				color:#595857;
+				margin:0;
 			}
 			.news-list,
 			.news-list li,
@@ -629,6 +631,24 @@
 			.news-list h3{
 				border-bottom:1px solid #231916;
 			}
+			.news-list ul{
+				margin:0;
+				padding:0;
+			}
+			.news-list li{
+				list-style:none;
+			}
+				.news-list li a{
+					border-bottom:1px solid #999;
+				}
+				.news-list li p{
+					display:none;
+					margin-top:0;
+				}
+				.news-list li a span{
+					padding-right: 20px;
+					border-bottom: 1px solid white;
+				}
 		</style>
     </head>
 	<body>
@@ -687,33 +707,33 @@
 			<div class="clearfix"></div>
 			<div class="container page-width">
 				<section class="news-detail">
+					<% for(var i=0;i<2 && i< feature.length;i++) {%>
 					<article>
 						<header>
 							<h2>
-								<time datetime="2014-10-26" pubdate="pubdate" class="pubdate">10/26</time>
-								参与中国工商银行私人银行部项目“亲历而不亲为”
+								<time datetime="<%=feature[i].postdate%>" pubdate="pubdate" class="pubdate"><%=(feature[i].postdate.getMonth()+1)+'/'+ feature[i].postdate.getDate()%></time>
+								<%=feature[i].title%>
 							</h2>
 							
 						</header>
-						<p>…</p>
+						<p>
+							<%-feature[i].content%>							
+						</p>
 					</article>
-					<article>
-						<header>
-							<h2>
-								<time datetime="2014-12-18" pubdate="pubdate" class="pubdate">12/18</time>
-								参与中国工商银行私人银行部项目
-							</h2>
-							
-						</header>
-						<p>…</p>
-					</article>
+					<%}%>					
 				</section>
 				<aside class="news-list">  
 					<h3>news</h3>
 					<ul>  
-						<li><a href="#"><span class="pubdate">2013.1.5</span>”灵活操控”我们由这几个字联想到的生活必备品——遥控器</a></li>
-						<li><a href="#"><span class="pubdate">2013.3.5</span>新式的遥控器造型现代，设计风格极尽最大人性化</a></li>
-						<li><a href="#"><span class="pubdate">2013.5.5</span>”灵活操控”我们由这几个字联想到的生活必备品——遥控器</a></li>
+						<% list.forEach(function(news){ %>
+							<li>
+								<a href="javascript:;">
+									<span class="pubdate"> <%= news.postdate.getFullYear()+'.'+(1+news.postdate.getMonth())+'.'+news.postdate.getDate()%></span>
+									<%=news.title%>
+								</a>
+								<p><%=news.content%></p>
+							</li>
+						<% }) %>						
 					</ul>  
 				</aside>
 			</div>
@@ -772,7 +792,12 @@
 					$(this).find(".hover-animate-up--span:last").clearQueue().stop().animate({top: "200px"}, {duration: 500});
 				});
 			
-				
+				$('.news-list li a').on('click',function(e){
+					if('block'!=$(this).next('p').css('display')){
+						$('.news-list li p').slideUp();
+					}
+					$(this).next('p').slideToggle();
+				});
 			});
 			</script>
 			

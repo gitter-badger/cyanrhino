@@ -608,7 +608,7 @@
 				<h1 class="title">career</h1>
 				<div class="clearfix"></div>
 				<article>
-					<ul class="jobs">
+					<!-- <ul class="jobs">
 						<li>平面设计师</li>
 						<li>产品设计师</li>
 					</ul>
@@ -626,7 +626,7 @@
 					</p>
 					<p class="blue">
 						<a href="mailto:hr@cyanrhino.com">发送个人简历及作品到：hr@cyanrhino.com</a>
-					</p>
+					</p> -->
 				</article>
 			</div>
 			
@@ -656,7 +656,9 @@
 				});
 				
 				
-			
+				$.get('/pagecontent/career',function(article){
+					$('.career > article').html(article[0].content);
+				});
 				
 			});
 			</script>
