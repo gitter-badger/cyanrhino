@@ -736,6 +736,16 @@
 		</style>
 		<style>
 		@media only screen and (max-width:825px){
+		    .nav{
+		        margin:0;
+		    }
+		    .heading--feature{
+		        margin-top:70px;
+		        margin-left:10px;
+		    }
+		    .heading--feature li{
+		        font-size:60%;
+		    }
 			.page-width{width:320px!important;margin:auto;}
 			.module-overlay-cover,
 			.home-banner{
@@ -1208,6 +1218,232 @@
 		<!--script src="js/vendor/freewall.js" type="text/javascript" charset="utf-8"></script-->
 		<script src="js/vendor/isotope.pkgd.min.js" type="text/javascript" charset="utf-8"></script>
 
+        <script>
+            $(function(){
+               if($('html').hasClass('lt-it9')){
+                   if(screen.width<=825){
+                        $('.nav').css({'margin':0});
+                        $('.heading--feature').css({
+                            'margin-top':70,
+                            'margin-left':10});
+                        $('.heading--feature li').css({
+                            'font-size':'60%'});
+                            
+                        $('.page-width').css({'width':'320px!important','margin':'auto'});
+                        $('.module-overlay-cover,.home-banner').css({
+                            'width':320,
+                            'height':120,
+                            'margin':'auto'});
+                        $('.home-banner').css({
+                            'background-image': 'url(img/home-banner-820.png)',
+                            'background-image': '-webkit-image-set(url(img/home-banner-820.png) 1x,url(img/home-banner-820 2x.png) 2x)',
+                            'background-image': 'image-set(url(img/home-banner-820.png) 1x,url(img/home-banner-820 2x.png) 2x)',
+                            'background-repeat':'no-repeat',
+                            'background-size':'100% auto'
+                        });
+                        $('.onethird').css({
+                          'width': '102.6667'
+                        });
+                        
+                        $('.twothirds').css({
+                          'width':209.3
+                        });
+                        
+                        $('.mid').css({
+                          'width':156
+                        });
+                        
+                        $('.full').css({
+                          'width':316
+                        });
+                    }
+
+                    else if(screen.width>=826&&screen.width <= 1099){
+            $('.page-width').css({'width':'820px!important','margin':'auto'});
+            $('.module-overlay-cover,.home-banner').css({
+                'width':820,
+                'height':312,
+                'margin':'auto'
+            });
+            $('.home-banner').css({
+                'background-image': 'url(img/home-banner-820.png)',
+                'background-image': '-webkit-image-set(url(img/home-banner-820.png) 1x,url(img/home-banner-820 2x.png) 2x)',
+                'background-image': 'image-set(url(img/home-banner-820.png) 1x,url(img/home-banner-820 2x.png) 2x)',
+                'background-repeat':'no-repeat',
+                'width':820,
+                'height':312,
+                'margin':'auto'
+            });
+            $('.heading--feature').css({
+                'width': '50% !important',
+                'margin-top':'180px !important'
+            });
+            $('.heading--feature li').css({
+                'font-size': '24px !important',
+                'line-height': '1.14em'
+            });
+            $('.onethird').css({
+              'width': '32.84%'
+            });
+
+            $('.twothirds').css({
+              'width':'66.18%'
+            });
+
+            $('.mid').css({
+              'width':'49.514%'
+            });
+
+            $('.full').css({
+              'width':'99.6%'
+            });
+        }
+        else if(screen.width>=1100&&screen.width<=1374){
+            $('.page-width').css({'width':'1095px!important','margin':'auto'});
+            $('.module-overlay-cover,.home-banner').css({
+                'width':1095,
+                'height':417,
+                'margin':'auto'
+            });
+            $('.heading--feature li').css({
+                'font-size': '36px !important',
+                'line-height': '1.14em'
+            });
+            $('.home-banner').css({
+                'background-image': 'url(img/home-banner-1095.png)',
+                'background-image': '-webkit-image-set(url(img/home-banner-1095.png) 1x,url(img/home-banner-1095 2x.png) 2x)',
+                'background-image': 'image-set(url(img/home-banner-1095.png) 1x,url(img/home-banner-1095 2x.png) 2x)',
+                'background-repeat':'no-repeat',
+                'width':1095,
+                'height':417,
+                'margin':'auto'
+            });
+        }
+        else if(screen.width>=1375&&screen.width<=1649){
+            $('.page-width').css({'width':'1370px!important','margin':'auto'});
+            $('.module-overlay-cover,.home-banner').css({
+                'width':1370,
+                'height':521,
+                'margin':'auto'
+            });
+            $('.home-banner').css({
+                'background-image': 'url(img/home-banner-1370.png)',
+                'background-image': '-webkit-image-set(url(img/home-banner-1370.png) 1x,url(img/home-banner-1370 2x.png) 2x)',
+                'background-image': 'image-set(url(img/home-banner-1370.png) 1x,url(img/home-banner-1370 2x.png) 2x)',
+                'background-repeat':'no-repeat',
+                'width':1370,
+                'height':521,
+                'margin':'auto'
+            });
+            $('.heading--feature').css({
+                'width': '30% !important',
+                'margin-top':'230px !important'
+            });
+            $('.heading--feature li').css({
+                'font-size': '60px !important',
+                'line-height': '1.14em'
+            });
+            $('.onethird').css({
+              'width': '33%'
+            });
+
+            $('.twothirds').css({
+              'width':'66.3%'
+            });
+
+            $('.mid').css({
+              'width':'49.7%'
+            });
+
+            $('.full').css({
+              'width':'99.6%'
+            });
+        }
+        else if(screen.width>=1650&&screen.width<=1924){
+            $('.page-width').css({'width':'1645px!important','margin':'auto'});
+            $('.module-overlay-cover,.home-banner').css({
+                'width':1645,
+                'height':626,
+                'margin':'auto'
+            });
+            $('.home-banner').css({
+                'background-image': 'url(img/home-banner-1645.png)',
+                'background-image': '-webkit-image-set(url(img/home-banner-1645.png) 1x,url(img/home-banner-1645 2x.png) 2x)',
+                'background-image': 'image-set(url(img/home-banner-1645.png) 1x,url(img/home-banner-1645 2x.png) 2x)',
+                'background-repeat':'no-repeat',
+                'width':1645,
+                'height':626,
+                'margin':'auto'
+            });
+            $('.heading--feature').css({
+                'width': '30% !important',
+                'margin-top':'330px !important'
+            });
+            $('.heading--feature li').css({
+                'font-size': '60px !important',
+                'line-height': '1.14em'
+            });
+            $('.onethird').css({
+              'width': '33.01444444444%'
+            });
+
+            $('.twothirds').css({
+              'width':'66.5%'
+            });
+
+            $('.mid').css({
+              'width':'49.757%'
+            });
+
+            $('.full').css({
+              'width':'99.8%'
+            });
+        }
+        else if(screen.width>=1925){
+            $('.page-width').css({'width':'1645px!important','margin':'auto'});
+            $('.module-overlay-cover,.home-banner').css({
+                'width':1645,
+                'height':626,
+                'margin':'auto'
+            });
+            $('.home-banner').css({
+                'background-image': 'url(img/home-banner-1645.png)',
+                'background-image': '-webkit-image-set(url(img/home-banner-1645.png) 1x,url(img/home-banner-1645 2x.png) 2x)',
+                'background-image': 'image-set(url(img/home-banner-1645.png) 1x,url(img/home-banner-1645 2x.png) 2x)',
+                'background-repeat':'no-repeat',
+                'width':1645,
+                'height':626,
+                'margin':'auto'
+            });
+            $('.heading--feature').css({
+                'width': '30% !important',
+                'margin-top':'330px !important'
+            });
+            $('.heading--feature li').css({
+                'font-size': '60px !important',
+                'line-height': '1.14em'
+            });
+            $('.onethird').css({
+              'width': '33.01444444444%'
+            });
+
+            $('.twothirds').css({
+              'width':'66.5%'
+            });
+
+            $('.mid').css({
+              'width':'49.757%'
+            });
+
+            $('.full').css({
+              'width':'99.8%'
+            });
+        }
+      
+            
+               } 
+            });
+        </script>
 		<script>
 		$(function(){
 			if($('html').hasClass('lt-ie9')){

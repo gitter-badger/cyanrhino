@@ -147,6 +147,15 @@
 		margin:20px 0 10px 0;
 		position:relative;
 	}
+	dl{
+        float: left;
+        display: inline-block;
+        width:60px;
+        margin: 20px 0 10px 0;
+    }
+    dl dt{
+        float:left;
+    }
 	</style>
 </head>
 
@@ -373,8 +382,12 @@
 					/**
 						full size
 					 */
+					var coordinate='<div class="pull-right coordinate"><dl><dt>X1: </dt><dd class="x1"></dd><dt>Y1: </dt><dd class="y1"></dd></dl><dl><dt>X2: </dt><dd class="x2"></dd><dt>Y2: </dt><dd class="y2"></dd></dl><dl><dt>W: </dt><dd class="w"></dd><dt>H: </dt><dd class="h"></dd></dl></div>';
+					
 					span.innerHTML = [
-						'<div class="pull-right previewWrapper"><img src="'+e.target.result+'" id="preview'+index+'_full" /></div><div class="clearfix clear"></div>',
+						'<div class="pull-right previewWrapper"><img src="'+e.target.result+'" id="preview'+index+'_full" /></div>',
+						coordinate,
+						'<div class="clearfix clear"></div>',
 						'<img class="thumb thumb'+index+'" draggable="false" src="', 
 						e.target.result,
 						'" title="', 
@@ -393,7 +406,9 @@
 					c.nodeValue = "fotoWrapper";
 					span.setAttributeNode(c);
 					span.innerHTML = [
-						'<div class="pull-right previewWrapper"><img src="'+e.target.result+'" id="preview'+index+'_mid" /><div style="position:absolute; right:0; top:0; background:#999; width:50%; height:100%;"></div></div><div class="clearfix clear"></div>',
+						'<div class="pull-right previewWrapper"><img src="'+e.target.result+'" id="preview'+index+'_mid" /><div style="position:absolute; right:0; top:0; background:#999; width:50%; height:100%;"></div></div>',
+						coordinate,
+						'<div class="clearfix clear"></div>',
 						'<img class="thumb thumb'+index+'" draggable="false" src="', 
 						e.target.result,
 						'" title="', 
@@ -413,7 +428,10 @@
 					c.nodeValue = "fotoWrapper";
 					span.setAttributeNode(c);
 					span.innerHTML = [
-						'<div class="pull-right previewWrapper"><img src="'+e.target.result+'" id="preview'+index+'_onethird" /><div style="position:absolute; right:0; top:0; background:#999; width:66%; height:100%;"></div></div><div class="clearfix clear"></div>',
+					   
+						'<div class="pull-right previewWrapper"><img src="'+e.target.result+'" id="preview'+index+'_onethird" /><div style="position:absolute; right:0; top:0; background:#999; width:66%; height:100%;"></div></div>',
+						coordinate,
+						'<div class="clearfix clear"></div>',
 						'<img class="thumb thumb'+index+'" draggable="false" src="', 
 						e.target.result,
 						'" title="', 
@@ -432,7 +450,9 @@
 					c.nodeValue = "fotoWrapper";
 					span.setAttributeNode(c);
 					span.innerHTML = [
-						'<div class="pull-right previewWrapper"><img src="'+e.target.result+'" id="preview'+index+'_twothirds" /><div style="position:absolute; right:0; top:0; background:#999; width:33%; height:100%;"></div></div><div class="clearfix clear"></div>',
+						'<div class="pull-right previewWrapper"><img src="'+e.target.result+'" id="preview'+index+'_twothirds" /><div style="position:absolute; right:0; top:0; background:#999; width:33%; height:100%;"></div></div>'
+						,coordinate,
+						'<div class="clearfix clear"></div>',
 						'<img class="thumb thumb'+index+'" draggable="false" src="', 
 						e.target.result,
 						'" title="', 
@@ -461,12 +481,25 @@
 								//aspectRatio : 1,
 								bgFade: true,
 								bgOpacity: .1
-								// ,boxWidth: 947, 
-								// boxHeight: 722
-								,trueSize:[self.width, self.height]
-							
-								// ,onChange: showPreview,
+								,boxWidth:$(self).parents('.fotoWrapper').width()								
+								,boxHeight: $(self).parents('.fotoWrapper').height()
+								,trueSize:[self.width, self.height]							
+								,onChange: function(coords){
+								    $(self).parents('.fotoWrapper').find('.coordinate .x1').html(Number(coords.x).toFixed(0));
+                                    $(self).parents('.fotoWrapper').find('.coordinate .x2').html(Number(coords.x2).toFixed(0));
+                                    $(self).parents('.fotoWrapper').find('.coordinate .y1').html(Number(coords.y).toFixed(0));
+                                    $(self).parents('.fotoWrapper').find('.coordinate .y2').html(Number(coords.y2).toFixed(0));
+                                    $(self).parents('.fotoWrapper').find('.coordinate .w').html(Number(coords.w).toFixed(0));
+                                    $(self).parents('.fotoWrapper').find('.coordinate .h').html(Number(coords.h).toFixed(0));
+								}
 								,onSelect: function(coords){
+								    $(self).parents('.fotoWrapper').find('.coordinate .x1').html(Number(coords.x).toFixed(0));
+								    $(self).parents('.fotoWrapper').find('.coordinate .x2').html(Number(coords.x2).toFixed(0));
+								    $(self).parents('.fotoWrapper').find('.coordinate .y1').html(Number(coords.y).toFixed(0));
+								    $(self).parents('.fotoWrapper').find('.coordinate .y2').html(Number(coords.y2).toFixed(0));
+								    $(self).parents('.fotoWrapper').find('.coordinate .w').html(Number(coords.w).toFixed(0));
+								    $(self).parents('.fotoWrapper').find('.coordinate .h').html(Number(coords.h).toFixed(0));
+								    
 									showPreview(coords,self,index,$(self).parents('.fotoWrapper').find('.previewWrapper img').attr('id').split('_')[1]);
 								}
 								// onRelease: clearInfo
