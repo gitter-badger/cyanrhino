@@ -179,6 +179,7 @@
 		}
 		div.cell{background:pink;}*/
 		</style>
+		
 		<style>
 		.navbar {
 			width: 100%;
@@ -767,7 +768,7 @@
 				background-size:100% auto;
 			}
 			.onethird {
-			  width: 102.6667px;
+			  width: 102.6px;
 			}
 
 			.twothirds{
@@ -999,6 +1000,7 @@
 			}
 		}
 		</style>
+		
     </head>
 	<body>
 		<!--[if lt IE 7]>
@@ -1075,7 +1077,7 @@
 					<div class="box full">3</div>
 				</div>
 			</div> -->
-			<div class="clearfix"></div>
+			<!-- <div class="clearfix"></div> -->
 			<div class="page-width" id="tiles">
 				<div class="item twothirds" data-num="1" style="background-image:url(img/foto/twothird.png);">
 					<div class="ch-info">
@@ -1219,9 +1221,11 @@
 		<script src="js/vendor/isotope.pkgd.min.js" type="text/javascript" charset="utf-8"></script>
 
         <script>
-            $(function(){
-               if($('html').hasClass('lt-it9')){
-                   if(screen.width<=825){
+            var resize=function(){
+                if(($('html').attr('class')).indexOf('lt-ie9')!=-1){
+                   var winh=window.innerWidth||document.documentElement.offsetWidth||document.body.offsetWidth;
+                   
+                   if(winh<=825){
                         $('.nav').css({'margin':0});
                         $('.heading--feature').css({
                             'margin-top':70,
@@ -1229,20 +1233,18 @@
                         $('.heading--feature li').css({
                             'font-size':'60%'});
                             
-                        $('.page-width').css({'width':'320px!important','margin':'auto'});
+                        $('.page-width').css({'width':320,'margin':'auto'});
                         $('.module-overlay-cover,.home-banner').css({
                             'width':320,
                             'height':120,
                             'margin':'auto'});
                         $('.home-banner').css({
-                            'background-image': 'url(img/home-banner-820.png)',
-                            'background-image': '-webkit-image-set(url(img/home-banner-820.png) 1x,url(img/home-banner-820 2x.png) 2x)',
-                            'background-image': 'image-set(url(img/home-banner-820.png) 1x,url(img/home-banner-820 2x.png) 2x)',
+                            'background-image': 'url(img/home-banner-820.png)',                            
                             'background-repeat':'no-repeat',
                             'background-size':'100% auto'
                         });
                         $('.onethird').css({
-                          'width': '102.6667'
+                          'width': 102.6667
                         });
                         
                         $('.twothirds').css({
@@ -1258,28 +1260,28 @@
                         });
                     }
 
-                    else if(screen.width>=826&&screen.width <= 1099){
-            $('.page-width').css({'width':'820px!important','margin':'auto'});
+                    else if(winh>=826&&winh <= 1099){
+            $('.page-width').css({'width':820,'margin':'auto'});
             $('.module-overlay-cover,.home-banner').css({
                 'width':820,
-                'height':312,
-                'margin':'auto'
+                'height':312,               
+            '_filter':'alpha(opacity=10,finishOpacity=0,style=0)',
+                'margin':'auto',
+                '_margin-top':30
             });
             $('.home-banner').css({
-                'background-image': 'url(img/home-banner-820.png)',
-                'background-image': '-webkit-image-set(url(img/home-banner-820.png) 1x,url(img/home-banner-820 2x.png) 2x)',
-                'background-image': 'image-set(url(img/home-banner-820.png) 1x,url(img/home-banner-820 2x.png) 2x)',
+                'background-image': 'url(img/home-banner-820.png)',                
                 'background-repeat':'no-repeat',
                 'width':820,
                 'height':312,
                 'margin':'auto'
             });
             $('.heading--feature').css({
-                'width': '50% !important',
-                'margin-top':'180px !important'
+                'width': '50%',
+                'margin-top':180
             });
             $('.heading--feature li').css({
-                'font-size': '24px !important',
+                'font-size': '24px',
                 'line-height': '1.14em'
             });
             $('.onethird').css({
@@ -1298,29 +1300,27 @@
               'width':'99.6%'
             });
         }
-        else if(screen.width>=1100&&screen.width<=1374){
-            $('.page-width').css({'width':'1095px!important','margin':'auto'});
+        else if(winh>=1100&&winh<=1374){
+            $('.page-width').css({'width':1095,'margin':'auto'});
             $('.module-overlay-cover,.home-banner').css({
                 'width':1095,
                 'height':417,
                 'margin':'auto'
             });
             $('.heading--feature li').css({
-                'font-size': '36px !important',
+                'font-size': '36px',
                 'line-height': '1.14em'
             });
             $('.home-banner').css({
                 'background-image': 'url(img/home-banner-1095.png)',
-                'background-image': '-webkit-image-set(url(img/home-banner-1095.png) 1x,url(img/home-banner-1095 2x.png) 2x)',
-                'background-image': 'image-set(url(img/home-banner-1095.png) 1x,url(img/home-banner-1095 2x.png) 2x)',
                 'background-repeat':'no-repeat',
                 'width':1095,
                 'height':417,
                 'margin':'auto'
             });
         }
-        else if(screen.width>=1375&&screen.width<=1649){
-            $('.page-width').css({'width':'1370px!important','margin':'auto'});
+        else if(winh>=1375&&winh<=1649){
+            $('.page-width').css({'width':1370,'margin':'auto'});
             $('.module-overlay-cover,.home-banner').css({
                 'width':1370,
                 'height':521,
@@ -1337,7 +1337,7 @@
             });
             $('.heading--feature').css({
                 'width': '30% !important',
-                'margin-top':'230px !important'
+                'margin-top':230
             });
             $('.heading--feature li').css({
                 'font-size': '60px !important',
@@ -1359,8 +1359,8 @@
               'width':'99.6%'
             });
         }
-        else if(screen.width>=1650&&screen.width<=1924){
-            $('.page-width').css({'width':'1645px!important','margin':'auto'});
+        else if(winh>=1650&&winh<=1924){
+            $('.page-width').css({'width':1645,'margin':'auto'});
             $('.module-overlay-cover,.home-banner').css({
                 'width':1645,
                 'height':626,
@@ -1377,7 +1377,7 @@
             });
             $('.heading--feature').css({
                 'width': '30% !important',
-                'margin-top':'330px !important'
+                'margin-top':330
             });
             $('.heading--feature li').css({
                 'font-size': '60px !important',
@@ -1399,8 +1399,8 @@
               'width':'99.8%'
             });
         }
-        else if(screen.width>=1925){
-            $('.page-width').css({'width':'1645px!important','margin':'auto'});
+        else if(winh>=1925){
+            $('.page-width').css({'width':1645,'margin':'auto'});
             $('.module-overlay-cover,.home-banner').css({
                 'width':1645,
                 'height':626,
@@ -1417,7 +1417,7 @@
             });
             $('.heading--feature').css({
                 'width': '30% !important',
-                'margin-top':'330px !important'
+                'margin-top':330
             });
             $('.heading--feature li').css({
                 'font-size': '60px !important',
@@ -1442,6 +1442,12 @@
       
             
                } 
+            };
+            $(function(){
+               resize();
+               $(window).resize(function(){
+                  resize();
+                });
             });
         </script>
 		<script>
