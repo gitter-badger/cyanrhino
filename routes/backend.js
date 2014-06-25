@@ -1,14 +1,17 @@
 var newsService=require('../lib/news');
 var usersService=require('../lib/users');
 var photosService=require('../lib/photos');
+var layoutService=require('../lib/homepage');
 
 exports.index= function(req,res) {
     res.render('backend/dashboard',{ user: req.user });
 };
 
 exports.layout= function(req,res) {
-	photosService.listFoto(function(data){
-		res.render('backend/layout',{ data:data,user: req.user });
+	layoutService.listFoto(function(data){
+        photosService.listFoto(function(d){
+            res.render('backend/layout',{ data:d, layout:data,user: req.user });
+        });
 	});
 
 };
@@ -100,4 +103,8 @@ exports.usersUpdate=function(req,res){
 
 exports.statistics= function(req,res) {
     res.render('backend/statistics',{ user: req.user });
+};
+
+exports.layoutSave=function(req,res){
+    layoutService.post(req,res);
 };

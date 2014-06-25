@@ -333,6 +333,15 @@
 			$('#saveLayout').on('click',function(e){
 
 
+				$.post('/backend/layout/save',
+					{'data':getLayoutData()},
+					function(data){
+						alert('保存成功！');
+				}).fail(function() {
+					alert( "error" );
+				});
+				console.log(data);
+
 				changed=false;
 				e.preventDefault();
 			});
@@ -342,26 +351,37 @@
 			window.onbeforeunload = function(){
 				if(changed) return 'You\'re about to leave without save the layout?';
 			}
+
+			var layout=[
+				<% for(var i=0;layout &&  i<layout.length; i++) { %>
+					{'index':'<%=layout[i].index%>','path':'<%=layout[i].path%>','layout':'<%=layout[i].layout%>'},
+				<%}%>
+			];
+
+			for(var i=0;i<layout.length;i++){
+				$('#sortable li').eq(layout[i].index).css('backgroundImage','url('+layout[i].path+')');
+			}
 		});
 
 		var getLayoutData=function(){
-			var d=[];
-			$('#sortable li').each(function(){
-				var s=$(this).css('backgroundImage');
-				var c=$(this).attr('class');
-				s=s.slice(s.lastIndexOf('_')+1,-1);
-				c=c.split(' ');
-				c=c[1];
-				d.push({
-					backgroundImage:s,
-					class:c,
-					dataNum:$(this).index()
-				});
+			var data=[];
+			$('#sortable li').each(function(idx,el){
+				if($(el).css('backgroundImage') && $(el).css('backgroundImage').indexOf('thumb')!=-1){
+					var p=$(el).css('backgroundImage').slice($(el).css('backgroundImage').indexOf('(')+1,$(el).css('backgroundImage').length-1);
+					var re=/thumb\/(.*)\//gi;
+					p=re.exec(p);
+
+
+					data.push({
+						index:idx,
+						path:p[1],
+						layout:$(el).attr('class').split(' ')[1]
+					});
+				}
+
 			});
 
-			console.log(d);
-
-			return d;
+			return data;
 		}
 		</script>
 	</body>
