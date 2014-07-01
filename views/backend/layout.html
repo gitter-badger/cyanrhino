@@ -305,7 +305,8 @@
 
 			$('#background form').submit(function(e){
 				e.preventDefault();
-				var fullname=$('#fotoWrapper .on img').attr('src').slice($('#fotoWrapper .on img').attr('src').indexOf('/thumb/')+7,$('#fotoWrapper .on img').attr('src').lastIndexOf('/'));
+				var DELEMITER=$('#fotoWrapper .on img').attr('src').indexOf('/')!=-1?"/":"\\";				
+				var fullname=$('#fotoWrapper .on img').attr('src').slice($('#fotoWrapper .on img').attr('src').indexOf('thumb')+6,$('#fotoWrapper .on img').attr('src').lastIndexOf(DELEMITER));
 				$('#sortable li').eq($('#background').data('index')).css('background-image','url(/thumb/'+fullname+'/'+$('#background').data('size')+"_128_"+fullname+')');
 				$('.close').trigger('click');
 			});
@@ -368,7 +369,7 @@
 			$('#sortable li').each(function(idx,el){
 				if($(el).css('backgroundImage') && $(el).css('backgroundImage').indexOf('thumb')!=-1){
 					var p=$(el).css('backgroundImage').slice($(el).css('backgroundImage').indexOf('(')+1,$(el).css('backgroundImage').length-1);
-					var re=/thumb\/(.*)\//gi;
+					var re=/thumb[/\/](.*)[/\/]/gi;
 					p=re.exec(p);
 
 
