@@ -137,7 +137,7 @@
 	}
 	
 	.thumb{
-		max-width:100%;
+	/*	max-width:100%;*/
 		/*width:100%;*/
 	}
 	.previewWrapper{
@@ -477,13 +477,14 @@
 						$('.thumb'+index).each(function(i){
 							var self=this;
 							$(self).Jcrop({
-								minSize: [32, 362],
+								minSize: [32, 32],
 								//aspectRatio : 1,
 								bgFade: true,
 								bgOpacity: .1
-								,boxWidth:$(self).parents('.fotoWrapper').width()								
-								,boxHeight: $(self).parents('.fotoWrapper').height()
-								,trueSize:[self.width, self.height]							
+								,setSelect:   [ 0, 0, $(self).width(), $(self).height() ]
+								,boxWidth:$(self).parents('.fotoWrapper').width()
+								,boxHeight: $(self).parents('.fotoWrapper').height()-$(self).prev('.previewWrapper').height()-30
+								,trueSize:[self.width, self.height]						
 								,onChange: function(coords){
 								    $(self).parents('.fotoWrapper').find('.coordinate .x1').html(Number(coords.x).toFixed(0));
                                     $(self).parents('.fotoWrapper').find('.coordinate .x2').html(Number(coords.x2).toFixed(0));
