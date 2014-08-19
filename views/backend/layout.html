@@ -184,7 +184,7 @@
 
 					<div class="box-content">
 						<ul id="sortable">
-							<li class="ui-state-default onethird"></li>
+							<!-- <li class="ui-state-default onethird"></li>
 							<li class="ui-state-default twothirds"></li>
 							<li class="ui-state-default mid"></li>
 							<li class="ui-state-default mid"></li>
@@ -195,7 +195,7 @@
 							<li class="ui-state-default twothirds"></li>
 							<li class="ui-state-default onethird"></li>
 							<li class="ui-state-default mid"></li>
-							<li class="ui-state-default mid"></li>
+							<li class="ui-state-default mid"></li> -->
 						</ul>
 
 						<div class="box grid_8 omega">
@@ -305,7 +305,8 @@
 
 			$('#background form').submit(function(e){
 				e.preventDefault();
-				var fullname=$('#fotoWrapper .on img').attr('src').slice($('#fotoWrapper .on img').attr('src').indexOf('/thumb/')+7,$('#fotoWrapper .on img').attr('src').lastIndexOf('/'));
+				var DELEMITER=$('#fotoWrapper .on img').attr('src').indexOf('/')!=-1?"/":"\\";				
+				var fullname=$('#fotoWrapper .on img').attr('src').slice($('#fotoWrapper .on img').attr('src').indexOf('thumb')+6,$('#fotoWrapper .on img').attr('src').lastIndexOf(DELEMITER));
 				$('#sortable li').eq($('#background').data('index')).css('background-image','url(/thumb/'+fullname+'/'+$('#background').data('size')+"_128_"+fullname+')');
 				$('.close').trigger('click');
 			});
@@ -331,7 +332,8 @@
 			});
 
 			$('#saveLayout').on('click',function(e){
-
+				changed=false;
+				e.preventDefault();
 
 				$.post('/backend/layout/save',
 					{'data':getLayoutData()},
@@ -342,8 +344,7 @@
 				});
 				console.log(data);
 
-				changed=false;
-				e.preventDefault();
+				
 			});
 
 
@@ -351,16 +352,31 @@
 			window.onbeforeunload = function(){
 				if(changed) return 'You\'re about to leave without save the layout?';
 			}
+			var init=function(){
+				var layout=[
+					<% for(var i=0;layout &&  i<layout.length; i++) { %>
+						{'index':'<%=layout[i].index%>','path':'<%=layout[i].path%>','layout':'<%=layout[i].layout%>'},
+					<%}%>
+				];
+				var d=document.createDocumentFragment();				
+				layout.forEach(function(e,idx) {
+				  var li = document.createElement("li");
+				  var att=document.createAttribute("class");
+				  att.value="ui-state-default "+e.layout;
+				  li.setAttributeNode(att);
+				  var style=document.createAttribute("style");
+				  style.value='background-image:url('+e.path+')';
+				  li.setAttributeNode(style);
+				  d.appendChild(li);
+				});
 
-			var layout=[
-				<% for(var i=0;layout &&  i<layout.length; i++) { %>
-					{'index':'<%=layout[i].index%>','path':'<%=layout[i].path%>','layout':'<%=layout[i].layout%>'},
-				<%}%>
-			];
-
-			for(var i=0;i<layout.length;i++){
-				$('#sortable li').eq(layout[i].index).css('backgroundImage','url('+layout[i].path+')');
-			}
+				document.getElementById("sortable").appendChild(d);
+				
+			
+			};
+			
+			init();
+			
 		});
 
 		var getLayoutData=function(){
@@ -368,7 +384,7 @@
 			$('#sortable li').each(function(idx,el){
 				if($(el).css('backgroundImage') && $(el).css('backgroundImage').indexOf('thumb')!=-1){
 					var p=$(el).css('backgroundImage').slice($(el).css('backgroundImage').indexOf('(')+1,$(el).css('backgroundImage').length-1);
-					var re=/thumb\/(.*)\//gi;
+					var re=/thumb[/\/](.*)[/\/]/gi;
 					p=re.exec(p);
 
 

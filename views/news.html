@@ -177,7 +177,7 @@
 		<style>
 		.navbar {
 			width: 100%;
-			position: fixed;
+			position: absolute;
 			top: 0;
 			left: 0;
 			z-index: 24;
@@ -658,41 +658,42 @@
 		<!--[if lt IE 7]>
 			<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 			<![endif]-->
-			<header>
-				<div class="navbar">
-					<div class="logo page-width">
-						<object type="application/x-shockwave-flash" 
-						data="img/logo.swf" wmode="transparent"
-						width="76" height="50">
-						<param name="movie" value="img/logo.swf" />
-						<param name="wmode" value="transparent" />
-						<param name="quality" value="high"/>
-						<embed name="Sample" value="img/logo.swf"></embed>
-					</object>
-					
-					<ul id="js-main-nav" class="nav">
-						<li class="subnav"><a href="javascript:void(0);"><span>About</span></a>
-							<div class="subnav__div">
-								<a href="/career"><span>Career</span></a>
-								<a href="/contact"><span>Contact</span></a>
-							</div>
-						</li>
-						<li class="subnav">
-							<a class="subnav__top-most" href="javascript:;"><span>Works</span></a>
-							<div class="subnav__div">
-								<a href="javascript:;"><span>News</span></a>
-								<a href="/showcase"><span>Showcase</span></a>
-							</div>
-						</li>
-					</ul>
-					
-				</div>
-			</div>
-		</header>
+			
 				
 					
 					
 		<div class="main">
+				<header>
+					<div class="navbar">
+						<div class="logo page-width">
+							<object type="application/x-shockwave-flash" 
+							data="img/logo.swf" wmode="transparent"
+							width="76" height="50">
+							<param name="movie" value="img/logo.swf" />
+							<param name="wmode" value="transparent" />
+							<param name="quality" value="high"/>
+							<embed name="Sample" value="img/logo.swf"></embed>
+						</object>
+					
+						<ul id="js-main-nav" class="nav">
+							<li class="subnav"><a href="javascript:void(0);"><span>About</span></a>
+								<div class="subnav__div">
+									<a href="/career"><span>Career</span></a>
+									<a href="/contact"><span>Contact</span></a>
+								</div>
+							</li>
+							<li class="subnav">
+								<a class="subnav__top-most" href="javascript:;"><span>Works</span></a>
+								<div class="subnav__div">
+									<a href="javascript:;"><span>News</span></a>
+									<a href="/showcase"><span>Showcase</span></a>
+								</div>
+							</li>
+						</ul>
+					
+					</div>
+				</div>
+			</header>
 			<div class="page-width">
 				<!-- <ul class="heading--feature">
 					<li>vision</li>
@@ -743,8 +744,8 @@
 			<nav class='pagination page-width text-right' role='toolbar'>
 				<ul>
 					<li><a rel="prev" href="">&larr;</a></li>
-					<li><a rel="first" href="">1</a></li>
-					<li><a class="current" href="">2</a></li>
+					<li><a class="current" rel="first" href="">1</a></li>
+					<li><a href="">2</a></li>
 					<li><a href="">3</a></li>
 					<li><a href="">4</a></li>
 					<li><a rel="last" href="">5</a></li>
