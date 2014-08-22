@@ -1,0 +1,31 @@
+{
+  "name": "cyanrhino",
+  "version": "0.0.1",
+  "homepage": "https://github.com/ishida83/cyanrhino",
+  "authors": [
+    "ishida <webmaster@joe1cafe.com>"
+  ],
+  "main": "cyanrhino.js",
+  "moduleType": [
+    "node"
+  ],
+  "license": "BSD",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "1.10.2",
+    "modernizr": "~2.8.3",
+    "fontawesome": "~4.1.0",
+    "normalize.css": "~3.0.1",
+    "css3-mediaqueries-js": "*",
+    "isotope": "~2.0.0",
+    "jquery.lazyload": "~1.9.3",
+    "jquery-ias": "~2.1.2",
+    "jquery.jscroll": "~2.2.4"
+  }
+}
