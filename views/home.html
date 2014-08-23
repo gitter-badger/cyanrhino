@@ -28,14 +28,15 @@
         <meta name="apple-mobile-web-app-title" content="">
 
 
-        <link rel="stylesheet" href="css/normalize.css">
-		<link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" media="screen" title="no title" charset="utf-8">
+        <link rel="stylesheet" href="bower_components/normalize.css/normalize.css" type="text/css" media="screen" title="no title" charset="utf-8">
+		<link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.min.css" type="text/css" media="screen" title="no title" charset="utf-8">
         <link rel="stylesheet" href="css/main.css">
 
-        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="bower_components/modernizr/modernizr.js" type="text/javascript" charset="utf-8"></script>
 		<!--[if lt IE 9]>
 			<link rel="stylesheet" href="css/ie.css" type="text/css" media="screen" title="no title" charset="utf-8">
-			<script src="js/vendor/css3-mediaqueries.js" type="text/javascript" charset="utf-8"></script>
+			<script src="bower_components/css3-mediaqueries-js/css3-mediaqueries.js" type="text/javascript" charset="utf-8"></script>
+			
 		<![endif]-->
 		<style>
 		*,html,body,div,p,span,label,input,textarea,select,a,td,th,i,strong,em{
@@ -1244,12 +1245,12 @@
 		</div>
 
 
-		<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+		<script src="bower_components/jquery/jquery.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/plugins.js"></script>
 		<script src="js/helper.js"></script>
 		<script src="js/main.js"></script>
 		<!--script src="js/vendor/freewall.js" type="text/javascript" charset="utf-8"></script-->
-		<script src="js/vendor/isotope.pkgd.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="bower_components/isotope/dist/isotope.pkgd.min.js" type="text/javascript" charset="utf-8"></script>
 
         <script>
             var resize=function(){
@@ -1588,8 +1589,9 @@
 				});
 			});
 			</script>
+			
+			<script src="bower_components/jquery.lazyload/jquery.lazyload.min.js" type="text/javascript" charset="utf-8"></script>
 
-			<script src="js/vendor/jquery.lazyload.min.js" type="text/javascript" charset="utf-8"></script>
 			<script>
 			$(function(){
 				$(".item").lazyload({
@@ -1597,8 +1599,8 @@
 				});
 			});
 			</script>
-
-			<script src="js/vendor/jquery-ias.min.js" type="text/javascript" charset="utf-8"></script>
+			<script src="bower_components/jquery-ias/dist/jquery-ias.min.js" type="text/javascript" charset="utf-8"></script>
+			
 			<script>
 			$(function(){
 				var ias = $.ias({
@@ -1616,8 +1618,8 @@
 				ias.extension(new IASNoneLeftExtension({html: '<div style="position: absolute;text-align:center;bottom: -50px;width: 100%;"><p><em>暂时没新内容了，尽情期待哟!</em></p></div>'}));
 			});
 			</script>
+			<script src="bower_components/jquery.jscroll/jquery.jscroll.min.js" type="text/javascript" charset="utf-8"></script>
 
-			<script src="js/vendor/jquery.jscroll.min.js" type="text/javascript" charset="utf-8"></script>
 			<script>
 			$(function(){
 				$('#tiles').jscroll({

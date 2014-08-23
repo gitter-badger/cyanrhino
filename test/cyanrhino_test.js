@@ -32,5 +32,5 @@ exports['awesome'] = {
     // tests here
     test.equal(cyanrhino.awesome(), 'awesome', 'should be awesome.');
     test.done();
-  },
+  }
 };

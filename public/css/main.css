@@ -298,15 +298,15 @@ textarea {
         margin: 0.5cm;
     }
 
-    p,
-    h2,
-    h3 {
+    p{
         orphans: 3;
         widows: 3;
     }
 
     h2,
     h3 {
+        orphans: 3;
+        widows: 3;
         page-break-after: avoid;
     }
 }
@@ -329,10 +329,10 @@ a {
      -moz-box-sizing: border-box;
           box-sizing: border-box;
 }
-
+/*
 .detail--header-img .detail--nav--icon, .detail--dark .detail--nav--icon{
-	
-}
+
+}*/
 
 .icon-play:before {
     content: "\e000"
