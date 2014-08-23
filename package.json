@@ -4,6 +4,18 @@
   "engines": {
     "node": ">= 0.10.0"
   },
+  "description": "0.0.1",
+  "main": "cyanrhino.js",
+  "author": "ishida",
+  "license": "GPLv3",
+  "bugs": {
+    "url": "https://github.com/ishida83/cyanrhino/issues"
+  },
+  "homepage": "https://github.com/ishida83/cyanrhino",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ishida83/cyanrhino.git"
+  },
   "devDependencies": {
     "grunt": "~0.4.2",
     "grunt-contrib-jshint": "~0.7.2",
