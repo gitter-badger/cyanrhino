@@ -10,19 +10,19 @@
 	<nav id="primary">
 		<ul>
 			<li>
-				<a href="home">
+				<a href="/backend/home">
 					<span class="glyph dashboard"></span>
 					控制台
           </a>
 			</li>
 			<li>
-				<a href="layout">
+				<a href="/backend/layout">
 					<span class="glyph shuffle"></span>
 					界面外观
           </a>
 			</li>
 			<li>
-				<a href="gallery/add">
+				<a href="/backend/gallery/add">
 					<span class="glyph pencil"></span>
 					图片
           </a>
@@ -40,7 +40,7 @@
           </a>
 			</li>
 			<li class="bottom">
-				<a href="logout">
+				<a href="/backend/logout">
 					<span class="glyph quit"></span>
 					登出
           </a>
@@ -52,7 +52,7 @@
 	<nav id="secondary">
 		<ul>
 			<li class="active"><a href="javascript:;">新闻列表页</a></li>
-			<li><a href="news/add">新增文章（高级）</a></li>
+			<li><a href="/backend/news/add">新增文章（高级）</a></li>
 		</ul>
 
 		<div id="notifications">
@@ -92,7 +92,7 @@
 								<td><%=list[i].author%></td>
 
 								<td>
-									<a href="news/update/<%= list[i]._id%>" class="button plain">编辑</a>
+									<a href="/backend/news/update/<%= list[i]._id%>" class="button plain">编辑</a>
 									<a href="#confirm" class="button plain modal">删除</a>
 								</td>
 							</tr>
@@ -130,7 +130,7 @@
 	<script>
 	$(function(){
 		$('.datatable td a').on('click',function(e){
-			$('#confirm form').attr('action','news/remove/'+$(this).parent().parent().find('td:eq(0)').text());
+			$('#confirm form').attr('action','/backend/news/remove/'+$(this).parent().parent().find('td:eq(0)').text());
 		});
 	});	
 	</script>
