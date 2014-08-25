@@ -1,10 +1,10 @@
 module.exports = exports = {
-    strict: {
-        options: {
-            'import': false
-        },
-        src: ['public/css/**/*.css']
-    },
+    //strict: {
+    //    options: {
+    //        'import': true
+    //    },
+    //    src: ['public/css/**/*.css']
+    //},
     lax: {
         options: {
             'import': 2
