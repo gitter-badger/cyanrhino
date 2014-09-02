@@ -1089,7 +1089,7 @@
                                     <span>showcase</span>
                                     <h3><%
 										for(var j=0;j< data.length; j++){
-											if(data[j].filename==layout[i].filename) {
+											if(data[j] && data[j].filename==layout[i].filename) {
 										%>
 											<%=data[j].content%>
 										<%	
@@ -1098,7 +1098,7 @@
 										%></h3>
                                     <p><%
 										for(var j=0;j< data.length; j++){
-											if(data[j].filename==layout[i].filename){
+											if(data[j] && data[j].filename==layout[i].filename){
 										%>
 											<%=data[j].title%>
 										<%	
