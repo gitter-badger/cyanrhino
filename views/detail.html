@@ -647,6 +647,7 @@
 			<div class="clearfix"></div>
 			<div class="container page-width">
 				<section class="news-detail">
+					<% if(data) {%>
 					<article>
 						<header>
 							<time datetime="<%=data.uploadDate%>" pubdate="pubdate" class="pubdate"><%=new Date(data.uploadDate).toDateString()%></time>
@@ -660,7 +661,7 @@
                         </figure>
 						<p><%=data.content%></p>
 					</article>
-
+					<% } %>
 				</section>
 
 			</div>
