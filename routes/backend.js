@@ -61,6 +61,12 @@ exports.photoGallery=function(req,res){
 	});
 };
 
+exports.album = function (req, res) {
+    photosService.show(req, res, function (d) {
+        res.render('backend/album', { title: 'CyanRhino', data: d, user: req.user });
+    });
+};
+
 exports.photoUpdate=function(req,res){
     photosService.photoUpdate(req,res);
 };

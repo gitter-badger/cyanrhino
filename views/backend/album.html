@@ -107,19 +107,6 @@
 		border:none;
 		height:20px;
 	}
-
-	    .quick-link {
-	        border-bottom: 1px solid #f0f0fa;
-            padding:5px;
-            margin:10px;
-            padding-right:0;
-	    }
-	    .text-right {
-	        text-align: right;
-	    }
-	        .text-right a {
-	            text-decoration: none;
-	        }
 	</style>
 </head>
 
@@ -171,7 +158,8 @@
 	<nav id="secondary">
 		<ul>
 			<li><a href="gallery/add">上传图片</a></li>
-			<li class="active"><a href="javascript:;">图片库</a></li>
+			<li><a href="gallery">图片库</a></li>
+            <li class="active"><a href="javascript:;">相簿</a></li>
 		</ul>
 
 		<div id="notifications">
@@ -205,16 +193,7 @@
 
 			<div class="box">
 				<div class="box-header">
-					<h1>Gallery</h1>
-				</div>
-
-				<div id="filters" class="button-group">
-					<button data-filter="*" class="button small">show all</button>
-					<button data-filter=".metal" class="button small">metal</button>
-					<button data-filter=".transition" class="button small">transition</button>
-					<button data-filter=".alkali, .alkaline-earth" class="button small">alkali & alkaline-earth</button>
-					<button data-filter=":not(.transition)" class="button small">not transition</button>
-					<button data-filter=".metal:not(.transition)" class="button small">metal but not transition</button>
+					<h1>相簿</h1>
 				</div>
 
 				<div class="box-content">
@@ -224,9 +203,8 @@
 					<div id="fotoWrapper">
 						<% for(var i=0;data &&  i<data.length; i++) { %>
 							<div class="item">
-                                <div class="text-right quick-link"><a href="album/<%= data[i]._id%>">相簿模式</a></div>
 								<figure>
-									<img src="<%= data[i].imagePath%>" />
+									<img src="<%= data[i]._id%>" />
 									<!-- <figcaption><%= data[i].imageName%></figcaption> -->
 								</figure>
 								<form action="../" method="post" novalidate="novalidate">
@@ -275,84 +253,6 @@
 
 	<% include js.ejs %>
 
-	<script src="/js/vendor/isotope.pkgd.min.js" type="text/javascript" charset="utf-8"></script>
-	<script src="/js/vendor/fit-columns.js" type="text/javascript" charset="utf-8"></script>
-	<script src="/js/vendor/bootstrap-tagsinput.min.js" type="text/javascript" charset="utf-8"></script>
-
-
-	<script>
-	$(function(){
-		var $container = $('#fotoWrapper');
-		// $container.isotope({
-		// 	itemSelector: '.item',
-		// 	layoutMode: 'fitRows',
-		// 	filter:'.item'
-		// });
-
-
-
-
-		$('#filters').on( 'click', 'button', function() {
-		  var filterValue = $(this).attr('data-filter');
-		  $container.isotope({ filter: filterValue,layoutMode: 'fitColumns' });
-		});
-
-		$('.item').on('click',function(){
-			if(!$(this).hasClass('on')){
-				$('.item').removeClass('on');
-				$(this).addClass('on');
-			}
-		});
-
-		$('.tag').tagsinput({
-		  maxTags: 3
-		});
-
-		$('#fotoWrapper form').submit(function(e){
-			e.preventDefault();
-			if ($(this)[0].checkValidity()) {
-				$.post( "/backend/gallery/update/"+$(this).find('[name="target"]').val(), $(this).serialize()/*+"&layout="+$(this).find('[name^="layout"]:checked').val()*/, function( data ) {
-					alert( "保存成功 " + data );
-				}).done(function() {
-					//alert( "second success" );
-				})
-				.fail(function() {
-					alert( "error" );
-				});
-			}
-		});
-
-		$('#confirm form').submit(function(e){
-			e.preventDefault();
-			$.get( $(this).attr('action'), function( data ) {
-				var path=$('#confirm form').attr('action');
-				path=path.slice(path.lastIndexOf('/')+1,path.length);
-				$('[value="'+path+'"]').parents('.item').remove();
-				$('#confirm form a').trigger('click');
-			}).done(function() {
-				//alert( "second success" );
-			})
-			.fail(function() {
-				alert( "error" );
-			});
-		});
-
-		$('#fotoWrapper p a').on('click',function(e){
-			$('#confirm form').attr('action','/backend/gallery/remove/'+$(this).attr('data-id'));
-		});
-
-
-	});
-	</script>
-
-	<script>
-	$(function(){
-		$('form label.prettyCheckbox').on('click',function() {
-			$(this).parents('form').find('input:radio').attr('checked',false);
-		    $(this).prev('input').attr('checked',$(this).hasClass('checked'));
-		});
-	});
-	</script>
 
 </body>
 
