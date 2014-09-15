@@ -3,17 +3,13 @@
 
 	<title>CyanRhino Backend System</title>
 	<style>
-	.isotope:after {
-		content: '';
-		display: block;
-		clear: both;
-	}
 	.item {
 		margin:5px 5px 0 0;
-		padding:15px;
+		padding:1px;
 		float:left;
         display:inline-block;
-		width:128px;
+		width:100px;
+		height:100px;
 		word-wrap:break-word;
 		white-space:normal;
 		word-break:break-word;
@@ -26,19 +22,13 @@
 		-ms-transition:all .2s linear;
 		-o-transition:all .2s linear;
 		transition:all .2s linear;
+		box-shadow:inset 0 0 10px #cacaca;
 	}
 	.item:hover{
-		border:1px solid #666;
+		border:1px solid #999;
 	}
-	.item.on,.item + .on{
-		background:#ecf0f1;
-		box-shadow:inset 1px 1px 10px #cacaca;
-	}
-	#main .box-content{
-		overflow-x: auto;
-		overflow-y:auto;
-		min-height:400px;
-	}
+
+	
 	label.list{
 		display:inline-block;
 	}
@@ -46,68 +36,17 @@
 		margin:0;
 		margin-top:5px;
 	}
+	#fotoWrapper{
+		overflow:hidden;
+	}
 	#fotoWrapper figure{
-		max-height: 300px;
+		height: 100%;
+		width:100%;
+		background-size:100% 100%;
 		overflow: hidden;
 	}
-	#filters{
-		margin:10px 0 0 10px;
-	}
 	</style>
-	<style>
-	.bootstrap-tagsinput {
-	  background-color: #fff;
-	  border: 1px solid #ccc;
-	  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-	  display: inline-block;
-	  padding: 4px 0;
-	  margin: 0;
-	  color: #555;
-	  vertical-align: middle;
-	  border-radius: 4px;
-	  max-width: 100%;
-	  line-height: 22px;
-	  font-size:10px;
-	}
-	.bootstrap-tagsinput input {
-	  border: none;
-	  box-shadow: none;
-	  outline: none;
-	  background-color: transparent;
-	  padding: 0;
-	  margin: 0;
-	  width: auto !important;
-	  max-width: inherit;
-	}
-	.bootstrap-tagsinput input:focus {
-	  border: none;
-	  box-shadow: none;
-	}
-	.bootstrap-tagsinput .tag {
-	  margin-right: 2px;
-	  color: #666;
-	  font-size:10px;
-	}
-	.bootstrap-tagsinput .tag [data-role="remove"] {
-	  margin-left: 8px;
-	  cursor: pointer;
-	}
-	.bootstrap-tagsinput .tag [data-role="remove"]:after {
-	  content: "x";
-	  padding: 0px 2px;
-	}
-	.bootstrap-tagsinput .tag [data-role="remove"]:hover {
-	  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
-	}
-	.bootstrap-tagsinput .tag [data-role="remove"]:hover:active {
-	  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-	}
-	form .bootstrap-tagsinput input[type="text"]{
-		background:none;
-		border:none;
-		height:20px;
-	}
-	</style>
+	
 </head>
 
 <body>
@@ -116,13 +55,13 @@
 	<nav id="primary">
 		<ul>
 			<li>
-				<a href="home">
+				<a href="/backend/home">
 					<span class="glyph dashboard"></span>
 					控制台
 				</a>
 			</li>
 			<li>
-				<a href="layout">
+				<a href="/backend/layout">
 					<span class="glyph shuffle"></span>
 					界面外观
 				</a>
@@ -134,7 +73,7 @@
 				</a>
 			</li>
 			<li>
-				<a href="news/list">
+				<a href="/backend/news/list">
 					<span class="glyph listicon"></span>
 					新闻管理
 				</a>
@@ -146,7 +85,7 @@
 				</a>
 			</li>
 			<li class="bottom">
-				<a href="logout">
+				<a href="/backend/logout">
 					<span class="glyph quit"></span>
 					登出
 				</a>
@@ -157,8 +96,8 @@
 	<!-- Secondary navigation -->
 	<nav id="secondary">
 		<ul>
-			<li><a href="gallery/add">上传图片</a></li>
-			<li><a href="gallery">图片库</a></li>
+			<li><a href="/backend/gallery/add">上传图片</a></li>
+			<li><a href="/backend/gallery">图片库</a></li>
             <li class="active"><a href="javascript:;">相簿</a></li>
 		</ul>
 
@@ -170,26 +109,7 @@
 
 	<section id="maincontainer">
 		<div id="main" class="container_12">
-			<% if(data && data.length>0) { %>
-			<div id="confirm" class="box">
-				<div class="box-header">
-					<h1>友情提示</h1>
-				</div>
-
-				<div class="box-content">
-					<p>你正在<strong>删除</strong>该条记录</p>
-					<p>是否继续？</p>
-
-
-					<div class="action_bar">
-						<form action="" method="get">
-							<a href="#" class="close small button">取消</a>
-							<input type="submit" class="button small blue" value="确认" />
-						</form>
-					</div>
-				</div>
-			</div>
-			<%}%>
+			
 
 			<div class="box">
 				<div class="box-header">
@@ -201,44 +121,33 @@
 
 
 					<div id="fotoWrapper">
+						<form action="../" method="post" novalidate="novalidate">		
+
 						<% for(var i=0;data &&  i<data.length; i++) { %>
+							<%if (i==0) {%>
+								<input type="hidden" value="<%= data[i]._id%>" name="_id" />
+								<p>
+									<input type="text" value="<%= data[i].albumTitle%>" name="albumTitle" placeholder="相册标题" />
+								</p>
+								<p>
+									<input type="text" value="<%= data[i].albumSummary%>" name="albumSummary" placeholder="相册描述" />
+								</p>
+							<div class="item add">
+								<a href="#add" class="btn" title="添加相片">&plus;</a>
+							</div>												
+							<%}%>
+							
 							<div class="item">
-								<figure>
-									<img src="<%= data[i]._id%>" />
+								<figure style="background-image:url(/uploads/<%= data[i].photoPath.slice(data[i].photoPath.lastIndexOf('/'))%>); background-repeat:no-repeat;">
+									<img src="" />
 									<!-- <figcaption><%= data[i].imageName%></figcaption> -->
 								</figure>
-								<form action="../" method="post" novalidate="novalidate">
-									<!-- <p>
-										<input type="radio" name="layout_<%= data[i]._id%>" value="0" id="<%= data[i]._id%>_0" <%if(0==data[i].layout) {%> checked="checked"<%}%>  />
-										<label for="<%= data[i]._id%>_0">Full</label>
-										<input type="radio" name="layout_<%= data[i]._id%>" value="1" id="<%= data[i]._id%>_1" <%if(1==data[i].layout) {%> checked="checked"<%}%> />
-										<label for="<%= data[i]._id%>_1">Half</label>
-										<input type="radio" name="layout_<%= data[i]._id%>" value="2" id="<%= data[i]._id%>_2" <%if(2==data[i].layout) {%> checked="checked"<%}%> />
-										<label for="<%= data[i]._id%>_2">1/3</label>
-										<input type="radio" name="layout_<%= data[i]._id%>" value="3" id="<%= data[i]._id%>_3" <%if(3==data[i].layout) {%> checked="checked"<%}%> />
-										<label for="<%= data[i]._id%>_3">2/3</label>
-
-									</p> -->
-                                    <input type="hidden" value="<%= data[i]._id%>" name="target" />
-									<p>
-										<input type="text" id="caption_<%= data[i]._id%>" placeholder="图片标题" name="caption" class="{validate:{required:true, minlength:3}}" required="required" value="<%= data[i].title%>" />
-									</p>
-									<p>
-										<textarea id="summary_<%= data[i]._id%>" placeholder="请输入图片描述" name="summary" class="{validate:{required:true, minlength:3}}" required="required"><%= data[i].content%></textarea>
-									</p>
-									<p>
-										<input type="text" class="tag" name="tag" id="tag_<%= data[i]._id%>" value="<%=data[i].tag%>" placeholder="请输入图片标签" />
-									</p>
-									<p>										
-										<a href="#confirm" class="button small modal" data-id="<%= data[i]._id%>">删除</a>
-										<input type="submit" class="button small blue" value="保存" />
-									</p>
-									
-								</form>
+																									
 							</div>
 
 
 						<% } %>
+						</form>
 					</div>
 
 

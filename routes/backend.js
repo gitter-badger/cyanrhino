@@ -2,6 +2,7 @@ var newsService=require('../lib/news');
 var usersService=require('../lib/users');
 var photosService=require('../lib/photos');
 var layoutService=require('../lib/homepage');
+var albumService=require('../lib/album');
 
 exports.index= function(req,res) {
     res.render('backend/dashboard',{ user: req.user });
@@ -62,8 +63,15 @@ exports.photoGallery=function(req,res){
 };
 
 exports.album = function (req, res) {
-    photosService.show(req, res, function (d) {
-        res.render('backend/album', { title: 'CyanRhino', data: d, user: req.user });
+    albumService.show(req, res, function (d) {
+		if(d.length<=0) {
+			photosService.show(req,res,function(data){
+				albumService.save({coverId:req.param('uuid'),photo:data,title:'',summary:''},function(da){
+					res.render('backend/album', { title: 'CyanRhino', data: da, user: req.user });
+				});
+			});
+		}
+        else res.render('backend/album', { title: 'CyanRhino', data: d, user: req.user });
     });
 };
 
