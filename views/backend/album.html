@@ -23,6 +23,7 @@
 		-o-transition:all .2s linear;
 		transition:all .2s linear;
 		box-shadow:inset 0 0 10px #cacaca;
+		position:relative;
 	}
 	.item:hover{
 		border:1px solid #999;
@@ -36,14 +37,47 @@
 		margin:0;
 		margin-top:5px;
 	}
-	#fotoWrapper{
+	.ui-state-default{
+		position:relative;
+	}
+	.ui-icon{
+		position:absolute;
+		right:5px;
+		bottom:5px;
+		z-index:1;
+		cursor:pointer;
+		color:white;
+		text-shadow: 0 0 10px rgba(128,128,128,0.5);
+	}
+	.ui-state-highlight { height: 1.5em; line-height: 1.2em; width:102.6667px; }
+	#fotoWrapper,
+	#background .box-content > div{
 		overflow:hidden;
 	}
-	#fotoWrapper figure{
+	#fotoWrapper figure,
+	#background figure img{
 		height: 100%;
 		width:100%;
 		background-size:100% 100%;
 		overflow: hidden;
+	}
+	.hidden{
+		display:none;
+	}
+	.add .btn{
+		display:block;
+		position:absolute;
+		width:100%;
+		height:100%;
+		overflow:hidden;
+		line-height:100%;
+		font-size:80px;
+		vertical-align:middle;
+		text-align:center;
+		text-decoration:none;
+		color:#cdcdcd;
+		size:23em;
+		cursor:pointer;
 	}
 	</style>
 	
@@ -109,7 +143,28 @@
 
 	<section id="maincontainer">
 		<div id="main" class="container_12">
-			
+			<div id="background" class="box hidden">
+				<div class="box-header">
+					<h1>图片设置</h1>
+				</div>
+
+				<div class="box-content">
+					<div >
+					<% for(var i=0;foto &&  i<foto.length; i++) { %>
+						<div class="item">
+							<figure>
+								<img src="<%= foto[i].imagePath%>" style="max-width:120px;" />
+							</figure>
+						</div>
+					<% } %>
+					</div>
+
+					<div class="action_bar">
+							<a href="#" class="close small button">取消</a>
+							<input type="button" class="button small blue" value="确认" />
+					</div>
+				</div>
+			</div>
 
 			<div class="box">
 				<div class="box-header">
@@ -133,13 +188,12 @@
 									<input type="text" value="<%= data[i].albumSummary%>" name="albumSummary" placeholder="相册描述" />
 								</p>
 							<div class="item add">
-								<a href="#add" class="btn" title="添加相片">&plus;</a>
+								<a href="#background" class="btn modal" title="添加相片">&plus;</a>
 							</div>												
 							<%}%>
 							
 							<div class="item">
-								<figure style="background-image:url(/uploads/<%= data[i].photoPath.slice(data[i].photoPath.lastIndexOf('/'))%>); background-repeat:no-repeat;">
-									<img src="" />
+								<figure style="background-image:url(/uploads/<%= data[i].photoPath%>); background-repeat:no-repeat;">
 									<!-- <figcaption><%= data[i].imageName%></figcaption> -->
 								</figure>
 																									
@@ -162,6 +216,18 @@
 
 	<% include js.ejs %>
 
+	<script>
+	$(function(){
+		$('#fotoWrapper .item:not(.add)').on('mouseenter',function(e){
+			var self=this;
+			$(self).append('<span class="ui-icon ui-icon-trash"></span>');
+
+		}).on('mouseleave',function(e){
+			$(this).find('.ui-icon').remove();
+		});
+		
+	});
+	</script>
 
 </body>
 

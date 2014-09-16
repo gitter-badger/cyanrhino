@@ -64,14 +64,28 @@ exports.photoGallery=function(req,res){
 
 exports.album = function (req, res) {
     albumService.show(req, res, function (d) {
-		if(d.length<=0) {
-			photosService.show(req,res,function(data){
-				albumService.save({coverId:req.param('uuid'),photo:data,title:'',summary:''},function(da){
-					res.render('backend/album', { title: 'CyanRhino', data: da, user: req.user });
-				});
+		if(d && d.length<=0) {
+			photosService.show(req,res,function(data){				
+				if(data) {
+					albumService.save({coverId:req.param('uuid'),photo:data,title:'',summary:''},function(da){
+						// res.render('backend/album', { title: 'CyanRhino', data: da, user: req.user });
+						if('undefined'!==req.param('uuid')) {
+							res.redirect('/backend/album/'+req.param('uuid'));				
+						}
+					});
+				}
+				else {
+					photosService.listFoto(function(fotos){
+						res.render('backend/album', { title: 'CyanRhino', data: d, foto:fotos, user: req.user });	
+					});
+				}
 			});
 		}
-        else res.render('backend/album', { title: 'CyanRhino', data: d, user: req.user });
+        else {
+			photosService.listFoto(function(fotos){
+				res.render('backend/album', { title: 'CyanRhino', data: d, foto:fotos,user: req.user });
+			});
+		}
     });
 };
 
