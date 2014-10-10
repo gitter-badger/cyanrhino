@@ -28,7 +28,12 @@
 	.item:hover{
 		border:1px solid #999;
 	}
-
+	.item.on,.item + .on{
+		background:#ecf0f1;
+		border:1px solid #333;
+		box-shadow:inset 1px 1px 10px #cacaca,
+					0 0 5px #666;
+	}
 	
 	label.list{
 		display:inline-block;
@@ -144,6 +149,7 @@
 	<section id="maincontainer">
 		<div id="main" class="container_12">
 			<div id="background" class="box hidden">
+				<form action="" method="get">
 				<div class="box-header">
 					<h1>图片设置</h1>
 				</div>
@@ -161,9 +167,10 @@
 
 					<div class="action_bar">
 							<a href="#" class="close small button">取消</a>
-							<input type="button" class="button small blue" value="确认" />
+							<input type="submit" class="button small blue" value="确认" />
 					</div>
 				</div>
+				</form>
 			</div>
 
 			<div class="box">
@@ -180,12 +187,12 @@
 
 						<% for(var i=0;data &&  i<data.length; i++) { %>
 							<%if (i==0) {%>
-								<input type="hidden" value="<%= data[i]._id%>" name="_id" />
+								<input type="hidden" value="<%= data[i].coverId%>" name="coverId" id="coverId" />
 								<p>
-									<input type="text" value="<%= data[i].albumTitle%>" name="albumTitle" placeholder="相册标题" />
+									<input type="text" value="<%= data[i].albumTitle%>" name="albumTitle" id="albumTitle" placeholder="相册标题" />
 								</p>
 								<p>
-									<input type="text" value="<%= data[i].albumSummary%>" name="albumSummary" placeholder="相册描述" />
+									<input type="text" value="<%= data[i].albumSummary%>" name="albumSummary" id="albumSummary" placeholder="相册描述" />
 								</p>
 							<div class="item add">
 								<a href="#background" class="btn modal" title="添加相片">&plus;</a>
@@ -193,7 +200,7 @@
 							<%}%>
 							
 							<div class="item">
-								<figure style="background-image:url(/uploads/<%= data[i].photoPath%>); background-repeat:no-repeat;">
+								<figure style="background-image:url(/uploads/<%= data[i].photoPath%>); background-repeat:no-repeat;" data-id="<%= data[i]._id%>">
 									<!-- <figcaption><%= data[i].imageName%></figcaption> -->
 								</figure>
 																									
@@ -224,6 +231,40 @@
 
 		}).on('mouseleave',function(e){
 			$(this).find('.ui-icon').remove();
+		});
+
+		$('.item').on('click',function(){
+			if(!$(this).hasClass('on')){
+				$('.item').removeClass('on');
+				$(this).addClass('on');
+			}
+		});
+
+		$('#fotoWrapper').on('click','.ui-icon-trash',function(e){
+			e.stopPropagation();
+			e.preventDefault();
+			var self=this;
+			console.log($(self).parent().find('figure').attr('data-id'));
+
+			$.get('/backend/album/remove/'+$(self).parent().find('figure').attr('data-id'),function(){
+				$(self).parent().remove();	
+			});
+			
+		});
+
+
+		$('#background form').submit(function(e){
+			e.preventDefault();
+			var filename=$('#background .on').find('img').attr('src').slice($('#background .on').find('img').attr('src').lastIndexOf('/')+1,$('#background .on').find('img').attr('src').length);
+			filename=filename.slice(filename.lastIndexOf('_')+1,filename.length);
+			$.post('/backend/album/add/'+$('#coverId').val()+'/'+JSON.stringify({				
+				title:$('#albumTitle').val(),
+				summary:$('#albumSummary').val(),
+				filename:filename
+			}),function(){
+
+			});
+			$('.close').trigger('click');
 		});
 		
 	});

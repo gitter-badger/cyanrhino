@@ -88,6 +88,22 @@ exports.album = function (req, res) {
 		}
     });
 };
+exports.albumRemove=function(req,res,callback){
+    albumService.remove(req,res);
+};
+
+exports.albumAdd=function(req,res,callback){
+	var album=JSON.parse(req.params.photo);
+	if(album) {
+		album.coverId=req.param('coverId');
+		album.photo={};
+		album.photo.filename=album.filename;
+	}
+	
+    albumService.save(album,function(data){
+    	res.send(200);	
+    });
+};
 
 exports.photoUpdate=function(req,res){
     photosService.photoUpdate(req,res);
