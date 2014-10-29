@@ -582,6 +582,63 @@
 			    *display: inline
 			}
 		</style>
+        <style>
+        figure {
+        	display: inline-block;
+        	position: relative;
+        	overflow: hidden;
+        	float: left;
+            cursor:pointer;
+        }
+        figure img {
+        	width: 50%;
+        	height: 50%;
+        	/* For Safari 3.1 to 6.0 */
+        	-webkit-transition-property: width, height, margin;
+        	-webkit-transition-duration: 0.15s;
+        	-webkit-transition-timing-function: linear;
+        	/* Standard syntax */
+        	transition-property: width, height, margin;
+        	transition-duration: 0.15s;
+        	transition-timing-function: linear;
+        }
+        figure::after{
+        	content: "";
+        	position: absolute;
+        	/* For Safari 3.1 to 6.0 */
+        	-webkit-transition-property: top, bottom, left, right;
+        	-webkit-transition-duration: 0.15s;
+        	-webkit-transition-timing-function: linear;
+        	/* Standard syntax */
+        	transition-property: top, bottom, left, right;
+        	transition-duration: 0.15s;
+        	transition-timing-function: linear;
+        }
+        figure:hover img {
+        	width: 110%;
+        	height: 110%;
+        	margin-left: -5%;
+        	margin-top: -5%;
+        }
+
+        section h1 {
+		font-weight: 100;
+		font-size: 100px;
+		float: none;
+		text-align: center;
+		display: inline-block;
+		vertical-align: middle;
+		letter-spacing: 10px
+		}
+		/* Center the div */
+
+		section > p.center {
+		text-align: center;
+		vertical-align: middle;
+		height: auto;
+		width: auto;
+		}
+        </style>
         <script>
             var _hmt = _hmt || [];
             (function () {
@@ -597,7 +654,7 @@
 		<!--[if lt IE 7]>
 			<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 			<![endif]-->
-			
+
 
 
 
@@ -656,32 +713,23 @@
 
 
 			<div class="clearfix"></div>
-			<div class="container page-width">
-				<section class="news-detail">
-					<% if(data) {%>
-					<article>
-						<header>
-							<time datetime="<%=data.uploadDate%>" pubdate="pubdate" class="pubdate"><%=new Date(data.uploadDate).toDateString()%></time>
-							<h2>
-								<%=data.title%>
-							</h2>
-
-						</header>
-                        <figure>
-                            <img src="/uploads/<%=data.filename%>" alt="" />
-                        </figure>
-						<p><%=data.content%></p>
-					</article>
-					<% } %>
-				</section>
-
-			</div>
-
 
 
 		</div>
 
 
+		<div style="position:relative; overflow:hidden; clear:both;">
+			<% if(data) {%>
+				<section class="top swctallax" style="height: 100%;background:url(/uploads/<%=data.filename%>) no-repeat left top fixed;">
+					<h2>
+						<%=data.title%>
+					</h2>
+					<p><time datetime="<%=data.uploadDate%>" pubdate="pubdate" class="pubdate"><%=new Date(data.uploadDate).toDateString()%></time></p>
+				</section>
+				<section class="top swctallax" style="height: 100%;background:url(/uploads/<%=data.filename%>) no-repeat center center fixed;"></section>
+				<section class="top swctallax" style="height: 100%;background:url(/uploads/<%=data.filename%>) no-repeat right bottom fixed; "></section>
+			<% } %>
+		</div>
 
 
 
@@ -689,37 +737,49 @@
 		<script src="/js/plugins.js"></script>
 		<script src="/js/helper.js"></script>
 		<script src="/js/main.js"></script>
+		<script src="/js/vendor/jquery.inview.js"></script>
+		<script src="/js/vendor/jquery.swctallax.js"></script>
+		<script src="/js/vendor/jquery.parallax-1.1.3.js"></script>
 
 
 
-
-			<script>
-			$(function(){
-				$('.nav').on('mouseover','.subnav',function(){
-					$('.subnav').removeClass('hovering');
-					$(this).addClass('hovering').find('.subnav__div').addClass('hover');
-				}).on('mouseout','.subnav',function(){
-					$('.subnav').removeClass('hovering');
-					$('.subnav__div').removeClass('hover');
-				});
-
-
-
-
+		<script>
+		$(function(){
+			$('.nav').on('mouseover','.subnav',function(){
+				$('.subnav').removeClass('hovering');
+				$(this).addClass('hovering').find('.subnav__div').addClass('hover');
+			}).on('mouseout','.subnav',function(){
+				$('.subnav').removeClass('hovering');
+				$('.subnav__div').removeClass('hover');
 			});
-			</script>
+
+
+			$('.swctallax').swctallax({
+				startPoint: 0, // starting point of document
+				endPoint: $(document).height(), // height of the document
+				jump: 0.1, // any number between 0 and 1
+				background: "on", // optional "off"
+				full: true //fullscreen or not
+			});
+
+			$('section:first-child').parallax("50%", 0.1);
+			$('section:nth-child(2)').parallax("50%", 0.2);
+			$('section:last-child').parallax("50%", 0.3);
+
+		});
+		</script>
 
 
 
-			<script>
-			  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-			  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-			  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-			  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		<script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-			  ga('create', 'UA-10224456-13', 'auto');
-			  ga('send', 'pageview');
+          ga('create', 'UA-10224456-13', 'auto');
+          ga('send', 'pageview');
 
-			</script>
-		</body>
+        </script>
+	</body>
 </html>
