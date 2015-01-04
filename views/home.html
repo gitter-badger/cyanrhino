@@ -1098,7 +1098,7 @@
                         <div class="ch-info">
                             <div class="ch-info-back">
                                 <%for(var j=0;j< data.length; j++){
-                                    if(data[j]._doc && (data[j]._doc.filename==layout[i].filename) ) {
+                                    if(data[i] && data[j]._doc && (data[j]._doc.filename==layout[i].filename) ) {
                                         %>
                                         <a href="/showcase/<%=data[j]._doc._id%>">
                                         <%
