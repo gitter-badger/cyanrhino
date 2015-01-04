@@ -26,7 +26,9 @@
 
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
-        <meta name="apple-mobile-web-app-title" content="">
+        <meta name="apple-mobile-web-app-title" content="Cyanrhino">
+
+        <link rel="dns-prefetch" href="//www.cyanrhino.com">
 
 
         <link rel="stylesheet" href="/css/normalize.css">
@@ -622,22 +624,32 @@
         }
 
         section h1 {
-		font-weight: 100;
-		font-size: 100px;
-		float: none;
-		text-align: center;
-		display: inline-block;
-		vertical-align: middle;
-		letter-spacing: 10px
+    		font-weight: 100;
+    		font-size: 100px;
+    		float: none;
+    		text-align: center;
+    		display: inline-block;
+    		vertical-align: middle;
+    		letter-spacing: 10px;
+            padding:0 15px;
 		}
 		/* Center the div */
 
 		section > p.center {
-		text-align: center;
-		vertical-align: middle;
-		height: auto;
-		width: auto;
+        	text-align: center;
+        	vertical-align: middle;
+        	height: auto;
+        	width: auto;
 		}
+        section h2{
+            font-size:30px;
+            font-size:3rem;
+        }
+        section h2, section > p{
+            text-align:left;
+            padding:0 15px;
+            opacity:0.2;
+        }
         </style>
         <script>
             var _hmt = _hmt || [];
@@ -720,14 +732,26 @@
 
 		<div style="position:relative; overflow:hidden; clear:both;">
 			<% if(data) {%>
+                <% if(data.length && data.length>0){%>
+                    <% for(var i=0;i<data.length;i++) {%>
+                    <section class="top swctallax" style="height: 100%;background:url(/uploads/<%=data[i].filename%>) no-repeat left top fixed;">
+                        <h2>
+                            <%=data[i].title%>
+                        </h2>
+                        <p class=""><time datetime="<%=data[i].uploadDate%>" pubdate="pubdate" class="pubdate"><%=new Date(data[i].uploadDate).toDateString()%></time></p>
+                    </section>
+                    <%}%>
+
+                <%} else {%>
 				<section class="top swctallax" style="height: 100%;background:url(/uploads/<%=data.filename%>) no-repeat left top fixed;">
 					<h2>
 						<%=data.title%>
 					</h2>
-					<p><time datetime="<%=data.uploadDate%>" pubdate="pubdate" class="pubdate"><%=new Date(data.uploadDate).toDateString()%></time></p>
+					<p class=""><time datetime="<%=data.uploadDate%>" pubdate="pubdate" class="pubdate"><%=new Date(data.uploadDate).toDateString()%></time></p>
 				</section>
-				<section class="top swctallax" style="height: 100%;background:url(/uploads/<%=data.filename%>) no-repeat center center fixed;"></section>
-				<section class="top swctallax" style="height: 100%;background:url(/uploads/<%=data.filename%>) no-repeat right bottom fixed; "></section>
+                <section class="top swctallax" style="height: 100%;background:url(/uploads/<%=data.filename%>) no-repeat center center fixed;"></section>
+                <section class="top swctallax" style="height: 100%;background:url(/uploads/<%=data.filename%>) no-repeat right bottom fixed; "></section>
+                <% } %>
 			<% } %>
 		</div>
 

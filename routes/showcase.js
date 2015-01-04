@@ -1,5 +1,6 @@
 var layoutService=require('../lib/homepage'),
-photosService=require('../lib/photos');
+photosService=require('../lib/photos'),
+albumService=require('../lib/album');
 
 
 exports.list = function(req, res){
@@ -12,8 +13,21 @@ exports.list = function(req, res){
 };
 
 exports.detail = function(req, res){
-    photosService.show(req,res,function(d){
-        res.render('detail', { title: 'CyanRhino' ,data:d, user: req.user});
+	albumService.show(req,res, function(a){
+        if(a.length==0){
+            photosService.show(req,res,function(d){
+                res.render('detail', { title: 'CyanRhino' ,data:d, user: req.user});
+            });
+        } else{
+            var tmp=[], albumFoto=a;
+
+            photosService.findDetail(a,function(d){
+                res.render('detail', { title: 'CyanRhino' ,data:d, user: req.user});
+
+            });
+
+        }
     });
+
 
 };

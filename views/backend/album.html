@@ -34,7 +34,7 @@
 		box-shadow:inset 1px 1px 10px #cacaca,
 					0 0 5px #666;
 	}
-	
+
 	label.list{
 		display:inline-block;
 	}
@@ -85,7 +85,7 @@
 		cursor:pointer;
 	}
 	</style>
-	
+
 </head>
 
 <body>
@@ -183,10 +183,15 @@
 
 
 					<div id="fotoWrapper">
-						<form action="../" method="post" novalidate="novalidate">		
+						<form action="../" method="post" novalidate="novalidate">
 
-						<% for(var i=0;data &&  i<data.length; i++) { %>
-							<%if (i==0) {%>
+						<%
+						data=data.sort(function(a,b){
+							return b.albumTitle.length||0-a.albumTitle.length||0;
+						});
+						for(var i=0;data &&  i<data.length; i++) { %>
+							
+							<%if(i==0){%>
 								<input type="hidden" value="<%= data[i].coverId%>" name="coverId" id="coverId" />
 								<p>
 									<input type="text" value="<%= data[i].albumTitle%>" name="albumTitle" id="albumTitle" placeholder="相册标题" />
@@ -194,16 +199,17 @@
 								<p>
 									<input type="text" value="<%= data[i].albumSummary%>" name="albumSummary" id="albumSummary" placeholder="相册描述" />
 								</p>
-							<div class="item add">
-								<a href="#background" class="btn modal" title="添加相片">&plus;</a>
-							</div>												
+								<div class="item add">
+									<a href="#background" class="btn modal" title="添加相片">&plus;</a>
+								</div>
 							<%}%>
-							
+
+
 							<div class="item">
 								<figure style="background-image:url(/uploads/<%= data[i].photoPath%>); background-repeat:no-repeat;" data-id="<%= data[i]._id%>">
 									<!-- <figcaption><%= data[i].imageName%></figcaption> -->
 								</figure>
-																									
+
 							</div>
 
 
@@ -247,9 +253,9 @@
 			console.log($(self).parent().find('figure').attr('data-id'));
 
 			$.get('/backend/album/remove/'+$(self).parent().find('figure').attr('data-id'),function(){
-				$(self).parent().remove();	
+				$(self).parent().remove();
 			});
-			
+
 		});
 
 
@@ -257,16 +263,25 @@
 			e.preventDefault();
 			var filename=$('#background .on').find('img').attr('src').slice($('#background .on').find('img').attr('src').lastIndexOf('/')+1,$('#background .on').find('img').attr('src').length);
 			filename=filename.slice(filename.lastIndexOf('_')+1,filename.length);
-			$.post('/backend/album/add/'+$('#coverId').val()+'/'+JSON.stringify({				
+			$.post('/backend/album/add/'+$('#coverId').val()+'/'+JSON.stringify({
 				title:$('#albumTitle').val(),
 				summary:$('#albumSummary').val(),
 				filename:filename
 			}),function(){
-
+				window.location.reload();
 			});
 			$('.close').trigger('click');
 		});
-		
+
+		$('#albumTitle, #albumSummary').on('input',function(e){
+			$.post('/backend/album/update/'+$('#coverId').val()+'/'+JSON.stringify({
+				title:$('#albumTitle').val(),
+				summary:$('#albumSummary').val()
+			}),function(){
+
+			});
+		});
+
 	});
 	</script>
 

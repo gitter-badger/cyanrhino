@@ -20,8 +20,11 @@ textarea {
 }
 
 html {
+    font-size:100%;
     font-size: 1em;
+    font-size:1rem;
     line-height: 1.4;
+    text-rendering: optimizeLegibility;    
 }
 
 html, body{
@@ -331,7 +334,7 @@ a {
 }
 
 .detail--header-img .detail--nav--icon, .detail--dark .detail--nav--icon{
-	
+
 }
 
 .icon-play:before {

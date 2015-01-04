@@ -65,18 +65,18 @@ exports.photoGallery=function(req,res){
 exports.album = function (req, res) {
     albumService.show(req, res, function (d) {
 		if(d && d.length<=0) {
-			photosService.show(req,res,function(data){				
+			photosService.show(req,res,function(data){
 				if(data) {
 					albumService.save({coverId:req.param('uuid'),photo:data,title:'',summary:''},function(da){
 						// res.render('backend/album', { title: 'CyanRhino', data: da, user: req.user });
 						if('undefined'!==req.param('uuid')) {
-							res.redirect('/backend/album/'+req.param('uuid'));				
+							res.redirect('/backend/album/'+req.param('uuid'));
 						}
 					});
 				}
 				else {
 					photosService.listFoto(function(fotos){
-						res.render('backend/album', { title: 'CyanRhino', data: d, foto:fotos, user: req.user });	
+						res.render('backend/album', { title: 'CyanRhino', data: d, foto:fotos, user: req.user });
 					});
 				}
 			});
@@ -99,9 +99,20 @@ exports.albumAdd=function(req,res,callback){
 		album.photo={};
 		album.photo.filename=album.filename;
 	}
-	
+
     albumService.save(album,function(data){
-    	res.send(200);	
+    	res.send(200);
+    });
+};
+
+exports.albumUpdate=function(req,res,callback){
+    var album=JSON.parse(req.params.photo);
+    if(album) {
+        album.coverId=req.param('coverId');
+    }
+
+    albumService.doUpdate(album,function(data){
+        res.send(200);
     });
 };
 
