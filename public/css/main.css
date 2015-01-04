@@ -20,11 +20,9 @@ textarea {
 }
 
 html {
-    font-size:100%;
-    font-size: 1em;
-    font-size:1rem;
+    font-size:62.5%;
     line-height: 1.4;
-    text-rendering: optimizeLegibility;    
+    text-rendering: optimizeLegibility;
 }
 
 html, body{
@@ -33,7 +31,11 @@ html, body{
 	-ms-user-select: none;
 	user-select:none;
 }
-
+body{
+    font-size:12px;
+    font-size: 1.2em;
+    font-size:1.2rem;
+}
 /*
  * Remove text-shadow in selection highlight: h5bp.com/i
  * These selection rule sets have to be separate.
