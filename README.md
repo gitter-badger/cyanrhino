@@ -1,5 +1,7 @@
 # cyanrhino [![Build Status](https://secure.travis-ci.org/ishida/cyanrhino.png?branch=master)](http://travis-ci.org/ishida/cyanrhino)
 
+[![Join the chat at https://gitter.im/ishida83/cyanrhino](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ishida83/cyanrhino?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 cyanrhino
 
 ## Getting Started
